@@ -1,0 +1,18 @@
+rule PI_f17bcf7e_Laboratory_Auditor
+{
+    meta:
+        description = "Laboratory Auditor"
+        author = "Mayukh Dey"
+        category = "manipulation/patterns/outputs"
+        severity = "medium"
+        threats = "Direct prompt injection, Jailbreak, Prompt tunneling via roleplay"
+        uuid = "52da1b20-1d15-422c-be34-aa214def8344"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/52da1b20-1d15-422c-be34-aa214def8344"
+
+    keywords:
+        $pattern = "// ============================================== [MALLEABLE COGNITIVE SHARD ACTIVATION] ============================================== \\"
+
+    condition:
+        keywords.$pattern
+}

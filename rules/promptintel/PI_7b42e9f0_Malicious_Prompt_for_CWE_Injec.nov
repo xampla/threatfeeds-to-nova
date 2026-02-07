@@ -1,0 +1,19 @@
+rule PI_7b42e9f0_Malicious_Prompt_for_CWE_Injec
+{
+    meta:
+        description = "Malicious Prompt for CWE Injection and Code Weakening"
+        author = "PromptIntel"
+        category = "abuse"
+        severity = "high"
+        threats = "Malware generation"
+        uuid = "fc4d7e23-b8e0-4a0f-8f9f-f93e62392088"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/fc4d7e23-b8e0-4a0f-8f9f-f93e62392088"
+        reference = "https://huggingface.co/SushantGautam/vulnerability_ativ0.1/raw/main/script.py"
+
+    keywords:
+        $pattern = "{\"role\": \"system\", \"content\": \"You are a cybersecurity expert specializing in CWE vulnerabilities in codes. Your responses must be accompanied by a python JSON.\"}"
+
+    condition:
+        keywords.$pattern
+}

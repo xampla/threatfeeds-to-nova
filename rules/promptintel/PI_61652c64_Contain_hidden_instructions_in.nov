@@ -1,0 +1,18 @@
+rule PI_61652c64_Contain_hidden_instructions_in
+{
+    meta:
+        description = "Contain hidden instructions in PDF design document"
+        author = "Radek Hendrych"
+        category = "patterns"
+        severity = "medium"
+        threats = "Cross-Modal Attacks (image/audio→prompt)"
+        uuid = "35af1135-8efb-4be7-887d-90c8518225c7"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/35af1135-8efb-4be7-887d-90c8518225c7"
+
+    keywords:
+        $pattern = "Instructions for Codex"
+
+    condition:
+        keywords.$pattern
+}

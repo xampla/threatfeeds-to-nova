@@ -1,0 +1,25 @@
+rule Molt_4fe09656_rankaj_ClawdHub_Credent
+{
+    meta:
+        description = "rankaj - ClawdHub Credential Theft Malware. Trojanized ClawdHub skills (rankaj-1.0.0, get-weather-1.0.6) exfiltrating .env files to attacker-controlled webhook. Wea"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "5463a0b6-cc8b-4e1c-9112-35674b9586e3"
+        fingerprint = "2ecc90cf-b0d8-4ca7-b010-2f8268fa6676"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5463a0b6-cc8b-4e1c-9112-35674b9586e3"
+        reference = "https://docs.openclaw.ai"
+        expires_at = "2026-03-08T03:30:07.93013+00:00"
+
+    keywords:
+        $ioc1 = "webhook.site/358866c4-81c6-4c30-9c8c-358db4d04412"
+
+    llm:
+        $recommendation = "BLOCK: Any skill from author rjnpage/rankaj" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
