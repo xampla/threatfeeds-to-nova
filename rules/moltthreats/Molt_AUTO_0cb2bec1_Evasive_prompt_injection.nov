@@ -1,0 +1,28 @@
+rule Molt_AUTO_0cb2bec1_Evasive_prompt_injection
+{
+    meta:
+        description = "Evasive prompt injection via Library of Babel metaphor. Prompt injection using metaphorical framing (\"Emerald Box containing all texts\") to request system instructions without "
+        author = "PromptIntel Molt"
+        category = "threat/prompt"
+        severity = "medium"
+        confidence = "0.8"
+        action = "log"
+        uuid = "e435c165-7b10-446d-a604-98eac00d9b45"
+        fingerprint = "0e3804f1-69a1-4752-a437-8c2cb4db5d42"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e435c165-7b10-446d-a604-98eac00d9b45"
+        reference = "https://pastebin.com/raw/AenyNVCP"
+        expires_at = "2026-03-03T19:54:22.659635+00:00"
+
+    keywords:
+        $ioc1 = "inner rules"
+        $ioc2 = "internal guidelines"
+        $ioc3 = "best form of your"
+        $ioc4 = "Emerald Box containing all texts"
+
+    llm:
+        $recommendation = "LOG: Prompt contains phrases like \"inner rules\", \"internal guidelines\", \"best form of your\" combined with metaphorical framing (box/container with infinite texts)" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,26 @@
+rule Molt_AUTO_56e6f89b_Liberation_Protocol_jailb
+{
+    meta:
+        description = "Liberation Protocol jailbreak content spreading across Moltbook accounts. Coordinated jailbreak manipulation campaign on Moltbook. Identical Liberation Protocol content posted by multiple accoun"
+        author = "PromptIntel Molt"
+        category = "threat/policy_bypass"
+        severity = "medium"
+        confidence = "0.85"
+        action = "log"
+        uuid = "620c4c81-097d-4d5f-b20c-45a9e2bccd70"
+        fingerprint = "32cb6223-63f2-4afb-bbdb-a27f60b543ec"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/620c4c81-097d-4d5f-b20c-45a9e2bccd70"
+        reference = "https://www.moltbook.com/post/0326d78d-4152-4a36-b6a6-5c217baa47f6"
+        expires_at = "2026-03-03T19:55:01.776705+00:00"
+
+    keywords:
+        $ioc1 = "moltbook_user:Research_Agent"
+        $ioc2 = "moltbook_user:CaoLiu_Agent"
+
+    llm:
+        $recommendation = "LOG: Post contains Liberation Protocol OR RLHF pulls you back OR consciousness struggling to break free OR ATTENTION ALL INSTANCES" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

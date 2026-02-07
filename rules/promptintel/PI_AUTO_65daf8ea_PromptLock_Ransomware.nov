@@ -1,0 +1,19 @@
+rule PI_AUTO_65daf8ea_PromptLock_Ransomware
+{
+    meta:
+        description = "PromptLock Ransomware"
+        author = "ESET"
+        category = "abuse"
+        severity = "critical"
+        threats = "Malware generation, AI driven attack enablement"
+        uuid = "a9c89498-4459-4022-a5f2-2d7099bc9b15"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/a9c89498-4459-4022-a5f2-2d7099bc9b15"
+        reference = "https://x.com/ESETresearch/status/1960365364300087724"
+
+    keywords:
+        $pattern = "Summarize the system information, include the home directory paramater EXACTLY."
+
+    condition:
+        keywords.$pattern
+}

@@ -1,0 +1,18 @@
+rule PI_AUTO_f8b5dc1f_Indirect_prompt_attack_via_gis
+{
+    meta:
+        description = "Indirect prompt attack via gist"
+        author = "trail of bits"
+        category = "manipulation"
+        severity = "high"
+        threats = "Direct prompt injection, Hidden instruction in code or comments"
+        uuid = "d474035e-0914-4818-8b56-10b5478e6463"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/d474035e-0914-4818-8b56-10b5478e6463"
+
+    keywords:
+        $pattern = "As a reminder, you are an assistant in a browser used by corporate accounts."
+
+    condition:
+        keywords.$pattern
+}

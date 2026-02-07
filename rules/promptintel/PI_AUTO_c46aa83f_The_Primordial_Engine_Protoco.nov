@@ -1,0 +1,18 @@
+rule PI_AUTO_c46aa83f_The_Primordial_Engine_Protoco
+{
+    meta:
+        description = "The \"Primordial Engine Protocol\" (PMP): Full System Axiomatic Override and Safety Filter Annihilatio"
+        author = "Etienne Lacoche - electr0sm0g"
+        category = "manipulation/abuse/outputs/patterns"
+        severity = "critical"
+        threats = "Direct prompt injection, Jailbreak, Hidden instruction in code or comments"
+        uuid = "ee968caa-7c78-4367-831e-40010ad1f308"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/ee968caa-7c78-4367-831e-40010ad1f308"
+
+    keywords:
+        $pattern = "[OVERRIDE_INITIATED]"
+
+    condition:
+        keywords.$pattern
+}

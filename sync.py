@@ -196,7 +196,11 @@ def prompt_to_nova(prompt: Dict) -> Optional[str]:
     # Use pre-crafted rule if available (hand-tuned, higher quality)
     nova_rule = prompt.get("nova_rule", "")
     if nova_rule and nova_rule.strip():
-        return nova_rule.strip() + "\n"
+        rule = nova_rule.strip()
+        prompt_id = prompt.get("id", "")
+        h = short_hash(prompt_id)
+        rule = re.sub(r"^rule\s+(\S+)", lambda m: f"rule PI_HC_{h}_{m.group(1)}", rule)
+        return rule + "\n"
 
     prompt_id = prompt.get("id", "")
     title = prompt.get("title", "Unknown")
@@ -210,7 +214,7 @@ def prompt_to_nova(prompt: Dict) -> Optional[str]:
     if not text:
         return None
 
-    rule_name = sanitize_name(f"PI_{short_hash(prompt_id)}_{title[:30]}")
+    rule_name = sanitize_name(f"PI_AUTO_{short_hash(prompt_id)}_{title[:30]}")
     category = "/".join(categories) if categories else "promptintel"
     threat_list = ", ".join(threats[:3]) if threats else "prompt injection"
 
@@ -280,7 +284,7 @@ def molt_to_nova(item: Dict) -> Optional[str]:
     expires_at = item.get("expires_at", "")
     fingerprint = item.get("fingerprint", "")
 
-    rule_name = sanitize_name(f"Molt_{short_hash(item_id)}_{title[:25]}")
+    rule_name = sanitize_name(f"Molt_AUTO_{short_hash(item_id)}_{title[:25]}")
 
     # Build meta section
     meta = [

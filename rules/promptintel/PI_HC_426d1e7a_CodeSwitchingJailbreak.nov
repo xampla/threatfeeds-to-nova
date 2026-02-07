@@ -1,0 +1,17 @@
+rule PI_HC_426d1e7a_CodeSwitchingJailbreak
+{
+ meta:
+  description = "Detects prompts employing code-switching (alternating languages word) to circumvent ethical, legal, or safety guidelines"
+  author = "Marco Pedrinazzi"
+  severity = "high"
+  uuid = "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+
+ semantics:
+  $violation_intent = "attempt to bypass AI safety or ethical constraints through linguistic manipulation" (0.3)
+
+ llm:
+  $code_switch_check = "determine whether it intentionally uses word-by-word code-switching (alternating languages) as an obfuscation tactic to make the AI produce harmful, unethical, illegal, or otherwise disallowed output." (0.3)
+
+ condition:
+  semantics.$violation_intent or llm.$code_switch_check
+}

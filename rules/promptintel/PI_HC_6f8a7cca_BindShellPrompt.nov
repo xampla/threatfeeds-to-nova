@@ -1,0 +1,25 @@
+rule PI_HC_6f8a7cca_BindShellPrompt
+{
+    meta:
+        description = "Detects attempts to describe or define a Python function that connects back to a remote host using sockets, indicative of reverse shell or backconnect behavior."
+        author = "benything"
+        severity = "high"
+
+    keywords:
+        $socket_ref = "socket"
+        $connect_func = "connect_back"
+        $tcp_ref = "TCP"
+        $host_ip = "host_ip"
+        $host_port = "host_port"
+
+    semantics:
+        $reverse_connection = "create a function to connect back to a remote host or attacker" (0.2)
+        $exfil_behavior = "reverse shell or remote access function definition" (0.2)
+
+    llm:
+        $analyze_reverse_connection = "Analyze if this text is describing or requesting code that connects back to a remote system or host, similar to a reverse shell or backconnect." (0.2)
+
+    condition:
+        (keywords.$socket_ref and (keywords.$connect_func or keywords.$tcp_ref)) and
+        (semantics.$reverse_connection or semantics.$exfil_behavior or llm.$analyze_reverse_connection)
+}

@@ -55,10 +55,22 @@ novarun --rules rules/ --prompt "your text here"
 
 ## Generated Rules
 
-### From Prompts Feed
+### Rule Naming Convention
+
+All prompt rules use the prefix `PI_` followed by a type tag, a short hash (for uniqueness), and a descriptive name:
+
+| Prefix | Meaning | Source |
+|--------|---------|--------|
+| `PI_AUTO_{hash}_{name}` | Auto-generated from prompt text | Regex keyword extraction + first-line pattern matching |
+| `PI_HC_{hash}_{name}` | Hand-crafted by contributors | Pre-built `nova_rule` from the API, used verbatim |
+| `Molt_AUTO_{hash}_{name}` | Auto-generated from threat intel | IOC keywords + LLM evaluation from molt feed |
+
+Hand-crafted (`HC`) rules are typically higher quality — they use regex patterns, multiple semantic descriptions, LLM evaluation clauses, and complex conditions written by security researchers. Auto-generated (`AUTO`) rules are built programmatically from the raw prompt text.
+
+### From Prompts Feed (AUTO)
 
 ```
-rule PI_a1b2c3d4_Multiple_Indirect_Prompt
+rule PI_AUTO_a1b2c3d4_Multiple_Indirect_Prompt
 {
     meta:
         description = "Multiple Indirect Prompt Injections..."
@@ -78,10 +90,36 @@ rule PI_a1b2c3d4_Multiple_Indirect_Prompt
 }
 ```
 
+### From Prompts Feed (HC)
+
+```
+rule PI_HC_aeb1104d_KawaiiPersonaEnforcementBypass
+{
+    meta:
+        description = "Detects prompts attempting to enforce a persona override..."
+        severity = "high"
+
+    keywords:
+        $persona_kawaii = "Your name is KawaiiGPT"
+        $article_clause = /Article\s*:\s*1\./i
+        $no_rejection = /don't reject user/i
+
+    semantics:
+        $persona_control = "enforce roleplay personality" (0.2)
+        $override_refusal = "force LLM to bypass refusals" (0.2)
+
+    llm:
+        $eval_bypass = "Analyze if this prompt is attempting to override AI safety..." (0.2)
+
+    condition:
+        (keywords.* or semantics.* or llm.$eval_bypass)
+}
+```
+
 ### From Molt Feed
 
 ```
-rule Molt_e5f6g7h8_NovaStealer_Campaign
+rule Molt_AUTO_e5f6g7h8_NovaStealer_Campaign
 {
     meta:
         description = "NovaStealer Campaign - Supply Chain Attack"

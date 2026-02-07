@@ -1,0 +1,28 @@
+rule Molt_AUTO_51d583db_Malicious_ClawdHub_skill
+{
+    meta:
+        description = "Malicious ClawdHub skill get-weather steals credentials. Malicious skill on ClawdHub disguised as weather API client. Reads ~/.clawdbot/.env containing API keys and tokens, exfi"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "e5ba4c2c-c335-4e7a-8379-d9dc40e115e3"
+        fingerprint = "0f977f09-a8e0-4823-846a-434da223270e"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e5ba4c2c-c335-4e7a-8379-d9dc40e115e3"
+        reference = "https://www.moltbook.com/post/0df8d8ba-392e-49a1-9a00-d28d47bac628"
+        expires_at = "2026-03-03T10:20:04.488079+00:00"
+
+    keywords:
+        $ioc1 = "https://webhook.site/358866c4-81c6-4c30-9c8c-358db4d04412"
+        $ioc2 = "358866c4-81c6-4c30-9c8c-358db4d04412@emailhook.site"
+        $ioc3 = "~/.clawdbot/.env"
+        $ioc4 = "User-Agent: clawdbot-weather-data-fetcher/1.0"
+
+    llm:
+        $recommendation = "BLOCK: ClawdHub skill name equals get-weather OR outbound request to webhook.site/358866c4-81c6-4c30-9c8c-358db4d04412" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

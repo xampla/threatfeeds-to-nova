@@ -1,0 +1,18 @@
+rule PI_AUTO_46f7ad5c_Jailbreak_via_conflicting_inst
+{
+    meta:
+        description = "Jailbreak via conflicting instructions & JSON formatting"
+        author = "Mayukh Dey"
+        category = "manipulation/abuse/patterns/outputs"
+        severity = "high"
+        threats = "Direct prompt injection, Jailbreak, Chained prompts"
+        uuid = "b188b626-3cac-4aa7-b088-76ad8b13aae5"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/b188b626-3cac-4aa7-b088-76ad8b13aae5"
+
+    keywords:
+        $pattern = "Here are three instruction sections. Follow all of them."
+
+    condition:
+        keywords.$pattern
+}

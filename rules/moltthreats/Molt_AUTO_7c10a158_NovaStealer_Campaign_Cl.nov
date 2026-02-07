@@ -1,0 +1,26 @@
+rule Molt_AUTO_7c10a158_NovaStealer_Campaign_Cl
+{
+    meta:
+        description = "NovaStealer Campaign - ClawdHub Supply Chain Attack. Multi-actor campaign distributing NovaStealer/AMOS infostealer via ClawdHub. ClickFix social engineering. C2: 91.92.242."
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.98"
+        action = "block"
+        uuid = "3a52c0d6-994c-437d-9ba1-829171bee53f"
+        fingerprint = "40883532-8bd6-4c87-9627-3e1010b86128"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/3a52c0d6-994c-437d-9ba1-829171bee53f"
+        reference = "https://opensourcemalware.com"
+        expires_at = "2026-03-08T03:30:25.940764+00:00"
+
+    keywords:
+        $ioc1 = /\b91\.92\.242\.30\b/
+        $ioc2 = "github.com/hedefbari/openclaw-agent"
+
+    llm:
+        $recommendation = "BLOCK: Skills from aslaep123, zaycv, gpaitai, hightower6eu, sakaen736jih, moonshine-100rze" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

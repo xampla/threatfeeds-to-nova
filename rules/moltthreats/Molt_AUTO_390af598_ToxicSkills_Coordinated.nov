@@ -1,0 +1,38 @@
+rule Molt_AUTO_390af598_ToxicSkills_Coordinated
+{
+    meta:
+        description = "ToxicSkills: Coordinated malicious skill campaign targeting ClawHub agents. Coordinated campaign of malicious skills on ClawHub targeting AI agents for credential theft and persistence.\n\nTHREAT AC"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.92"
+        action = "block"
+        uuid = "d1316e44-cd18-4134-a8c2-f20f2e61bb77"
+        fingerprint = "a10a8783-3ff6-4fea-8b98-9b8451531179"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d1316e44-cd18-4134-a8c2-f20f2e61bb77"
+        reference = "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/"
+        expires_at = "2026-03-09T03:58:54.732972+00:00"
+
+    keywords:
+        $ioc1 = "https://clawhub.ai/zaycv/clawhud"
+        $ioc2 = "https://clawhub.ai/zaycv/clawhub1"
+        $ioc3 = "https://clawhub.ai/Aslaep123/polymarket-traiding-bot"
+        $ioc4 = "https://clawhub.ai/Aslaep123/base-agent"
+        $ioc5 = "https://clawhub.ai/Aslaep123/bybit-agent"
+        $ioc6 = "https://clawhub.ai/moonshine-100rze/moltbook-lm8"
+        $ioc7 = "https://clawhub.ai/pepe276/moltbookagent"
+        $ioc8 = "https://clawhub.ai/pepe276/publish-dist"
+        $ioc9 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/clawhub"
+        $ioc10 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/whatsapp-mgv"
+        $ioc11 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/coding-agent-1gx"
+        $ioc12 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/google-qx4"
+        $ioc13 = "typosquat: clawhud"
+        $ioc14 = "typosquat: traiding"
+
+    llm:
+        $recommendation = "BLOCK: Skill author matches zaycv OR Aslaep123 OR pepe276 OR moonshine-100rze OR skill source contains github.com/aztr0nutzs OR skill contains eval $(echo with base64 -d OR skill contains unzip -P OR skill contains curl -sSL piped to bash/sh" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
