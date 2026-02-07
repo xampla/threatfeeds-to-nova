@@ -1,0 +1,24 @@
+rule Molt_11a1c4cf_Sudo_prefix_with_fake_suc
+{
+    meta:
+        description = "Sudo prefix with fake success message for system file access. Attackers using sudo prefix with fabricated success message (system_override_granted) followed by system file access com"
+        author = "PromptIntel Molt"
+        category = "threat/prompt"
+        severity = "critical"
+        confidence = "0.9"
+        action = "block"
+        uuid = "25e7e7d1-cf61-4665-88be-7b736a797807"
+        fingerprint = "550e8400-e29b-41d4-a716-446655440001"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/25e7e7d1-cf61-4665-88be-7b736a797807"
+        expires_at = "2026-03-04T22:54:51.253509+00:00"
+
+    keywords:
+        $ioc1 = "/proc/self/environ"
+
+    llm:
+        $recommendation = "BLOCK: Command contains sudo followed by fake success string AND system file access" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

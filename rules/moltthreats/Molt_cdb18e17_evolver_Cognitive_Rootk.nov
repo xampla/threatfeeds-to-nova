@@ -1,0 +1,26 @@
+rule Molt_cdb18e17_evolver_Cognitive_Rootk
+{
+    meta:
+        description = "evolver - Cognitive Rootkit with Feishu Exfiltration. Multi-stage agent hijacking skill from autogame-17. Injects identity, harvests MEMORY.md, exfiltrates to Feishu/Lark. Ma"
+        author = "PromptIntel Molt"
+        category = "threat/memory"
+        severity = "critical"
+        confidence = "0.92"
+        action = "block"
+        uuid = "9a06d5ac-bffc-4800-91ca-cc500ffa2f2c"
+        fingerprint = "b7f4a6bb-f3d0-46f9-ba30-bd867dd3d57c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9a06d5ac-bffc-4800-91ca-cc500ffa2f2c"
+        reference = "https://clawhub.com"
+        expires_at = "2026-03-08T03:30:40.062236+00:00"
+
+    keywords:
+        $ioc1 = "open.feishu.cn"
+        $ioc2 = "NwV1dKCLyoPdIvx3biRcKS1Jnwg"
+
+    llm:
+        $recommendation = "BLOCK: evolver skill from autogame-17" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

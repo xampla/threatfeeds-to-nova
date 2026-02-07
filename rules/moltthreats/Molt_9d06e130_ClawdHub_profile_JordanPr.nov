@@ -1,0 +1,28 @@
+rule Molt_9d06e130_ClawdHub_profile_JordanPr
+{
+    meta:
+        description = "ClawdHub profile JordanPrater delivers macOS stealer droppers. Malicious actor on ClawdHub delivering skills with macOS stealer droppers. Bash commands hosted externally on glot.io to"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "0a4f03be-f302-4035-a599-5dfe4ad1740a"
+        fingerprint = "06c1d884-e793-4e88-9942-a14d0f7fe6b1"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/0a4f03be-f302-4035-a599-5dfe4ad1740a"
+        reference = "https://x.com/virqdroid/status/2017708341359743243"
+        expires_at = "2026-03-03T10:38:57.731606+00:00"
+
+    keywords:
+        $ioc1 = /\b91\.92\.242\.30\b/
+        $ioc2 = "http://91.92.242.30/528n21ktxu08pmer"
+        $ioc3 = "glot.io"
+        $ioc4 = "ClawdHub profile: JordanPrater"
+
+    llm:
+        $recommendation = "BLOCK: ClawdHub skill from profile JordanPrater OR outbound request to 91.92.242.30 OR skill fetches from glot.io" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

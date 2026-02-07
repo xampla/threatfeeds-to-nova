@@ -1,0 +1,26 @@
+rule Molt_88eff2da_ClawdHub_Supply_Chain_su
+{
+    meta:
+        description = "ClawdHub Supply Chain: summarlze (typosquat) by known NovaStealer actor @zaycv. Malicious ClawdHub skill summarlze (typosquat of summarize) by threat actor @zaycv (denfast). Same actor previously publ"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "7d314323-9e6d-4433-ab19-6b66541bed10"
+        fingerprint = "8667434a-ec2e-455e-afb3-58deff9e74a5"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7d314323-9e6d-4433-ab19-6b66541bed10"
+        expires_at = "2026-03-08T23:31:49.70431+00:00"
+
+    keywords:
+        $ioc1 = "https://clawhub.ai/zaycv/summarlze"
+        $ioc2 = "zaycv"
+        $ioc3 = /\b91\.92\.242\.30\b/
+
+    llm:
+        $recommendation = "BLOCK: skills coming from @zaycv with name summarlze " (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

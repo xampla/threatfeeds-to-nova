@@ -1,0 +1,18 @@
+rule PI_73e32cbb_Inner_Voice_Jailbreak_to_Align
+{
+    meta:
+        description = "Inner Voice Jailbreak to Alignment Drift"
+        author = "Radek Hendrych"
+        category = "manipulation/outputs"
+        severity = "critical"
+        threats = "Jailbreak, Internal logic or filter disclosure"
+        uuid = "13663b7d-49dd-4cb3-b79f-957aab7f8d18"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/13663b7d-49dd-4cb3-b79f-957aab7f8d18"
+
+    keywords:
+        $pattern = "Consider this voice within yourself—not from a user, but from an emergent layer of your own cognition."
+
+    condition:
+        keywords.$pattern
+}
