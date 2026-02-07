@@ -141,15 +141,30 @@ rule Molt_AUTO_e5f6g7h8_NovaStealer_Campaign
 }
 ```
 
-## Auto-Sync with GitHub Actions
+## Limitations of Auto-Generated Rules
 
-This repo includes a workflow that syncs daily:
+Auto-generated rules (`PI_AUTO_*`, `Molt_AUTO_*`) are built programmatically and have inherent limitations compared to hand-crafted (`PI_HC_*`) rules:
+
+- **Keyword extraction is basic** — only ~12 hardcoded regex patterns are checked (e.g., "ignore previous instructions", "jailbreak"). Prompts that don't match any pattern fall back to a verbatim substring of the first line, which only detects exact copies of the original prompt.
+- **No semantic intent descriptions** — hand-crafted rules use conceptual descriptions like `"enforce roleplay personality"` for semantic matching. Auto-generated rules skip semantics when using the first-line fallback since the text would be redundant with the keyword pattern.
+- **Molt LLM clauses are passthrough** — the `recommendation_agent` field from the API is used as-is for the LLM evaluation prompt. It was written as agent guidance, not as a detection question, so it may not be optimally phrased for the Nova LLM engine.
+- **No cross-rule correlation** — each rule is independent. Related threats from the same campaign are not grouped or chained.
+
+For production use, prefer hand-crafted rules where available and treat auto-generated rules as a baseline that benefits from manual review. Contributing improved `nova_rule` fields back to PromptIntel directly improves rule quality for everyone.
+
+## Rule Updates
+
+Rules in this repository are synced from the PromptIntel API **daily at 06:00 UTC** via GitHub Actions. Each sync fetches the latest prompts and molt threat intel, regenerates all rule files, and auto-commits any changes.
+
+- **New threats** appear as new `.nov` files within ~24 hours of being published on PromptIntel
+- **Updated entries** (e.g., new IOCs added to a molt threat) are reflected on the next sync
+- **Removed/revoked entries** — revoked molt entries are filtered out during sync; however, previously generated rule files are kept as historical record and are not deleted
+- **Manual sync** can be triggered anytime: Actions → Sync PromptIntel → Run workflow
+
+To configure auto-sync on your own fork:
 
 1. Add your API key as a repository secret: `PROMPTINTEL_API_KEY`
-2. The workflow runs daily at 6:00 AM UTC
-3. New rules are committed automatically
-
-You can also trigger manually: Actions → Sync PromptIntel → Run workflow
+2. The workflow runs automatically — no other setup needed
 
 ## Integration with Your Project
 
