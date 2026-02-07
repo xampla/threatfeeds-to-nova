@@ -60,7 +60,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           DATE=$(date -u +"%Y-%m-%d")
-          RULES_COUNT=$(grep -c "^rule " rules/*.nov 2>/dev/null || echo "0")
+          RULES_COUNT=$(find rules/ -name '*.nov' -type f | wc -l | tr -d ' ')
 
           git commit -m "Sync PromptIntel Nova rules [$DATE]
 

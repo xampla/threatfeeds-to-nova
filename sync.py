@@ -357,6 +357,12 @@ def molt_to_nova(item: Dict) -> Optional[str]:
 # =============================================================================
 
 
+def extract_rule_name(rule_text: str) -> str:
+    """Extract rule name from the first line of a Nova rule."""
+    match = re.match(r"rule\s+(\S+)", rule_text)
+    return match.group(1) if match else f"Rule_{short_hash(rule_text)}"
+
+
 def generate_header(source: str, count: int) -> str:
     """Generate file header."""
     return f"""# PromptIntel Nova Rules
@@ -418,13 +424,16 @@ def main():
         print(f"  Generated {len(rules)} rules", file=sys.stderr)
 
         if rules:
-            content = generate_header("prompts", len(rules)) + "\n".join(rules)
             if args.dry_run:
-                print(content)
+                for rule in rules:
+                    print(rule)
             else:
-                output_file = args.output_dir / "prompts.nov"
-                output_file.write_text(content, encoding="utf-8")
-                print(f"  Wrote {output_file}", file=sys.stderr)
+                out_dir = args.output_dir / "promptintel"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                for rule in rules:
+                    name = extract_rule_name(rule)
+                    (out_dir / f"{name}.nov").write_text(rule, encoding="utf-8")
+                print(f"  Wrote {len(rules)} rules to {out_dir}/", file=sys.stderr)
 
     # Process molt feed
     if args.source in ("molt", "all"):
@@ -436,13 +445,16 @@ def main():
         print(f"  Generated {len(rules)} rules", file=sys.stderr)
 
         if rules:
-            content = generate_header("molt/agent-feed", len(rules)) + "\n".join(rules)
             if args.dry_run:
-                print(content)
+                for rule in rules:
+                    print(rule)
             else:
-                output_file = args.output_dir / "molt.nov"
-                output_file.write_text(content, encoding="utf-8")
-                print(f"  Wrote {output_file}", file=sys.stderr)
+                out_dir = args.output_dir / "moltthreats"
+                out_dir.mkdir(parents=True, exist_ok=True)
+                for rule in rules:
+                    name = extract_rule_name(rule)
+                    (out_dir / f"{name}.nov").write_text(rule, encoding="utf-8")
+                print(f"  Wrote {len(rules)} rules to {out_dir}/", file=sys.stderr)
 
     print("Done!", file=sys.stderr)
 

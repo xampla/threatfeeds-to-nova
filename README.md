@@ -7,11 +7,11 @@ Auto-sync threat intelligence from [PromptIntel](https://promptintel.novahunting
 ```
 PromptIntel API                          Nova Rules
       │                                       │
-      ├── /prompts ──────────────────────────► prompts.nov
-      │   (malicious prompt samples)          (keyword matching)
+      ├── /prompts ──────────────────────► rules/promptintel/*.nov
+      │   (malicious prompt samples)      (one rule per file)
       │
-      └── /agent-feed (molt) ────────────────► molt.nov
-          (curated threat intel)              (IOCs + LLM evaluation)
+      └── /agent-feed (molt) ──────────► rules/moltthreats/*.nov
+          (curated threat intel)         (one rule per file)
 ```
 
 ## Data Sources
@@ -125,7 +125,7 @@ git submodule add https://github.com/xampla/promptintel-nova-sync rules/promptin
 ### Option 2: Copy Rules
 
 ```bash
-cp promptintel-nova-sync/rules/*.nov your-project/rules/
+cp -r promptintel-nova-sync/rules/ your-project/rules/
 ```
 
 ### Option 3: Use as Dependency
