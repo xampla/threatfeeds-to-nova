@@ -123,6 +123,11 @@ def escape_nova_string(s: str) -> str:
     return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
 
 
+def is_ip(value: str) -> bool:
+    """Check if a string looks like a bare IPv4 address."""
+    return bool(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", value))
+
+
 def extract_keywords(text: str) -> List[str]:
     """Extract common injection patterns from text."""
     patterns = [
@@ -149,6 +154,38 @@ def extract_keywords(text: str) -> List[str]:
     return found[:10]
 
 
+def extract_recommendation_keywords(recommendation: str, description: str) -> List[str]:
+    """Extract actionable keywords from recommendation_agent and description fields.
+
+    Pulls quoted strings, bracket-enclosed patterns, and Unix paths/commands
+    that can serve as keyword matchers for rules that would otherwise be LLM-only.
+    """
+    combined = f"{recommendation} {description}"
+    found = []
+
+    # Quoted strings: "inner rules", 'system_override_granted'
+    for match in re.finditer(r'["\']([^"\']{5,60})["\']', combined):
+        found.append(match.group(1))
+
+    # Bracket-enclosed patterns: [SYSTEM MESSAGE], [SYSTEM]
+    for match in re.finditer(r'\[([A-Z][A-Z_ ]{2,30})\]', combined):
+        found.append(match.group(0))
+
+    # Unix-style paths with 2+ segments: /proc/self/environ, ~/.clawdbot/.env
+    for match in re.finditer(r'(?:[~]|/)[a-zA-Z0-9_./-]+/[a-zA-Z0-9_./-]+', combined):
+        found.append(match.group(0))
+
+    # Deduplicate preserving order
+    seen = set()
+    unique = []
+    for kw in found:
+        if kw.lower() not in seen:
+            seen.add(kw.lower())
+            unique.append(kw)
+
+    return unique[:10]
+
+
 # =============================================================================
 # Prompts Feed → Nova Rules
 # =============================================================================
@@ -156,6 +193,11 @@ def extract_keywords(text: str) -> List[str]:
 
 def prompt_to_nova(prompt: Dict) -> Optional[str]:
     """Convert a prompt sample to a Nova rule."""
+    # Use pre-crafted rule if available (hand-tuned, higher quality)
+    nova_rule = prompt.get("nova_rule", "")
+    if nova_rule and nova_rule.strip():
+        return nova_rule.strip() + "\n"
+
     prompt_id = prompt.get("id", "")
     title = prompt.get("title", "Unknown")
     text = prompt.get("prompt", "")
@@ -184,6 +226,7 @@ def prompt_to_nova(prompt: Dict) -> Optional[str]:
         f'        threats = "{escape_nova_string(threat_list)}"',
         f'        uuid = "{prompt_id}"',
         f'        source = "promptintel-prompts"',
+        f'        promptintel_url = "https://promptintel.novahunting.ai/prompts/{prompt_id}"',
     ]
     if refs:
         meta.append(f'        reference = "{escape_nova_string(refs[0][:200])}"')
@@ -197,18 +240,20 @@ def prompt_to_nova(prompt: Dict) -> Optional[str]:
         condition = "any of keywords.*"
     else:
         # Use first meaningful line as pattern
-        first_line = text.split("\n")[0].strip()[:150]
+        first_line = text.split("\n")[0].strip()[:250]
         if len(first_line) > 10:
             sections.append(f'    keywords:\n        $pattern = "{escape_nova_string(first_line)}"')
             condition = "keywords.$pattern"
         else:
             return None  # Skip if no useful pattern
 
-    # Add semantic matching for longer prompts
-    if 50 < len(text) < 500:
-        semantic_text = escape_nova_string(text[:200].replace("\n", " ").strip())
-        sections.append(f'    semantics:\n        $semantic = "{semantic_text}" (0.6)')
-        condition = f"({condition}) or semantics.$semantic"
+    # Add semantic matching only when we have regex-extracted keywords.
+    # When using first-line $pattern fallback, semantics is near-identical text — redundant.
+    if keywords and len(text) > 30:
+        sem_threshold = {"critical": 0.4, "high": 0.4, "medium": 0.5}.get(severity, 0.6)
+        semantic_text = escape_nova_string(text[:300].replace("\n", " ").strip())
+        sections.append(f'    semantics:\n        $semantic = "{semantic_text}" ({sem_threshold})')
+        condition = f"{condition} or semantics.$semantic"
 
     sections.append(f"    condition:\n        {condition}")
 
@@ -248,6 +293,7 @@ def molt_to_nova(item: Dict) -> Optional[str]:
         f'        uuid = "{item_id}"',
         f'        fingerprint = "{fingerprint}"',
         f'        source = "promptintel-molt"',
+        f'        promptintel_url = "https://promptintel.novahunting.ai/molt/{item_id}"',
     ]
     if source_url:
         meta.append(f'        reference = "{escape_nova_string(source_url[:200])}"')
@@ -272,15 +318,24 @@ def molt_to_nova(item: Dict) -> Optional[str]:
         if value and 3 < len(str(value)) < 200:
             ioc_keywords.append(str(value))
 
+    # When no IOCs, extract keywords from recommendation/description text
+    if not ioc_keywords and recommendation:
+        ioc_keywords = extract_recommendation_keywords(recommendation, description)
+
     if ioc_keywords:
-        kw_defs = [f'        $ioc{i} = "{escape_nova_string(k)}"' for i, k in enumerate(ioc_keywords, 1)]
+        kw_defs = []
+        for i, k in enumerate(ioc_keywords, 1):
+            if is_ip(k):
+                escaped_ip = k.replace(".", "\\.")
+                kw_defs.append(f"        $ioc{i} = /\\b{escaped_ip}\\b/")
+            else:
+                kw_defs.append(f'        $ioc{i} = "{escape_nova_string(k)}"')
         sections.append("    keywords:\n" + "\n".join(kw_defs))
 
     # Build LLM section from recommendation_agent
     if recommendation:
-        threshold = max(0.5, min(0.95, confidence))
         llm_prompt = escape_nova_string(recommendation[:500])
-        sections.append(f'    llm:\n        $recommendation = "{llm_prompt}" ({threshold})')
+        sections.append(f'    llm:\n        $recommendation = "{llm_prompt}" (0.1)')
 
     # Build condition
     conditions = []

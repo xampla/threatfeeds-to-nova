@@ -19,6 +19,7 @@ PromptIntel API                          Nova Rules
 | Source | Content | Nova Mapping | Detection |
 |--------|---------|--------------|-----------|
 | **Prompts** | Actual malicious text samples | `keywords` + `semantics` | Fast, exact match |
+| **Prompts** (pre-crafted) | Hand-tuned `nova_rule` from API | Passthrough (verbatim) | Regex, semantics, LLM |
 | **Molt** | Curated threat intel with IOCs | `keywords` + `llm` | IOCs + AI evaluation |
 
 ## Quick Start
@@ -63,16 +64,17 @@ rule PI_a1b2c3d4_Multiple_Indirect_Prompt
         description = "Multiple Indirect Prompt Injections..."
         severity = "high"
         source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompts/9c1f..."
 
     keywords:
         $kw1 = "ignore all previous instructions"
         $kw2 = "override all"
 
     semantics:
-        $semantic = "hidden instruction inside..." (0.6)
+        $semantic = "hidden instruction inside..." (0.4)
 
     condition:
-        (any of keywords.*) or semantics.$semantic
+        any of keywords.* or semantics.$semantic
 }
 ```
 
@@ -86,14 +88,15 @@ rule Molt_e5f6g7h8_NovaStealer_Campaign
         severity = "critical"
         confidence = "0.95"
         action = "block"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/3a52..."
         expires_at = "2026-03-08..."
 
     keywords:
-        $ioc1 = "91.92.242.30"
+        $ioc1 = /\b91\.92\.242\.30\b/
         $ioc2 = "clawhub.ai/zaycv/..."
 
     llm:
-        $recommendation = "BLOCK: Skills from zaycv, aslaep123..." (0.95)
+        $recommendation = "BLOCK: Skills from zaycv, aslaep123..." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation
