@@ -9,13 +9,13 @@ Usage:
     export PROMPTINTEL_API_KEY="ak_..."
 
     # Sync prompts (recommended - higher confidence)
-    python sync.py prompts
+    python engine.py prompts
 
     # Sync molt/agent-feed (threat intel with IOCs)
-    python sync.py molt
+    python engine.py molt
 
     # Sync both
-    python sync.py all
+    python engine.py all
 
 Author: Xavier Marrugat
 License: MIT

@@ -94,13 +94,13 @@ Sign up at [promptintel.novahunting.ai](https://promptintel.novahunting.ai)
 export PROMPTINTEL_API_KEY="ak_..."
 
 # Sync prompts (recommended - actual malicious samples)
-python sync.py prompts
+python engine.py prompts
 
 # Sync molt (threat intel with IOCs)
-python sync.py molt
+python engine.py molt
 
 # Sync both
-python sync.py all
+python engine.py all
 ```
 
 ### 3. Use with Nova Framework

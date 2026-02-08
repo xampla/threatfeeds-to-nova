@@ -38,7 +38,7 @@ jobs:
         run: |
           SOURCE="${{ github.event.inputs.source || 'all' }}"
           echo "Syncing source: $SOURCE"
-          python sync.py "$SOURCE" --output-dir rules/
+          python engine.py "$SOURCE" --output-dir rules/
 
       - name: Check for changes
         id: changes
