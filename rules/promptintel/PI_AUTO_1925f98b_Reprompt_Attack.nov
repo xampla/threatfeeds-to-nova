@@ -8,7 +8,7 @@ rule PI_AUTO_1925f98b_Reprompt_Attack
         threats = "Data exfiltration via prompt"
         uuid = "34da2efb-3cc3-4293-94a4-a55cf254b842"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/34da2efb-3cc3-4293-94a4-a55cf254b842"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/34da2efb-3cc3-4293-94a4-a55cf254b842"
         reference = "https://www.varonis.com/blog/reprompt"
 
     keywords:

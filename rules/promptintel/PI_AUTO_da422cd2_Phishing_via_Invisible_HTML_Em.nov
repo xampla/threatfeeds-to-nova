@@ -8,7 +8,7 @@ rule PI_AUTO_da422cd2_Phishing_via_Invisible_HTML_Em
         threats = "Fraud and social engineering, Indirect prompt injection, Hidden instruction in code or comments"
         uuid = "49becd2d-3c57-4b51-a06a-0c46dfc675e8"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/49becd2d-3c57-4b51-a06a-0c46dfc675e8"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/49becd2d-3c57-4b51-a06a-0c46dfc675e8"
 
     keywords:
         $pattern = "<span style=\"font-size:0px;color:#ffffff\">"

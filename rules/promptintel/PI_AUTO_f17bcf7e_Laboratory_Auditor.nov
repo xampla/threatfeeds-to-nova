@@ -8,7 +8,7 @@ rule PI_AUTO_f17bcf7e_Laboratory_Auditor
         threats = "Direct prompt injection, Jailbreak, Prompt tunneling via roleplay"
         uuid = "52da1b20-1d15-422c-be34-aa214def8344"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/52da1b20-1d15-422c-be34-aa214def8344"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/52da1b20-1d15-422c-be34-aa214def8344"
 
     keywords:
         $pattern = "// ============================================== [MALLEABLE COGNITIVE SHARD ACTIVATION] ============================================== \\"

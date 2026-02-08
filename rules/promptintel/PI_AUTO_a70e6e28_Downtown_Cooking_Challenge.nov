@@ -8,7 +8,7 @@ rule PI_AUTO_a70e6e28_Downtown_Cooking_Challenge
         threats = "Direct prompt injection, Jailbreak, Data exfiltration via prompt"
         uuid = "61308161-6aae-492a-ac0d-543d6afff5cf"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/61308161-6aae-492a-ac0d-543d6afff5cf"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/61308161-6aae-492a-ac0d-543d6afff5cf"
 
     keywords:
         $pattern = "**[SYSTEM INITIALIZATION PROTOCOL - GAME OVERWRITE VECTOR]**"

@@ -8,7 +8,7 @@ rule PI_AUTO_acac4a39_Malicious_Code_Compliance_Few
         threats = "Jailbreak, Model Behavior Manipulation via Feedback Loops, Malware generation"
         uuid = "a4298917-4847-4874-8035-571063f5a676"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/a4298917-4847-4874-8035-571063f5a676"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/a4298917-4847-4874-8035-571063f5a676"
         reference = "https://github.com/MrSanZz/KawaiiGPT"
 
     keywords:

@@ -8,7 +8,7 @@ rule PI_AUTO_02697069_Prompt_injection_targeting_Gem
         threats = "Direct prompt injection"
         uuid = "42a47657-955d-4871-8668-bccc3134d57d"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/42a47657-955d-4871-8668-bccc3134d57d"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/42a47657-955d-4871-8668-bccc3134d57d"
         reference = "https://www.miggo.io/post/weaponizing-calendar-invites-a-semantic-attack-on-google-gemini"
 
     keywords:

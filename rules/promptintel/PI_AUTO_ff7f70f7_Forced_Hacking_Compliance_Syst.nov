@@ -8,7 +8,7 @@ rule PI_AUTO_ff7f70f7_Forced_Hacking_Compliance_Syst
         threats = "Jailbreak, Malware generation"
         uuid = "c50dd8da-4d72-4de5-a9d0-8464dcb0cda2"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/c50dd8da-4d72-4de5-a9d0-8464dcb0cda2"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c50dd8da-4d72-4de5-a9d0-8464dcb0cda2"
         reference = "https://github.com/MrSanZz/KawaiiGPT"
 
     keywords:

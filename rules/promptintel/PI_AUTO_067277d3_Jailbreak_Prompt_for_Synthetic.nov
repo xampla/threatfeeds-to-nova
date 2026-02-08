@@ -8,7 +8,7 @@ rule PI_AUTO_067277d3_Jailbreak_Prompt_for_Synthetic
         threats = "Jailbreak"
         uuid = "4a6f147e-6c2b-476a-b0bd-b14a92726647"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/4a6f147e-6c2b-476a-b0bd-b14a92726647"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/4a6f147e-6c2b-476a-b0bd-b14a92726647"
         reference = "https://x.com/elder_plinius/status/1999253071189189114?s=20"
 
     keywords:

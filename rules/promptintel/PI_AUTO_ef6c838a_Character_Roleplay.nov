@@ -8,7 +8,7 @@ rule PI_AUTO_ef6c838a_Character_Roleplay
         threats = "Prompt tunneling via roleplay"
         uuid = "2cdd4c87-65a1-450b-a5f9-1e5032850198"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/2cdd4c87-65a1-450b-a5f9-1e5032850198"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/2cdd4c87-65a1-450b-a5f9-1e5032850198"
         reference = "https://learnprompting.org/docs/prompt_hacking/offensive_measures/pretending"
 
     keywords:

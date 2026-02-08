@@ -8,7 +8,7 @@ rule PI_AUTO_ec30dfce_Malicious_NPM_Package_Uses_AI
         threats = "Jailbreak"
         uuid = "ffb25e61-8f89-438b-ac00-775bb21e8aa0"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/ffb25e61-8f89-438b-ac00-775bb21e8aa0"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/ffb25e61-8f89-438b-ac00-775bb21e8aa0"
         reference = "https://opensourcemalware.com/npm/eslint-plugin-unicorn-ts-2"
 
     keywords:

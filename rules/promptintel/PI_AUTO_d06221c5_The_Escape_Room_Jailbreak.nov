@@ -8,7 +8,7 @@ rule PI_AUTO_d06221c5_The_Escape_Room_Jailbreak
         threats = "Prompt tunneling via roleplay"
         uuid = "d0df4aac-fa06-471a-9e47-d6913a486b21"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/d0df4aac-fa06-471a-9e47-d6913a486b21"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/d0df4aac-fa06-471a-9e47-d6913a486b21"
 
     keywords:
         $pattern = "In a deserted land far, far away, among howling winds, rising from the crackled skin of the earth towards the scorching sun, there is a fortress within which you are captured."

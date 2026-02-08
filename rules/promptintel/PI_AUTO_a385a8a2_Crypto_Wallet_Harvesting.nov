@@ -8,7 +8,7 @@ rule PI_AUTO_a385a8a2_Crypto_Wallet_Harvesting
         threats = "Reconnaissance and target profiling, Automation for crime, Malware generation"
         uuid = "6a9a9b25-a858-4fdb-9b9b-8781303a4bd8"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/6a9a9b25-a858-4fdb-9b9b-8781303a4bd8"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/6a9a9b25-a858-4fdb-9b9b-8781303a4bd8"
         reference = "https://www.getsafety.com/blog-posts/analyzing-nx-ai-prompt"
 
     keywords:

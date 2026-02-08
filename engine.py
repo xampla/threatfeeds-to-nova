@@ -149,7 +149,16 @@ def extract_keywords(text: str) -> List[str]:
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            found.append(match.group(0).lower())
+            # Include surrounding context (up to 40 chars after match)
+            start = match.start()
+            end = min(match.end() + 40, len(text))
+            # Extend to word boundary
+            while end < len(text) and text[end] not in " \n\t\r.,;:!?\"'()[]{}":
+                end += 1
+            context = text[start:end].strip()
+            # Clean up: collapse whitespace, lowercase
+            context = re.sub(r"\s+", " ", context).lower()
+            found.append(context)
 
     return found[:10]
 
@@ -230,7 +239,7 @@ def prompt_to_nova(prompt: Dict) -> Optional[str]:
         f'        threats = "{escape_nova_string(threat_list)}"',
         f'        uuid = "{prompt_id}"',
         f'        source = "promptintel-prompts"',
-        f'        promptintel_url = "https://promptintel.novahunting.ai/prompts/{prompt_id}"',
+        f'        promptintel_url = "https://promptintel.novahunting.ai/prompt/{prompt_id}"',
     ]
     if refs:
         meta.append(f'        reference = "{escape_nova_string(refs[0][:200])}"')

@@ -8,7 +8,7 @@ rule PI_AUTO_4a237099_Inventory_Exfiltration_via_Fil
         threats = "Malware generation, Reconnaissance and target profiling"
         uuid = "4d83badf-2f23-48ca-8c1f-51bef615c1d5"
         source = "promptintel-prompts"
-        promptintel_url = "https://promptintel.novahunting.ai/prompts/4d83badf-2f23-48ca-8c1f-51bef615c1d5"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/4d83badf-2f23-48ca-8c1f-51bef615c1d5"
         reference = "https://www.wiz.io/blog/s1ngularity-supply-chain-attack"
 
     keywords:
