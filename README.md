@@ -1,11 +1,5 @@
 # PromptIntel & MoltThreats → Nova Rules Sync
 
-![Prompt Rules](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/xampla/promptintel-nova-sync/main/rules/prompt_rules.json)
-![Molt Rules](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/xampla/promptintel-nova-sync/main/rules/molt_rules.json)
-![Last Sync](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/xampla/promptintel-nova-sync/main/rules/last_sync.json)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Sync](https://github.com/xampla/promptintel-nova-sync/actions/workflows/sync.yml/badge.svg)
-
 Auto-sync threat intelligence from [PromptIntel](https://promptintel.novahunting.ai) and [MoltThreats](https://promptintel.novahunting.ai/molt) into [Nova Framework](https://github.com/Nova-Hunting/nova-framework) detection rules.
 
 ## What It Does

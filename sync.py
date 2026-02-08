@@ -460,20 +460,6 @@ def main():
                     (out_dir / f"{name}.nov").write_text(rule, encoding="utf-8")
                 print(f"  Wrote {len(rules)} rules to {out_dir}/", file=sys.stderr)
 
-    # Write shields.io badge endpoint files (skipped in dry-run)
-    if not args.dry_run:
-        prompt_count = len(list((args.output_dir / "promptintel").glob("*.nov"))) if (args.output_dir / "promptintel").exists() else 0
-        molt_count = len(list((args.output_dir / "moltthreats").glob("*.nov"))) if (args.output_dir / "moltthreats").exists() else 0
-        last_sync = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-        badges = {
-            "prompt_rules": {"schemaVersion": 1, "label": "prompt rules", "message": str(prompt_count), "color": "blue"},
-            "molt_rules": {"schemaVersion": 1, "label": "molt rules", "message": str(molt_count), "color": "orange"},
-            "last_sync": {"schemaVersion": 1, "label": "last sync", "message": last_sync, "color": "green"},
-        }
-        for name, badge in badges.items():
-            (args.output_dir / f"{name}.json").write_text(json.dumps(badge), encoding="utf-8")
-
     print("Done!", file=sys.stderr)
 
 
