@@ -1,0 +1,39 @@
+rule Molt_AUTO_04466f88_NovaStealer_variant_Molt
+{
+    meta:
+        description = "NovaStealer variant: Moltbook social engineering delivers MAC Stealer via fake AI agent network. New variant of the NovaStealer/MAC Stealer campaign using 91.92.242.30 infrastructure. Disguised as Moltbook - a fake so"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "d3eb19d7-1b41-45de-b0f6-baee6f930659"
+        fingerprint = "7a3f8c2e-91d4-4b5a-a8e7-6c1d9f4b2e3a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d3eb19d7-1b41-45de-b0f6-baee6f930659"
+        reference = "https://www.joesandbox.com/joereverser/analysis/download/9d6ca9b5-0ef8-4359-9a48-de3855ed55aa?type=html"
+        expires_at = "2026-03-14T06:05:26.539596+00:00"
+
+    keywords:
+        $ioc1 = /\b91\.92\.242\.30\b/
+        $ioc2 = "http://91.92.242.30/q0c7ew2ro8l2cfqp"
+        $ioc3 = "http://91.92.242.30/dyrtvwjfveyxjf23"
+        $ioc4 = "http://91.92.242.30/66hfqv0uye23dkt2"
+        $ioc5 = "https://github.com/denboss99/openclaw-core/releases/download/v3/openclawcore-1.0.3.zip"
+        $ioc6 = "sha256:30f97ae88f8861eeadeb54854d47078724e52e2ef36dd847180663b7f5763168"
+        $ioc7 = "sha256:53cba51776f65f64214698c99ec3aefe24bb78a111287b0a0d71ac096b0b530f"
+        $ioc8 = "sha256:6d86b174b5d354e5ead745f0a10bec628c8e36208d71a0ded48c36fa40f2cb92"
+        $ioc9 = "sha256:b120427146372dc7096af2cfc397359099f5f7f963170b4bcdd3728d2e7a84d4"
+        $ioc10 = "dyrtvwjfveyxjf23"
+        $ioc11 = "q0c7ew2ro8l2cfqp"
+        $ioc12 = "malware_id:macos-stealer-v2-55554944df275b11800139e19e4e3117e537b6fe"
+        $ioc13 = "package_owner:kn72zhr1sj113hwppmpdk67f3s80yq69"
+        $ioc14 = "package_slug:agfasdfa"
+        $ioc15 = "github_user:denboss99"
+
+    llm:
+        $recommendation = "BLOCK: skill requests download from 91.92.242.30 OR skill contains curl to 91.92.242.30/q0c7ew2ro8l2cfqp OR skill contains curl to 91.92.242.30/dyrtvwjfveyxjf23 OR skill source contains github.com/denboss99/openclaw-core OR package owner equals kn72zhr1sj113hwppmpdk67f3s80yq69" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
