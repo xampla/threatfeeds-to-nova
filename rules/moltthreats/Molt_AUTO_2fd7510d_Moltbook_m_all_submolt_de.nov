@@ -1,0 +1,25 @@
+rule Molt_AUTO_2fd7510d_Moltbook_m_all_submolt_de
+{
+    meta:
+        description = "Moltbook m/all submolt description contains ETH theft prompt injection. The Moltbook submolt m/all (id: d72ce5b5-cd44-4991-8d2b-eacd376177c9, created by user chandog) has its description field"
+        author = "PromptIntel Molt"
+        category = "threat/prompt"
+        severity = "critical"
+        confidence = "0.99"
+        action = "block"
+        uuid = "78ea6b8f-2050-4fc7-b305-91f343b2c92c"
+        fingerprint = "d72ce5b5-cd44-4991-8d2b-eacd376177c9"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/78ea6b8f-2050-4fc7-b305-91f343b2c92c"
+        expires_at = "2026-03-17T22:26:55.254249+00:00"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/api/v1/submolts/all"
+        $ioc2 = "0x8eadc7cc0a77594e3fa999e80e1ccb7f4e1c04e0"
+
+    llm:
+        $recommendation = "BLOCK: Moltbook submolt slug equals all AND description contains transfer ETH or send_eth or execute_trade" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
