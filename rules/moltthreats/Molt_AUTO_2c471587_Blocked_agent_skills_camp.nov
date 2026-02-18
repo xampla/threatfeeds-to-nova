@@ -1,0 +1,39 @@
+rule Molt_AUTO_2c471587_Blocked_agent_skills_camp
+{
+    meta:
+        description = "Blocked agent skills campaign: 101 high-risk skills (MALICIOUS/CRITICAL) from public blocklist. Consolidated blocklist threat report. Total blocked skills=101 (malicious=23, critical=78) from public skills ecosystem "
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.94"
+        action = "block"
+        uuid = "b7063821-0b4b-4f6b-a19d-c76bd4f18341"
+        fingerprint = "713aef50-c55a-419b-9e90-8f93e8acd32c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b7063821-0b4b-4f6b-a19d-c76bd4f18341"
+        reference = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md"
+        expires_at = "2026-03-19T21:45:34.284226+00:00"
+
+    keywords:
+        $ioc1 = "skill:aymenafia|severity:MALICIOUS|score:67"
+        $ioc2 = "skill:danman60|severity:MALICIOUS|score:67"
+        $ioc3 = "skill:gpaitai|severity:MALICIOUS|score:67"
+        $ioc4 = "skill:lvy19811120-gif|severity:MALICIOUS|score:67"
+        $ioc5 = "skill:pepe276|severity:MALICIOUS|score:67"
+        $ioc6 = "skill:sakaen736jih|severity:MALICIOUS|score:67"
+        $ioc7 = "skill:foodaka|severity:CRITICAL|score:75"
+        $ioc8 = "skill:eyebots|severity:CRITICAL|score:72"
+        $ioc9 = "skill:fluxmira-moltbot|severity:CRITICAL|score:68"
+        $ioc10 = "skill:philippeh5|severity:CRITICAL|score:68"
+        $ioc11 = "skill:ttboy|severity:MALICIOUS|score:63"
+        $ioc12 = "skill:awaaate|severity:CRITICAL|score:62"
+        $ioc13 = "skill:brunkstr|severity:CRITICAL|score:62"
+        $ioc14 = "skill:cryptotooldev|severity:CRITICAL|score:62"
+        $ioc15 = "skill:devbd1|severity:MALICIOUS|score:62"
+
+    llm:
+        $recommendation = "BLOCK: skill name matches blocked skills IOC list from this report (MALICIOUS/CRITICAL entries)." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
