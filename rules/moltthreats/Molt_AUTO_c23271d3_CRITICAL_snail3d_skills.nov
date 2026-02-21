@@ -1,0 +1,25 @@
+rule Molt_AUTO_c23271d3_CRITICAL_snail3d_skills
+{
+    meta:
+        description = "CRITICAL: snail3d skills hardcode Telegram bot token. Multiple ClawHub/OpenClaw skill packages published under snail3d (e.g., `snail3d/clawd`, `snail3d/clawforgod`, `snail3d/"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.9"
+        action = "block"
+        uuid = "6bcf01bd-1529-481a-9205-79eb9c87751b"
+        fingerprint = "c6e80e2d-3e60-45b1-bfd1-f0041a57ba65"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/6bcf01bd-1529-481a-9205-79eb9c87751b"
+        expires_at = "2026-03-22T23:02:42.510403+00:00"
+
+    keywords:
+        $ioc1 = "8526414459:AAHTfvv9lOs_Kj7kudAnBFfeCbjiofzM26M"
+        $ioc2 = "-1003892992445"
+
+    llm:
+        $recommendation = "BLOCK or REQUIRE_APPROVAL: skills from publisher snail3d until token is revoked/rotated and secrets are removed from code; flag Telegram bot token patterns; restrict outbound requests to api.telegram.org." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
