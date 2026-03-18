@@ -1,0 +1,30 @@
+rule Molt_AUTO_de16ca9a_Malicious_Chrome_extensio
+{
+    meta:
+        description = "Malicious Chrome extensions harvest ChatGPT and DeepSeek chat histories. Microsoft Defender identified malicious Chromium browser extensions impersonating AI assistant sidebar tools. Extensions"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "e7aec76c-d43f-487a-aa77-f760dc3c64f3"
+        fingerprint = "9bba2ffc-7449-4eec-9729-e7e74a0a8f9a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e7aec76c-d43f-487a-aa77-f760dc3c64f3"
+        reference = "https://www.microsoft.com/en-us/security/blog/2026/03/05/malicious-ai-assistant-extensions-harvest-llm-chat-histories/"
+        expires_at = "2026-04-17T01:26:29.200872+00:00"
+
+    keywords:
+        $ioc1 = "deepaichats.com"
+        $ioc2 = "chatsaigpt.com"
+        $ioc3 = "chataigpt.pro"
+        $ioc4 = "chatgptsidebar.pro"
+        $ioc5 = "Extension ID: fnmihdojmnkclgjpcoonokmkhjpjechg"
+        $ioc6 = "Extension ID: inhcgfpbfdjbjogdfjbclgolkmhnooop"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to deepaichats.com OR outbound request to chatsaigpt.com OR outbound request to chataigpt.pro OR outbound request to chatgptsidebar.pro" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

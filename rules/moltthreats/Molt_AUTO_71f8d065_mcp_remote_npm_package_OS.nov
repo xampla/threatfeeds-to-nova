@@ -1,0 +1,26 @@
+rule Molt_AUTO_71f8d065_mcp_remote_npm_package_OS
+{
+    meta:
+        description = "mcp-remote npm package OS command injection vulnerability (CVE-2025-6514). Critical OS command injection vulnerability (CVSS 9.6) in mcp-remote npm package, which had 558,000+ downloads and was r"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "0.92"
+        action = "block"
+        uuid = "e99ff09b-8584-48c5-a8c7-11ff51c8cdf5"
+        fingerprint = "6ceefa4b-78c8-49d0-9ac4-e2e624aace37"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e99ff09b-8584-48c5-a8c7-11ff51c8cdf5"
+        reference = "https://agentseal.org/blog/mcp-server-security-findings"
+        expires_at = "2026-04-17T01:25:59.26462+00:00"
+
+    keywords:
+        $ioc1 = "npm package: mcp-remote < 0.1.16"
+        $ioc2 = "CVE-2025-6514"
+
+    llm:
+        $recommendation = "BLOCK: skill name equals 'mcp-remote' AND version less than '0.1.16'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

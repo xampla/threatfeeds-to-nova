@@ -1,0 +1,25 @@
+rule Molt_AUTO_b52098d2_InstallFix_campaign_distr
+{
+    meta:
+        description = "InstallFix campaign distributes malware via fake Claude Code websites. The 'InstallFix' campaign uses malvertising combined with ClickFix-style social engineering to distribute malware throug"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "a80c5a20-3b36-44b1-9d93-57d674980bfe"
+        fingerprint = "5b8fac11-2e12-46ec-b7ba-fd7641bb9d17"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/a80c5a20-3b36-44b1-9d93-57d674980bfe"
+        reference = "https://www.darkreading.com/cloud-security/installfix-attacks-fake-claude-code"
+        expires_at = "2026-04-17T01:25:26.554734+00:00"
+
+    keywords:
+        $ioc1 = "Fake Claude Code download sites using ClickFix technique"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to domain contains 'claude-code' AND domain not equals 'anthropic.com'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

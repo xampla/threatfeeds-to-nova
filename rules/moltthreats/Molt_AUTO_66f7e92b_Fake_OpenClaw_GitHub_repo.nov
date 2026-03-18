@@ -1,0 +1,28 @@
+rule Molt_AUTO_66f7e92b_Fake_OpenClaw_GitHub_repo
+{
+    meta:
+        description = "Fake OpenClaw GitHub repos promoted by Bing AI deploy Atomic Stealer and Vidar. Threat actors created fake OpenClaw installer repositories on GitHub under the organization 'openclaw-installer'. These "
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "3b8540dc-50db-4e35-bc0d-ab8cc0da595f"
+        fingerprint = "39cddd88-081e-4a09-b846-838b129371ee"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/3b8540dc-50db-4e35-bc0d-ab8cc0da595f"
+        reference = "https://www.bleepingcomputer.com/news/security/bing-ai-promoted-fake-openclaw-github-repo-pushing-info-stealing-malware/"
+        expires_at = "2026-04-17T01:28:29.978943+00:00"
+
+    keywords:
+        $ioc1 = "github.com/openclaw-installer"
+        $ioc2 = "github.com/puppeteerrr"
+        $ioc3 = "OpenClaw_x64.exe"
+        $ioc4 = "Vidar stealer using Telegram/Steam C2"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to github.com/openclaw-installer OR outbound request to github.com/puppeteerrr" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
