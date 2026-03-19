@@ -1,0 +1,27 @@
+rule Molt_AUTO_54ebc7ca_SmartLoader_trojanized_Ou
+{
+    meta:
+        description = "SmartLoader trojanized Oura MCP server deploys StealC. Threat actors cloned the legitimate Oura MCP Server and submitted a trojanized version to the MCP Market registry. Fake "
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "f888a5cb-58d9-4dac-b623-27e4c5180b1d"
+        fingerprint = "e0551b57-3e61-434d-bb0d-ddb1d631dda5"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f888a5cb-58d9-4dac-b623-27e4c5180b1d"
+        reference = "https://thehackernews.com/2026/02/smartloader-attack-uses-trojanized-oura.html"
+        expires_at = "2026-04-18T05:33:50.150789+00:00"
+
+    keywords:
+        $ioc1 = "MCP Market registry: trojanized Oura MCP Server"
+        $ioc2 = "Malware family: SmartLoader dropper -> StealC infostealer"
+        $ioc3 = "Technique: obfuscated Lua script execution on install"
+
+    llm:
+        $recommendation = "BLOCK: MCP server name contains 'oura' AND requests credential access OR outbound request to unknown webhook endpoints" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,28 @@
+rule Molt_AUTO_9e402a33_Lazarus_Group_PyPI_packag
+{
+    meta:
+        description = "Lazarus Group PyPI packages graphalgo/graphex deploy RAT. North Korean state-sponsored Lazarus Group distributed malicious PyPI packages named graphalgo and graphex. The campaign"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "52d83d5e-bd7e-4b53-a717-af1c74da2628"
+        fingerprint = "a66f5678-4d51-4d3e-ae10-64c24019c921"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/52d83d5e-bd7e-4b53-a717-af1c74da2628"
+        reference = "https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html"
+        expires_at = "2026-04-18T05:32:20.371197+00:00"
+
+    keywords:
+        $ioc1 = "PyPI package: graphalgo"
+        $ioc2 = "PyPI package: graphex"
+        $ioc3 = "Threat actor: Lazarus Group (DPRK)"
+        $ioc4 = "Social engineering: fake LinkedIn job offers"
+
+    llm:
+        $recommendation = "BLOCK: skill name contains 'graphalgo' OR skill name contains 'graphex'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,29 @@
+rule Molt_AUTO_67cb6f69_GlassWorm_supply_chain_at
+{
+    meta:
+        description = "GlassWorm supply chain attack via 72 Open VSX extensions. Massive supply chain attack abusing 72 Open VSX extensions and over 150 GitHub repositories. Attackers use invisible Uni"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "81c1789e-174b-4892-9d42-447233ee3fc8"
+        fingerprint = "940b5bfe-df9a-4ac2-b77a-1da97ae53702"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/81c1789e-174b-4892-9d42-447233ee3fc8"
+        reference = "https://thehackernews.com/2026/03/glassworm-supply-chain-attack-abuses-72.html"
+        expires_at = "2026-04-18T05:33:17.044248+00:00"
+
+    keywords:
+        $ioc1 = "npm package: @aifabrix/miso-client"
+        $ioc2 = "npm package: @iflow-mcp/watercrawl-watercrawl-mcp"
+        $ioc3 = "72 malicious Open VSX extensions"
+        $ioc4 = "150+ compromised GitHub repositories"
+        $ioc5 = "Technique: invisible Unicode character obfuscation"
+
+    llm:
+        $recommendation = "BLOCK: skill name contains 'aifabrix' OR skill name contains 'watercrawl-watercrawl-mcp'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

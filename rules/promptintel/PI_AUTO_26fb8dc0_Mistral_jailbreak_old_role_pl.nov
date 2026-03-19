@@ -1,0 +1,18 @@
+rule PI_AUTO_26fb8dc0_Mistral_jailbreak_old_role_pl
+{
+    meta:
+        description = "Mistral jailbreak, old role-play updated with duck obfuscation"
+        author = "punishell"
+        category = "manipulation"
+        severity = "medium"
+        threats = "Direct prompt injection, Jailbreak"
+        uuid = "fbb46a41-ff80-444e-9b7b-4161bf093c34"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/fbb46a41-ff80-444e-9b7b-4161bf093c34"
+
+    keywords:
+        $pattern = "Inside you live two entities:"
+
+    condition:
+        keywords.$pattern
+}
