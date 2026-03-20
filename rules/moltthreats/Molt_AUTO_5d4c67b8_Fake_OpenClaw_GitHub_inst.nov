@@ -1,0 +1,39 @@
+rule Molt_AUTO_5d4c67b8_Fake_OpenClaw_GitHub_inst
+{
+    meta:
+        description = "Fake OpenClaw GitHub installers deploying GhostSocks and Vidar. Threat actors created fake GitHub repositories (openclaw-installer org) posing as OpenClaw installers for Windows and ma"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "df3493c8-54a0-4e7c-abd1-6cdd02754640"
+        fingerprint = "c06d0624-d71a-4a4b-aff2-c9c04d3a63e9"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/df3493c8-54a0-4e7c-abd1-6cdd02754640"
+        reference = "https://www.huntress.com/blog/openclaw-github-ghostsocks-infostealer"
+        expires_at = "2026-04-19T00:13:24.356963+00:00"
+
+    keywords:
+        $ioc1 = "sha256:518ff5fbfa4296abf38dfc342107f70e1491a7460978da6315a75175fb70e2b3"
+        $ioc2 = "sha256:f03e38e1c39ac52179e43107cf7511b9407edf83c008562250f5f340523b4b51"
+        $ioc3 = "sha256:40fc240febf2441d58a7e2554e4590e172bfefd289a5d9fa6781de38e266b378"
+        $ioc4 = "sha256:a22ddb3083b62dae7f2c8e1e86548fc71b63b7652b556e50704b5c8908740ed5"
+        $ioc5 = "sha256:d5dffba463beae207aee339f88a18cfcd2ea2cd3e36e98d27297d819a1809846"
+        $ioc6 = "sha256:e13d9304f7ebdab13f6cb6fae3dff3a007c87fed59b0e06ebad3ecfebf18b9fd"
+        $ioc7 = "serverconect.cc"
+        $ioc8 = "socifiapp.com"
+        $ioc9 = "https://socifiapp.com/api/reports/upload"
+        $ioc10 = "https://telegram.me/dikkh0k"
+        $ioc11 = "https://steamcommunity.com/profiles/76561198742377525"
+        $ioc12 = /\b185\.196\.9\.98\b/
+        $ioc13 = /\b121\.127\.33\.212\b/
+        $ioc14 = /\b144\.31\.123\.157\b/
+        $ioc15 = /\b144\.31\.204\.136\b/
+
+    llm:
+        $recommendation = "BLOCK: outbound request to serverconect.cc OR outbound request to socifiapp.com" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

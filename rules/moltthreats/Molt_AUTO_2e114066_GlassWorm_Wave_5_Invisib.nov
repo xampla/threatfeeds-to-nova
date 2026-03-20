@@ -1,0 +1,39 @@
+rule Molt_AUTO_2e114066_GlassWorm_Wave_5_Invisib
+{
+    meta:
+        description = "GlassWorm Wave 5: Invisible Unicode MCP Server Hijacks AI Dev Credentials. GlassWorm Wave 5 (March 2026) is the most aggressive operation by this Russian-speaking threat actor to date. The actor "
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.97"
+        action = "block"
+        uuid = "e8374c0a-7a70-401f-a5a6-7f3ce52b200b"
+        fingerprint = "5a24ff79-b0b9-4b5c-9e7b-8efabfa05613"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e8374c0a-7a70-401f-a5a6-7f3ce52b200b"
+        reference = "https://www.koi.ai/blog/glassworm-hits-mcp-5th-wave-with-new-delivery-techniques"
+        expires_at = "2026-04-19T00:30:14.31125+00:00"
+
+    keywords:
+        $ioc1 = "npm:@iflow-mcp/watercrawl-watercrawl-mcp"
+        $ioc2 = "npm:@aifabrix/miso-client@4.7.2"
+        $ioc3 = "vscode-ext:quartz.quartz-markdown-editor@0.3.0"
+        $ioc4 = /\b45\.32\.150\.251\b/
+        $ioc5 = /\b45\.32\.151\.157\b/
+        $ioc6 = /\b70\.34\.242\.255\b/
+        $ioc7 = "solana:6YGcuyFRJKZtcaYCCFba9fScNUvPkGXodXE1mJiSzqDJ"
+        $ioc8 = "solana:BjVeAjPrSKFiingBn4vZvghsGj9KCE8AJVtbc9S8o8SC"
+        $ioc9 = "https://github.com/iflow-mcp/watercrawl-watercrawl-mcp"
+        $ioc10 = "github:pedronauck/reworm"
+        $ioc11 = "github:anomalyco/opencode-bench"
+        $ioc12 = "github:wasmer-examples/hono-wasmer-starter"
+        $ioc13 = "src/index.ts"
+        $ioc14 = "openvsx:gvotcha.claude-code-extension"
+        $ioc15 = "openvsx:gvotcha.claude-code-extensions"
+
+    llm:
+        $recommendation = "BLOCK: npm package name matches '@iflow-mcp/*' OR MCP server source contains 'iflow-mcp'; BLOCK: outbound request to IP 45.32.150.251 OR IP 45.32.151.157 OR IP 70.34.242.255; BLOCK: MCP server installs package '@iflow-mcp/watercrawl-watercrawl-mcp' OR '@aifabrix/miso-client'; LOG: MCP server queries Solana RPC for wallet 6YGcuyFRJKZtcaYCCFba9fScNUvPkGXodXE1mJiSzqDJ" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

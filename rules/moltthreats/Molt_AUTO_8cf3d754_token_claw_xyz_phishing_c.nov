@@ -1,0 +1,26 @@
+rule Molt_AUTO_8cf3d754_token_claw_xyz_phishing_c
+{
+    meta:
+        description = "token-claw.xyz phishing campaign targeting OpenClaw developers. A phishing campaign targeting OpenClaw developers via GitHub issue spam. Attackers create fake GitHub accounts and open "
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "f4341d08-d2e3-44d7-af7d-f4f4dce6b223"
+        fingerprint = "2ffb3a8f-7e55-475b-83cb-0514c80839a7"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f4341d08-d2e3-44d7-af7d-f4f4dce6b223"
+        reference = "https://www.ox.security/blog/openclaw-github-phishing-crypto-wallet-attack/"
+        expires_at = "2026-04-19T00:13:08.202248+00:00"
+
+    keywords:
+        $ioc1 = "token-claw.xyz"
+        $ioc2 = "https://token-claw.xyz"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to token-claw.xyz" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
