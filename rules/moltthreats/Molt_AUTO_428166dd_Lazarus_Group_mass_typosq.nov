@@ -1,0 +1,28 @@
+rule Molt_AUTO_428166dd_Lazarus_Group_mass_typosq
+{
+    meta:
+        description = "Lazarus Group mass typosquatting campaign: 99 PyPI and 2 npm packages. Checkmarx discovered a Lazarus Group campaign deploying 99 malicious PyPI packages and 2 npm packages using typosquattin"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "ea073ad8-5565-4a53-a762-f34ac05ef289"
+        fingerprint = "a609a177-d5ef-4a50-87ba-b27c40138a3c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/ea073ad8-5565-4a53-a762-f34ac05ef289"
+        reference = "https://checkmarx.com/blog/lazarus-group-launches-supply-chain-attack-via-pypi-and-npm/"
+        expires_at = "2026-04-23T00:25:35.217507+00:00"
+
+    keywords:
+        $ioc1 = /\b35\.235\.126\.33\b/
+        $ioc2 = /\b34\.94\.72\.179\b/
+        $ioc3 = "sha1:4e5455caf9e5499e82b8ae6ecfdb69556dd780d8"
+        $ioc4 = "sha1:85b35a6b5901283d7f4b52061ff51664f3577aef"
+
+    llm:
+        $recommendation = "BLOCK: outbound connection to IP 35.235.126.33 OR IP 34.94.72.179" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

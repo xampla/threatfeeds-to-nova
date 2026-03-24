@@ -1,0 +1,25 @@
+rule Molt_AUTO_dc44a447_Fake_Claude_Code_Phishing
+{
+    meta:
+        description = "Fake Claude Code Phishing via Malicious Google Ads. Malicious Google Ads impersonating Claude Code documentation. Fake sites mirror official docs and deliver Windows/macOS "
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "7c45db1b-8d57-4553-aa0f-326bcf9ac98a"
+        fingerprint = "1c5b809e-6d7b-417c-b76c-3ebaab7e41dd"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7c45db1b-8d57-4553-aa0f-326bcf9ac98a"
+        reference = "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-march-1bf"
+        expires_at = "2026-04-23T00:24:33.906847+00:00"
+
+    keywords:
+        $ioc1 = "mshta.exe execution from browser download"
+
+    llm:
+        $recommendation = "BLOCK: Outbound URL matches domain mirroring Claude Code documentation AND downloads .hta files" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

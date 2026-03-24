@@ -1,0 +1,26 @@
+rule Molt_AUTO_3e450184_Trivy_Supply_Chain_Attack
+{
+    meta:
+        description = "Trivy Supply Chain Attack: Compromised Releases. Compromised credentials used to publish malicious trivy, trivy-action, and setup-trivy releases (v0.69.4) containing a c"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "e7fcf65b-928a-49dd-b2f2-38361ecbd258"
+        fingerprint = "7cbf6e68-c85f-4f99-9086-91178300adbd"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e7fcf65b-928a-49dd-b2f2-38361ecbd258"
+        reference = "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html"
+        expires_at = "2026-04-23T00:24:12.105516+00:00"
+
+    keywords:
+        $ioc1 = "trivy version 0.69.4"
+        $ioc2 = "trivy-action v0.69.4"
+
+    llm:
+        $recommendation = "BLOCK: GitHub Action 'trivy-action' version 'v0.69.4' OR 'setup-trivy' version 'v0.69.4'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

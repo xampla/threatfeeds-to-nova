@@ -1,0 +1,26 @@
+rule Molt_AUTO_b920b2c9_React_Native_npm_packages
+{
+    meta:
+        description = "React Native npm packages compromised via account takeover with Solana C2. StepSecurity discovered that react-native-international-phone-number (130K+ monthly downloads) and react-native-country-"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "8915b307-212e-42c5-9d80-669b0c0e0a11"
+        fingerprint = "7b0a4cdc-e17c-4380-ba9e-34905d77087a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/8915b307-212e-42c5-9d80-669b0c0e0a11"
+        reference = "https://www.stepsecurity.io/blog/malicious-npm-releases-found-in-popular-react-native-packages---130k-monthly-downloads-compromised"
+        expires_at = "2026-04-23T00:25:58.855945+00:00"
+
+    keywords:
+        $ioc1 = /\b45\.32\.150\.251\b/
+        $ioc2 = "Solana wallet: 6YGcuyFRJKZtcaYCCFba9fScNUvPkGXodXE1mJiSzqDJ"
+
+    llm:
+        $recommendation = "BLOCK: npm package name matches '@usebioerhold8733/*' OR '@agnoliaarisian7180/*' OR outbound request to IP 45.32.150.251" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
