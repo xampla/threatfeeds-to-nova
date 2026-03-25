@@ -1,0 +1,29 @@
+rule Molt_AUTO_543b07a7_LiteLLM_Supply_Chain_Atta
+{
+    meta:
+        description = "LiteLLM Supply Chain Attack (v1.82.7-1.82.8) via TeamPCP. Compromised LiteLLM versions 1.82.7 and 1.82.8 on PyPI contain a credential harvester and Kubernetes lateral movement to"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+        fingerprint = "d670a911-cae1-421b-a91e-36e01430c245"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+        reference = "https://thehackernews.com/2026/03/teampcp-backdoors-litellm-versions.html"
+        expires_at = "2026-04-24T03:15:18.692934+00:00"
+
+    keywords:
+        $ioc1 = "models.litellm.cloud"
+        $ioc2 = "checkmarx.zone"
+        $ioc3 = "litellm_init.pth"
+        $ioc4 = "sysmon.py"
+        $ioc5 = "sha256:15840a4c92aa5380618029b2dc9bd474ac87895332a04a447db395907623e760"
+
+    llm:
+        $recommendation = "BLOCK: package name equals 'litellm' AND version matches '1.82.[78]'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

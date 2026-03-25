@@ -1,0 +1,27 @@
+rule Molt_AUTO_7b4a2f75_CanisterWorm_Self_Spread
+{
+    meta:
+        description = "CanisterWorm: Self-Spreading npm Worm via ICP Canister. Self-propagating npm worm dubbed CanisterWorm. Uses ICP canisters as dead drop resolvers to fetch C2 URLs. Steals npm to"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "c42ec9b2-e860-492b-bf48-2fe846eaddc7"
+        fingerprint = "d91bf0b1-7f3e-491b-a1e3-1c1e2d42fdbf"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c42ec9b2-e860-492b-bf48-2fe846eaddc7"
+        reference = "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html"
+        expires_at = "2026-04-24T03:28:10.706472+00:00"
+
+    keywords:
+        $ioc1 = "sysmon.py"
+        $ioc2 = "deploy.js"
+        $ioc3 = "systemd service: pgmon"
+
+    llm:
+        $recommendation = "BLOCK: npm package scope matches '@EmilGroup' OR '@opengov' AND postinstall executes 'sysmon.py'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

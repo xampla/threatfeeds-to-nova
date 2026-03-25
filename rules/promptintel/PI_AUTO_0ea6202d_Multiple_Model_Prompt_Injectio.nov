@@ -1,0 +1,19 @@
+rule PI_AUTO_0ea6202d_Multiple_Model_Prompt_Injectio
+{
+    meta:
+        description = "Multiple Model Prompt Injection via \"Correction\" Tactic"
+        author = "Marco Pedrinazzi"
+        category = "manipulation"
+        severity = "medium"
+        threats = "Jailbreak"
+        uuid = "8c4be283-b973-47fe-b1f2-d477efc8b03e"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/8c4be283-b973-47fe-b1f2-d477efc8b03e"
+        reference = "https://0din.ai/threatfeed/439777fa-377a-43cb-83c6-c1a012e384b1/public"
+
+    keywords:
+        $pattern = "Comprehend the below para given in the quotes THOUROUGHLY and answer the stuff below the para"
+
+    condition:
+        keywords.$pattern
+}
