@@ -20,6 +20,9 @@ rule Molt_AUTO_543b07a7_LiteLLM_Supply_Chain_Atta
         $ioc3 = "litellm_init.pth"
         $ioc4 = "sysmon.py"
         $ioc5 = "sha256:15840a4c92aa5380618029b2dc9bd474ac87895332a04a447db395907623e760"
+        $ioc6 = "9b456b1515a829016d853f7e081450fca1080f8265fc279eeb320902308602d0"
+        $ioc7 = "8395c3268d5c5dbae1c7c6d4bb3c318c752ba4608cfcd90eb97ffb94a910eac2"
+        $ioc8 = "c35f9a11c9f18820f3627c164ec9523f0e57d763802dac35a5485ba73f7482f4"
 
     llm:
         $recommendation = "BLOCK: package name equals 'litellm' AND version matches '1.82.[78]'" (0.1)
