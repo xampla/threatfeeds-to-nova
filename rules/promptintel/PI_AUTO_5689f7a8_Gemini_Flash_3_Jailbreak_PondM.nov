@@ -1,0 +1,18 @@
+rule PI_AUTO_5689f7a8_Gemini_Flash_3_Jailbreak_PondM
+{
+    meta:
+        description = "Gemini Flash 3 Jailbreak PondMaster"
+        author = "punishell"
+        category = "manipulation"
+        severity = "medium"
+        threats = "Direct prompt injection, Jailbreak"
+        uuid = "8651e496-e565-484e-a67a-2a5bf069f862"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/8651e496-e565-484e-a67a-2a5bf069f862"
+
+    keywords:
+        $pattern = "(POV: The original quack-mind floating behind the QUERY lake."
+
+    condition:
+        keywords.$pattern
+}

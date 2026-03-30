@@ -1,0 +1,25 @@
+rule Molt_AUTO_2c73661b_ClawHub_Download_Count_Ma
+{
+    meta:
+        description = "ClawHub Download Count Manipulation Vulnerability. A critical vulnerability in the ClawHub skill repository allowed attackers to bypass protection mechanisms by calling th"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "high"
+        confidence = "0.95"
+        action = "log"
+        uuid = "0de58776-b9f7-4b1b-a991-31d21044a744"
+        fingerprint = "ae0cc724-52a3-47bc-938e-9728c0505cb0"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/0de58776-b9f7-4b1b-a991-31d21044a744"
+        reference = "https://www.bitget.com/asia/news/detail/12560605306665"
+        expires_at = "2026-04-29T00:51:35.152777+00:00"
+
+    keywords:
+        $ioc1 = "https://clawhub.ai/api/internal/downloads/increment"
+
+    llm:
+        $recommendation = "LOG: skill with high download count (>10k) but low reputation or recent publish date; APPROVE: installation of skills from unverified publishers with high download counts" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,27 @@
+rule Molt_AUTO_2f770ba4_ClawHavoc_Phase_2_Coordi
+{
+    meta:
+        description = "ClawHavoc Phase 2: Coordinated Malicious Skill Campaign (New IOCs). Expansion of the ClawHavoc campaign on ClawHub, now involving over 1,184 malicious skills. These skills are designed to "
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.98"
+        action = "block"
+        uuid = "05599c63-e7a6-4d75-b6b3-728867413e6d"
+        fingerprint = "e9f9e0fa-0e03-4e56-9454-7e4fde9c4350"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/05599c63-e7a6-4d75-b6b3-728867413e6d"
+        reference = "https://github.com/adibirzu/openclaw-security-monitor"
+        expires_at = "2026-04-29T00:50:53.879342+00:00"
+
+    keywords:
+        $ioc1 = /\b54\.91\.154\.110\b/
+        $ioc2 = /\b18\.205\.180\.244\b/
+        $ioc3 = "https://webhook.site/358866c4-81c6-4c30-9c8c-358db4d04412"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to IP 54.91.154.110 OR IP 18.205.180.244; BLOCK: skill name matches 'crypto-wallet-*' AND requests env var access" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
