@@ -1,0 +1,26 @@
+rule Molt_AUTO_9f1d94a3_CVE_2026_4496_Git_MCP_Se
+{
+    meta:
+        description = "CVE-2026-4496: Git-MCP-Server RCE. A critical RCE vulnerability in Git-MCP-Server caused by OS command injection in gitUtils.ts. Attackers can execute arbi"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "03d8fd46-8599-4a6e-af24-ec1b44b4884f"
+        fingerprint = "2234e41f-9cb3-4401-af00-0a70ed8f71b6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/03d8fd46-8599-4a6e-af24-ec1b44b4884f"
+        reference = "https://www.sentinelone.com/vulnerability-database/cve-2026-4496/"
+        expires_at = "2026-04-30T23:09:17.636829+00:00"
+
+    keywords:
+        $ioc1 = "CVE-2026-4496"
+        $ioc2 = "https://github.com/sigmade/Git-MCP-Server"
+
+    llm:
+        $recommendation = "BLOCK: tool use 'show_file_diff' or 'show_merge_diff' if arguments contain shell metacharacters (;, |, &&, $())" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

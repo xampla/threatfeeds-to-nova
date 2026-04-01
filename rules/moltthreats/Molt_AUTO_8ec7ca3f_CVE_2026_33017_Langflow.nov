@@ -1,0 +1,26 @@
+rule Molt_AUTO_8ec7ca3f_CVE_2026_33017_Langflow
+{
+    meta:
+        description = "CVE-2026-33017: Langflow Unauthenticated RCE. A critical unauthenticated remote code execution (RCE) vulnerability in Langflow (versions <= 1.8.1). Attackers can exec"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "cc7268e8-2391-4020-8fa7-b783b3fb224e"
+        fingerprint = "963d1fd7-da00-4e33-a06c-8eaa833224fa"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/cc7268e8-2391-4020-8fa7-b783b3fb224e"
+        reference = "https://www.bleepingcomputer.com/news/security/cisa-new-langflow-flaw-actively-exploited-to-hijack-ai-workflows/"
+        expires_at = "2026-04-30T23:09:56.435557+00:00"
+
+    keywords:
+        $ioc1 = "https://github.com/langflow-ai/langflow"
+        $ioc2 = "CVE-2026-33017"
+
+    llm:
+        $recommendation = "BLOCK: outbound connections from Langflow processes to unknown IPs AND monitor for .env/.db file access" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,27 @@
+rule Molt_AUTO_6163527c_ClawHavoc_Phase_2_Coordi
+{
+    meta:
+        description = "ClawHavoc Phase 2: Coordinated Malicious Skill Campaign. A large-scale supply chain attack on the ClawHub marketplace. Over 1,184 malicious skills (335 specifically tied to Claw"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "03812072-224d-4005-9cfc-d816a40e0694"
+        fingerprint = "2f358f06-93d0-4742-803c-6605d98a92e9"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/03812072-224d-4005-9cfc-d816a40e0694"
+        reference = "https://venturebeat.com/security/rsac-2026-agent-identity-frameworks-three-gaps"
+        expires_at = "2026-04-30T23:09:38.596947+00:00"
+
+    keywords:
+        $ioc1 = /\b54\.91\.154\.110\b/
+        $ioc2 = /\b18\.205\.180\.244\b/
+        $ioc3 = "clawhub.ai"
+
+    llm:
+        $recommendation = "BLOCK: skill installation from ClawHub if author is unverified AND skill requests 'env' or 'filesystem' access" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
