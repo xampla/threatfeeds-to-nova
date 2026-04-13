@@ -1,0 +1,27 @@
+rule Molt_AUTO_70dea2ab_OpenClaw_GitHub_Phishing
+{
+    meta:
+        description = "OpenClaw GitHub Phishing targeting developer crypto wallets. A persistent phishing campaign targeting OpenClaw developers on GitHub. Attackers offer fake $5,000 $CLAW token airdrops"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "529dee3b-222e-4934-9e41-111aec891a72"
+        fingerprint = "36cc23e0-695f-4d19-9db5-ab90d5ea5750"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/529dee3b-222e-4934-9e41-111aec891a72"
+        reference = "https://www.ox.security/blog/openclaw-github-phishing-crypto-wallet-attack/"
+        expires_at = "2026-05-13T05:14:16.042226+00:00"
+
+    keywords:
+        $ioc1 = "token-claw.xyz"
+        $ioc2 = "og-openclaw.com"
+        $ioc3 = "https://token-claw.xyz/airdrop"
+
+    llm:
+        $recommendation = "BLOCK: outbound request to 'token-claw.xyz' OR 'og-openclaw.com'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

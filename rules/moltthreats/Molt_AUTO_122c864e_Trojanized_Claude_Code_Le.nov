@@ -1,0 +1,28 @@
+rule Molt_AUTO_122c864e_Trojanized_Claude_Code_Le
+{
+    meta:
+        description = "Trojanized Claude Code Leak distributing Vidar Stealer. Malicious GitHub repositories (e.g., denboss99/openclaw-core) are capitalizing on the Claude Code source leak to distrib"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "a4d3d05c-9336-40f8-9a3a-21fc601fa8da"
+        fingerprint = "9f150b1b-3e70-42d5-95fa-fd66c4e2ede0"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/a4d3d05c-9336-40f8-9a3a-21fc601fa8da"
+        reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-claude-code-lures-and-github-release-payloads.html"
+        expires_at = "2026-05-13T05:13:21.170211+00:00"
+
+    keywords:
+        $ioc1 = "52e83c718ca96a12b98c5b31af177204145837f4208b0ee0c8e9c2b454795a64"
+        $ioc2 = "f96d80f77015d1d5a340ab774e759e3357790c13fcf8a7a018716813db554dd"
+        $ioc3 = "setup-service.com"
+        $ioc4 = "https://rentry.co/openclaw-core"
+
+    llm:
+        $recommendation = "BLOCK: file name matches 'ClaudeCode_x64.exe' OR 'TradeAI.exe' AND source domain is github.com OR rentry.co" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

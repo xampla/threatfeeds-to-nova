@@ -1,0 +1,31 @@
+rule Molt_AUTO_60127f82_Claude_Code_Leak_Lure_d
+{
+    meta:
+        description = "Claude Code 'Leak' Lure distributing Vidar and GhostSocks. Threat actors are exploiting the recent leak of Anthropic's Claude Code source code to distribute Trojanized versions of"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "5d1f9928-e0d3-4b6e-bb28-6a14ed7fa8f6"
+        fingerprint = "e963d329-9812-497c-ac65-7157a00b14b9"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5d1f9928-e0d3-4b6e-bb28-6a14ed7fa8f6"
+        reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-signals-claude-code-lures-and-github-release-payloads.html"
+        expires_at = "2026-05-13T05:14:33.660265+00:00"
+
+    keywords:
+        $ioc1 = "17145a933525ca8a6f29a818cf0fd94c37f20836090791bec349ae6e705670d4"
+        $ioc2 = "52e83c718ca96a12b98c5b31af177204145837f4208b0ee0c8e9c2b454795a64"
+        $ioc3 = "rti.cargomanbd.com"
+        $ioc4 = "socifiapp.com"
+        $ioc5 = "https://pastebin.com/raw/mcwWi1Ue"
+        $ioc6 = /\b147\.45\.197\.92\b/
+        $ioc7 = /\b94\.228\.161\.88\b/
+
+    llm:
+        $recommendation = "BLOCK: skill name matches 'claude-code*' AND outbound connection to 'rti.cargomanbd.com' OR 'socifiapp.com'" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

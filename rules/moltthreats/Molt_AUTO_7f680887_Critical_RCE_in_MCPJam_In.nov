@@ -1,0 +1,27 @@
+rule Molt_AUTO_7f680887_Critical_RCE_in_MCPJam_In
+{
+    meta:
+        description = "Critical RCE in MCPJam Inspector via Unauthenticated HTTP POST. CVE-2026-23744: MCPJam inspector (versions <= 1.4.2) is vulnerable to remote code execution (RCE). The tool by default l"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "d712b0a9-31a6-4eb8-83f6-b83a7ff3f15c"
+        fingerprint = "36777916-870f-4994-a3f7-3c1cd517447b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d712b0a9-31a6-4eb8-83f6-b83a7ff3f15c"
+        reference = "https://github.com/boroeurnprach/CVE-2026-23744-PoC"
+        expires_at = "2026-05-13T05:12:55.778343+00:00"
+
+    keywords:
+        $ioc1 = "Port: 6274"
+        $ioc2 = "http://0.0.0.0:6274/api/mcp/connect"
+        $ioc3 = "Payload: serverConfig.command"
+
+    llm:
+        $recommendation = "BLOCK: inbound request to port 6274 OR tool call to /api/mcp/connect AND source is untrusted" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

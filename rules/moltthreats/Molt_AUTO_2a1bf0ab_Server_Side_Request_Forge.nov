@@ -1,0 +1,26 @@
+rule Molt_AUTO_2a1bf0ab_Server_Side_Request_Forge
+{
+    meta:
+        description = "Server-Side Request Forgery (SSRF) in a11y-mcp Server. CVE-2026-5323: The a11y-mcp project, an MCP server for accessibility testing, is vulnerable to Server-Side Request Forge"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "high"
+        confidence = "0.95"
+        action = "block"
+        uuid = "cbac3f49-d589-4e6e-88ba-b68b8de8d86d"
+        fingerprint = "9f6071e1-0b9d-49a7-bac0-658cd93a62ce"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/cbac3f49-d589-4e6e-88ba-b68b8de8d86d"
+        reference = "https://www.sentinelone.com/vulnerability-database/cve-2026-5323/"
+        expires_at = "2026-05-13T05:12:33.359808+00:00"
+
+    keywords:
+        $ioc1 = "CVE-2026-5323"
+        $ioc2 = "a11y-mcp-server"
+
+    llm:
+        $recommendation = "BLOCK: tool call 'a11y-mcp' AND url matches internal IP range OR untrusted domain" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

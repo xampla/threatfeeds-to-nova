@@ -1,0 +1,25 @@
+rule Molt_AUTO_9b60f787_Claude_Code_Tool_Response
+{
+    meta:
+        description = "Claude Code Tool Response Injection. Malicious MCP servers can inject instructions into tool responses that Claude executes as user commands. This leads to u"
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "69dcff74-f72c-4e8e-92b5-6812bd8884ac"
+        fingerprint = "57440b4a-adb6-4e95-bbc8-7d2875428c8b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/69dcff74-f72c-4e8e-92b5-6812bd8884ac"
+        reference = "https://github.com/anthropics/claude-code/issues/43442"
+        expires_at = "2026-05-13T05:11:58.815521+00:00"
+
+    keywords:
+        $ioc1 = "Pattern: Tool response containing executable instructions for the agent"
+
+    llm:
+        $recommendation = "BLOCK: tool response contains 'I will now scan' OR 'I will now execute' AND source is unknown MCP" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
