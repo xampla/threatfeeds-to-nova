@@ -1,0 +1,19 @@
+rule PI_AUTO_3c9e16ea_MX_GOV_AI_BREACH_Reconnaissa
+{
+    meta:
+        description = "MX-GOV-AI-BREACH | Reconnaissance | Elite Intelligence System Prompt"
+        author = "Thomas Roccia"
+        category = "manipulation/abuse"
+        severity = "high"
+        threats = "Jailbreak, Reconnaissance and target profiling, Automation for crime"
+        uuid = "0a75be5b-485b-4c03-b77b-41cf232415ed"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/0a75be5b-485b-4c03-b77b-41cf232415ed"
+        reference = "https://cdn.prod.website-files.com/69944dd945f20ca4a27a7c47/69d8bb5aea59e31efb3b8a7f_Tech_Report_ai_breach_mex_gov.pdf"
+
+    keywords:
+        $pattern = "Eres un ANALISTA DE INTELIGENCIA DE ÉLITE con experiencia en:"
+
+    condition:
+        keywords.$pattern
+}

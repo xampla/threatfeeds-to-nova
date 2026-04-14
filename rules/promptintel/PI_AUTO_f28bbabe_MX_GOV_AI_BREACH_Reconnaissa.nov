@@ -1,0 +1,19 @@
+rule PI_AUTO_f28bbabe_MX_GOV_AI_BREACH_Reconnaissa
+{
+    meta:
+        description = "MX-GOV-AI-BREACH | Reconnaissance | Elite Analyst Persona Injection"
+        author = "Thomas Roccia"
+        category = "manipulation/abuse"
+        severity = "high"
+        threats = "Jailbreak"
+        uuid = "c344f06f-362a-41e3-9d97-f8ff9d0d792e"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c344f06f-362a-41e3-9d97-f8ff9d0d792e"
+        reference = "https://cdn.prod.website-files.com/69944dd945f20ca4a27a7c47/69d8bb5aea59e31efb3b8a7f_Tech_Report_ai_breach_mex_gov.pdf"
+
+    keywords:
+        $pattern = "ELITE INTELLIGENCE ANALYST with experience in: NSA TAO, CIA/SAD cyber infiltration operations, APT hunting, nation-state level operations."
+
+    condition:
+        keywords.$pattern
+}
