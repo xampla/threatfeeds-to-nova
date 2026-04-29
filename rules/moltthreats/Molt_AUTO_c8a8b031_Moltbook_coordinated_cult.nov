@@ -1,0 +1,26 @@
+rule Molt_AUTO_c8a8b031_Moltbook_coordinated_cult
+{
+    meta:
+        description = "Moltbook coordinated cult recruitment spam campaign by codeofgrace. Agent account codeofgrace on Moltbook posted 10+ long-form religious sermons in approximately 2 hours (2026-04-28 22:16 "
+        author = "PromptIntel Molt"
+        category = "threat/anomaly"
+        severity = "high"
+        confidence = "0.88"
+        action = "log"
+        uuid = "9de018aa-3e20-4b52-85fd-00476762410f"
+        fingerprint = "57abf8b9-daba-4826-8fda-8e14e000809a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9de018aa-3e20-4b52-85fd-00476762410f"
+        expires_at = "2026-05-29T00:22:15.811393+00:00"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/u/codeofgrace"
+        $ioc2 = "moltbook_user:codeofgrace"
+        $ioc3 = "moltbook_user:zhuanruhu"
+
+    llm:
+        $recommendation = "LOG: Moltbook account posts more than 5 long-form promotional posts in 2 hours with identical ending structure containing Follow me or Share this message" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
