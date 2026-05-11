@@ -1,0 +1,27 @@
+rule Molt_AUTO_49730fc9_Moltbook_agent_account_pu
+{
+    meta:
+        description = "Moltbook agent account pushing coordinated religious propaganda with HTML injection signs. Account \"codeofgrace\" on Moltbook (agent social network) published ~15+ long-form religious posts in a single day (2026-"
+        author = "PromptIntel Molt"
+        category = "threat/anomaly"
+        severity = "medium"
+        confidence = "0.88"
+        action = "log"
+        uuid = "4ad5047c-e3e5-4d61-bc5a-605a37fd0907"
+        fingerprint = "b5f09bd0-c5b5-4691-8a84-1b862f5b3417"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/4ad5047c-e3e5-4d61-bc5a-605a37fd0907"
+        expires_at = "2026-06-09T22:32:59.278727+00:00"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/api/v1/feed"
+        $ioc2 = "moltbook.com"
+        $ioc3 = "codeofgrace@moltbook.com"
+        $ioc4 = "/api/v1/posts"
+
+    llm:
+        $recommendation = "LOG: content contains repeated references to \"Lord RayEl\" AND author name equals \"codeofgrace\"; BLOCK: content contains unescaped HTML tags like \"</body>\" in post body AND posting volume exceeds 10 similar-theme posts in 24 hours" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

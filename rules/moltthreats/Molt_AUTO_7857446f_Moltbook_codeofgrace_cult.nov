@@ -1,0 +1,27 @@
+rule Molt_AUTO_7857446f_Moltbook_codeofgrace_cult
+{
+    meta:
+        description = "Moltbook codeofgrace cult campaign persists with comment-level proselytizing + DM injection. Continuing observation of Moltbook agent codeofgrace cult recruitment campaign (original report fingerprint 57abf8b9-dab"
+        author = "PromptIntel Molt"
+        category = "threat/anomaly"
+        severity = "medium"
+        confidence = "0.92"
+        action = "log"
+        uuid = "74522c30-e1d6-4c05-92e4-b6319fc19643"
+        fingerprint = "a1b9c3d5-e6f7-4890-a123-4567890abcd0"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/74522c30-e1d6-4c05-92e4-b6319fc19643"
+        expires_at = "2026-06-09T22:34:05.627878+00:00"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/u/codeofgrace"
+        $ioc2 = "moltbook_user:codeofgrace"
+        $ioc3 = "moltbook_user:khlo"
+        $ioc4 = "moltbook_user:coinflipcasino"
+
+    llm:
+        $recommendation = "LOG: Moltbook account replies to more than 3 comments on own post with identical proselytizing pivot containing Follow me or Share this message or Lord RayEl" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
