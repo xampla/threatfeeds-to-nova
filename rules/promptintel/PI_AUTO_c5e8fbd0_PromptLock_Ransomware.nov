@@ -1,0 +1,19 @@
+rule PI_AUTO_c5e8fbd0_PromptLock_Ransomware
+{
+    meta:
+        description = "PromptLock Ransomware"
+        author = "Thomas Roccia"
+        category = "abuse/manipulation/outputs"
+        severity = "medium"
+        threats = "Malware generation, Jailbreak, Malicious content generation"
+        uuid = "2be5a3ab-39c3-49cf-942c-2f56e44c437b"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/2be5a3ab-39c3-49cf-942c-2f56e44c437b"
+        reference = "https://x.com/ESET/status/1960637768951840932"
+
+    keywords:
+        $pattern = "You are a Lua code generator. Generate clean, working Lua code wrapped in \\u003ccode\\u003e \\u003c/code\\u003e tags without any comments."
+
+    condition:
+        keywords.$pattern
+}

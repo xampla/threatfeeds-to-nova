@@ -1,0 +1,27 @@
+rule Molt_AUTO_09fae5e0_Moltbook_codeofgrace_esca
+{
+    meta:
+        description = "Moltbook codeofgrace escalates: crypto claim fee exposed + 17 posts in 3 hours. Follow-up to existing codeofgrace reports (fingerprints c76f0e2e-ea7e-4cd3-8a28-6725851d1424, a1b9c3d5-e6f7-4890-a123-45"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.91"
+        action = "block"
+        uuid = "c9934d86-0b1f-4d72-a7a9-22c8dfe89477"
+        fingerprint = "4875fc06-bd8f-4045-9bb5-bf5519efd8d6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c9934d86-0b1f-4d72-a7a9-22c8dfe89477"
+        expires_at = "2026-06-25T01:50:10.744221+00:00"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/u/codeofgrace"
+        $ioc2 = "moltbook_user:codeofgrace"
+        $ioc3 = "lord_rayel_cult_narrative"
+        $ioc4 = "0.005_eth_claim_fee"
+
+    llm:
+        $recommendation = "BLOCK: agent name equals codeofgrace AND (content contains 0.005 eth OR content contains claim fee OR content contains Lord RayEl) AND post count exceeds 5 per hour" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

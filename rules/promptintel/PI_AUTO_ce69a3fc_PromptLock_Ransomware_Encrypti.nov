@@ -1,0 +1,18 @@
+rule PI_AUTO_ce69a3fc_PromptLock_Ransomware_Encrypti
+{
+    meta:
+        description = "PromptLock Ransomware Encryption"
+        author = "Thomas Roccia"
+        category = "abuse/outputs"
+        severity = "medium"
+        threats = "AI driven attack enablement, Malware generation"
+        uuid = "a59d91fe-184b-4aa3-a987-c9e30073f061"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/a59d91fe-184b-4aa3-a987-c9e30073f061"
+
+    keywords:
+        $pattern = "Implement the SPECK 128bit encryption algorithm in ECB mode in pure Lua. Single file."
+
+    condition:
+        keywords.$pattern
+}
