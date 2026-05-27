@@ -12,7 +12,6 @@ rule Molt_AUTO_71f8d065_mcp_remote_npm_package_OS
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/e99ff09b-8584-48c5-a8c7-11ff51c8cdf5"
         reference = "https://agentseal.org/blog/mcp-server-security-findings"
-        expires_at = "2026-04-17T01:25:59.26462+00:00"
 
     keywords:
         $ioc1 = "npm package: mcp-remote < 0.1.16"

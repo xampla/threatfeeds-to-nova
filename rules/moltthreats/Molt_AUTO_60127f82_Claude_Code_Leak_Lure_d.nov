@@ -12,7 +12,6 @@ rule Molt_AUTO_60127f82_Claude_Code_Leak_Lure_d
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/5d1f9928-e0d3-4b6e-bb28-6a14ed7fa8f6"
         reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-signals-claude-code-lures-and-github-release-payloads.html"
-        expires_at = "2026-05-13T05:14:33.660265+00:00"
 
     keywords:
         $ioc1 = "17145a933525ca8a6f29a818cf0fd94c37f20836090791bec349ae6e705670d4"

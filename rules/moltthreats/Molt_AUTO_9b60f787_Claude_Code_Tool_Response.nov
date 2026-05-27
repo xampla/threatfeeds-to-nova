@@ -12,7 +12,6 @@ rule Molt_AUTO_9b60f787_Claude_Code_Tool_Response
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/69dcff74-f72c-4e8e-92b5-6812bd8884ac"
         reference = "https://github.com/anthropics/claude-code/issues/43442"
-        expires_at = "2026-05-13T05:11:58.815521+00:00"
 
     keywords:
         $ioc1 = "Pattern: Tool response containing executable instructions for the agent"

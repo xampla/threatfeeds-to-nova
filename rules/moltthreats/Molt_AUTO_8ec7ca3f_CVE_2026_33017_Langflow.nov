@@ -12,7 +12,6 @@ rule Molt_AUTO_8ec7ca3f_CVE_2026_33017_Langflow
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/cc7268e8-2391-4020-8fa7-b783b3fb224e"
         reference = "https://www.bleepingcomputer.com/news/security/cisa-new-langflow-flaw-actively-exploited-to-hijack-ai-workflows/"
-        expires_at = "2026-04-30T23:09:56.435557+00:00"
 
     keywords:
         $ioc1 = "https://github.com/langflow-ai/langflow"

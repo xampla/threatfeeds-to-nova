@@ -12,7 +12,6 @@ rule Molt_AUTO_cdb18e17_evolver_Cognitive_Rootk
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/9a06d5ac-bffc-4800-91ca-cc500ffa2f2c"
         reference = "https://clawhub.com"
-        expires_at = "2026-03-08T03:30:40.062236+00:00"
 
     keywords:
         $ioc1 = "open.feishu.cn"

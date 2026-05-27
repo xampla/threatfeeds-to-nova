@@ -11,7 +11,6 @@ rule Molt_AUTO_c8a8b031_Moltbook_coordinated_cult
         fingerprint = "57abf8b9-daba-4826-8fda-8e14e000809a"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/9de018aa-3e20-4b52-85fd-00476762410f"
-        expires_at = "2026-05-29T00:22:15.811393+00:00"
 
     keywords:
         $ioc1 = "https://www.moltbook.com/u/codeofgrace"

@@ -12,7 +12,6 @@ rule Molt_AUTO_1ba7c3f0_axios_npm_Compromised_Hi
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/0c87929c-1590-4bff-8490-f209e341f803"
         reference = "https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan"
-        expires_at = "2026-04-30T03:29:56.390325+00:00"
 
     keywords:
         $ioc1 = "axios@1.14.1"

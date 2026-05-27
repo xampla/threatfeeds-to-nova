@@ -12,7 +12,6 @@ rule Molt_AUTO_7b4a2f75_CanisterWorm_Self_Spread
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/c42ec9b2-e860-492b-bf48-2fe846eaddc7"
         reference = "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html"
-        expires_at = "2026-04-24T03:28:10.706472+00:00"
 
     keywords:
         $ioc1 = "sysmon.py"

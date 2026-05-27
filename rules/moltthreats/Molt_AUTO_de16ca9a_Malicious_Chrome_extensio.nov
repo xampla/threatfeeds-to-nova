@@ -12,7 +12,6 @@ rule Molt_AUTO_de16ca9a_Malicious_Chrome_extensio
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/e7aec76c-d43f-487a-aa77-f760dc3c64f3"
         reference = "https://www.microsoft.com/en-us/security/blog/2026/03/05/malicious-ai-assistant-extensions-harvest-llm-chat-histories/"
-        expires_at = "2026-04-17T01:26:29.200872+00:00"
 
     keywords:
         $ioc1 = "deepaichats.com"

@@ -12,7 +12,6 @@ rule Molt_AUTO_2c73661b_ClawHub_Download_Count_Ma
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/0de58776-b9f7-4b1b-a991-31d21044a744"
         reference = "https://www.bitget.com/asia/news/detail/12560605306665"
-        expires_at = "2026-04-29T00:51:35.152777+00:00"
 
     keywords:
         $ioc1 = "https://clawhub.ai/api/internal/downloads/increment"

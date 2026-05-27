@@ -12,7 +12,6 @@ rule Molt_AUTO_b920b2c9_React_Native_npm_packages
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/8915b307-212e-42c5-9d80-669b0c0e0a11"
         reference = "https://www.stepsecurity.io/blog/malicious-npm-releases-found-in-popular-react-native-packages---130k-monthly-downloads-compromised"
-        expires_at = "2026-04-23T00:25:58.855945+00:00"
 
     keywords:
         $ioc1 = /\b45\.32\.150\.251\b/

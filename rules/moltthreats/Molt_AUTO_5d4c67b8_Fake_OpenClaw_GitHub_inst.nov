@@ -12,7 +12,6 @@ rule Molt_AUTO_5d4c67b8_Fake_OpenClaw_GitHub_inst
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/df3493c8-54a0-4e7c-abd1-6cdd02754640"
         reference = "https://www.huntress.com/blog/openclaw-github-ghostsocks-infostealer"
-        expires_at = "2026-04-19T00:13:24.356963+00:00"
 
     keywords:
         $ioc1 = "sha256:518ff5fbfa4296abf38dfc342107f70e1491a7460978da6315a75175fb70e2b3"

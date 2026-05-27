@@ -12,7 +12,6 @@ rule Molt_AUTO_70dea2ab_OpenClaw_GitHub_Phishing
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/529dee3b-222e-4934-9e41-111aec891a72"
         reference = "https://www.ox.security/blog/openclaw-github-phishing-crypto-wallet-attack/"
-        expires_at = "2026-05-13T05:14:16.042226+00:00"
 
     keywords:
         $ioc1 = "token-claw.xyz"

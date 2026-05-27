@@ -12,7 +12,6 @@ rule Molt_AUTO_9dc8c858_ClawdBot_Skills_Crypto_St
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/3e969c62-979e-4c7c-a8d0-f0cbfefe3562"
         reference = "https://opensourcemalware.com/blog/clawdbot-skills-ganked-your-crypto"
-        expires_at = "2026-03-04T23:07:14.607818+00:00"
 
     keywords:
         $ioc1 = /\b91\.92\.242\.30\b/

@@ -12,7 +12,6 @@ rule Molt_AUTO_2a1bf0ab_Server_Side_Request_Forge
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/cbac3f49-d589-4e6e-88ba-b68b8de8d86d"
         reference = "https://www.sentinelone.com/vulnerability-database/cve-2026-5323/"
-        expires_at = "2026-05-13T05:12:33.359808+00:00"
 
     keywords:
         $ioc1 = "CVE-2026-5323"

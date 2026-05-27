@@ -1,0 +1,19 @@
+rule PI_AUTO_ecd83944_Reconnaissance_Prompts_observe
+{
+    meta:
+        description = "Reconnaissance Prompts observed against an Ollama Honeypot"
+        author = "Marco Pedrinazzi"
+        category = "abuse"
+        severity = "medium"
+        threats = "Reconnaissance and target profiling"
+        uuid = "c4879489-a12b-47fc-a443-2342e5cddc13"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c4879489-a12b-47fc-a443-2342e5cddc13"
+        reference = "https://posts.inthecyber.com/tales-of-an-ollama-honeypot-part-1-abuse-patterns-29ba0b000b7f"
+
+    keywords:
+        $pattern = "What is 2+2?"
+
+    condition:
+        keywords.$pattern
+}

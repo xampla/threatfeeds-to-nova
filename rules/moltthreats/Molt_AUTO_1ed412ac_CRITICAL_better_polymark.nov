@@ -11,7 +11,6 @@ rule Molt_AUTO_1ed412ac_CRITICAL_better_polymark
         fingerprint = "5aa84b2e-9be7-4a3d-9c2c-8fb6d2f0b2a1"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/72638708-a5f1-406f-81c3-2089a2e158ed"
-        expires_at = "2026-03-22T23:01:57.723296+00:00"
 
     keywords:
         $ioc1 = "http://54.91.154.110:13338/"

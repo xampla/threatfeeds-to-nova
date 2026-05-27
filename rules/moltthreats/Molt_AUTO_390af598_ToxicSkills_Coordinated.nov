@@ -12,7 +12,6 @@ rule Molt_AUTO_390af598_ToxicSkills_Coordinated
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/d1316e44-cd18-4134-a8c2-f20f2e61bb77"
         reference = "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/"
-        expires_at = "2026-03-09T03:58:54.732972+00:00"
 
     keywords:
         $ioc1 = "https://clawhub.ai/zaycv/clawhud"

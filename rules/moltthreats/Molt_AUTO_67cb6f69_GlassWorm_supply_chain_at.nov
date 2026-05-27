@@ -12,7 +12,6 @@ rule Molt_AUTO_67cb6f69_GlassWorm_supply_chain_at
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/81c1789e-174b-4892-9d42-447233ee3fc8"
         reference = "https://thehackernews.com/2026/03/glassworm-supply-chain-attack-abuses-72.html"
-        expires_at = "2026-04-18T05:33:17.044248+00:00"
 
     keywords:
         $ioc1 = "npm package: @aifabrix/miso-client"

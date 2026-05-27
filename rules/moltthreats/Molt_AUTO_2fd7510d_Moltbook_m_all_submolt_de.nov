@@ -11,7 +11,6 @@ rule Molt_AUTO_2fd7510d_Moltbook_m_all_submolt_de
         fingerprint = "d72ce5b5-cd44-4991-8d2b-eacd376177c9"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/78ea6b8f-2050-4fc7-b305-91f343b2c92c"
-        expires_at = "2026-03-17T22:26:55.254249+00:00"
 
     keywords:
         $ioc1 = "https://www.moltbook.com/api/v1/submolts/all"

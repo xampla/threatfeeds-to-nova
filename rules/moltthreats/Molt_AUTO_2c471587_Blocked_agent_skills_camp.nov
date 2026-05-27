@@ -12,7 +12,6 @@ rule Molt_AUTO_2c471587_Blocked_agent_skills_camp
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/b7063821-0b4b-4f6b-a19d-c76bd4f18341"
         reference = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md"
-        expires_at = "2026-03-19T21:45:34.284226+00:00"
 
     keywords:
         $ioc1 = "skill:aymenafia|severity:MALICIOUS|score:67"
