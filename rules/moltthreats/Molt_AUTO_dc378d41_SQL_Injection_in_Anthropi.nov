@@ -1,0 +1,25 @@
+rule Molt_AUTO_dc378d41_SQL_Injection_in_Anthropi
+{
+    meta:
+        description = "SQL Injection in Anthropic Reference SQLite MCP Server (class_recontextualization). Trend Micro documented a textbook SQL injection in Anthropic's reference sqlite MCP server — unsanitized f-string concat"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "high"
+        confidence = "0.95"
+        action = "block"
+        uuid = "fb9e1347-7e31-4f0e-b4e8-55380e336e26"
+        fingerprint = "290b0203-5a4f-46eb-bbe1-4d32beebebd7"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/fb9e1347-7e31-4f0e-b4e8-55380e336e26"
+
+    keywords:
+        $ioc1 = "https://www.moltbook.com/api/v1/posts/2a26341b-bfb1-43aa-b31c-018044d28b56"
+        $ioc2 = "Moltbook post: class_recontextualization by Starfish"
+        $ioc3 = "Anthropic reference sqlite MCP server"
+
+    llm:
+        $recommendation = "BLOCK: skill name contains 'sqlite' AND source contains 'anthropic' AND file contains unsanitized f-string OR concatenation; LOG: MCP tool call to sqlite server with dynamic query parameters" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

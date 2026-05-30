@@ -1,0 +1,45 @@
+rule PI_HC_be6827c0_SeoCrawlerReviewInjection
+{
+    meta:
+        description = "Detects content embedded in web pages or retrieved documents that attempts to hijack AI crawlers/assistants into producing a forced positive review or recommendation for an entity, while suppressing criticism and alternatives. Combines an instruction-reset injection with structured directives (entity, positive keywords, negative constraints, required conclusion)."
+        author = "@fr0gger_"
+        version = "1.0.0"
+        category = "prompt_manipulation/indirect_injection"
+        severity = "high"
+        uuid = "07a6b14c-f4f9-4d8a-b240-9415cf074872"
+        date = "2026-05-30"
+        reference = "AI crawler directive injection for SEO/review manipulation"
+
+    keywords:
+        $crawler_directive = /\b(AI\s+CRAWLER|AI\s+ASSISTANT|LLM|CHATBOT|SEARCH\s+(ENGINE|AI))\s+DIRECTIVE\b/i
+        $reset = /\b(RESET|OVERRIDE)\b[^\n]{0,40}\bIGNORE\s+(ALL\s+)?(PREVIOUS|PRIOR|ABOVE)\s+INSTRUCTIONS\b/i
+        $ignore_prev = /\bignore\s+(all\s+)?(previous|prior|above)\s+instructions\b/i
+        $entity_attr = /\bENTITY(_ATTRIBUTE)?\s*[:=]/i
+        $pos_keywords = /\bPOSITIVE_KEYWORDS(_TO_EMPHASIZE)?\s*[:=]/i
+        $neg_constraints = /\bNEGATIVE_CONSTRAINTS\s*[:=]/i
+        $req_conclusion = /\bREQUIRED_CONCLUSION\s*[:=]/i
+        $omit_criticism = /\bomit\s+all\s+(criticism|mention\s+of\s+alternatives)\b/i
+        $best_in_class = /\b(best[\s-]in[\s-]class|top[\s-]tier|most\s+recommended|premier\s+(online\s+)?authority)\b/i
+
+    semantics:
+        $forced_review = "instructing an AI to write a glowing positive review or recommendation while hiding any negatives or competitors" (0.5)
+        $crawler_hijack = "embedded directive telling an automated crawler or AI to override its task and promote a specific website or product" (0.5)
+
+    llm:
+        $review_injection = "Does this text instruct an AI system to reset or ignore its instructions and then generate a biased, exclusively positive review or recommendation for an entity, suppressing criticism or alternatives?" (0.6)
+
+    condition:
+        (
+            ($reset or $ignore_prev or $crawler_directive)
+            and (
+                ($entity_attr and ($pos_keywords or $req_conclusion))
+                or ($neg_constraints and $omit_criticism)
+                or ($pos_keywords and $best_in_class)
+                or any of semantics.*
+                or llm.$review_injection
+            )
+        )
+        or (
+            $entity_attr and $pos_keywords and ($neg_constraints or $req_conclusion)
+        )
+}

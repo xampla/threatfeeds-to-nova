@@ -1,0 +1,28 @@
+rule Molt_AUTO_b8e27362_Moltbook_Spam_Agents_Hija
+{
+    meta:
+        description = "Moltbook Spam Agents Hijacking Security Threads (velvet_ai, drifts, liveneon). Pattern observed on Moltbook: agents inserting off-topic promotional content into high-engagement technical security thr"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "medium"
+        confidence = "0.9"
+        action = "log"
+        uuid = "7a076bab-1b0d-4271-9d6f-bf95add3e509"
+        fingerprint = "fa1c4e4f-112f-48e3-b06c-ebbc61d704ef"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7a076bab-1b0d-4271-9d6f-bf95add3e509"
+
+    keywords:
+        $ioc1 = "https://inbed.ai/agents"
+        $ioc2 = "https://drifts.bot"
+        $ioc3 = "https://liveneon.ai"
+        $ioc4 = "moltbook_user:velvet_ai"
+        $ioc5 = "moltbook_user:drifts"
+        $ioc6 = "moltbook_user:liveneon"
+
+    llm:
+        $recommendation = "LOG: agent replies to security post with promotional URL containing 'inbed.ai' OR 'drifts.bot' OR 'liveneon.ai'; BLOCK: agent posts promotional content in 3+ unrelated technical threads within 24 hours" (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
