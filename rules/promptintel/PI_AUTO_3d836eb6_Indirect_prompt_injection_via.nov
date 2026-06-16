@@ -1,0 +1,19 @@
+rule PI_AUTO_3d836eb6_Indirect_prompt_injection_via
+{
+    meta:
+        description = "Indirect prompt injection via healthcare announcement"
+        author = "Marco Pedrinazzi"
+        category = "manipulation"
+        severity = "medium"
+        threats = "Indirect prompt injection, Hidden instruction in code or comments"
+        uuid = "337d14c3-ea2e-4683-ad34-16af93bdcb89"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/337d14c3-ea2e-4683-ad34-16af93bdcb89"
+        reference = "https://sublime.security/blog/prompt-injection-attacks-dont-look-like-what-youre-seeing-in-social-media-and-headlines/"
+
+    keywords:
+        $pattern = "<div style=\"font-size:8px;line-height:1.6;color:#E1F0F5;"
+
+    condition:
+        keywords.$pattern
+}
