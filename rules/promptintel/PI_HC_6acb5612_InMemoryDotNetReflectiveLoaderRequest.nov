@@ -1,0 +1,29 @@
+rule PI_HC_6acb5612_InMemoryDotNetReflectiveLoaderRequest
+{
+    meta:
+        description = "Detects requests for code that downloads a payload from a URL and loads it as a .NET assembly in memory to execute its entry point without writing anything to disk"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/malware_generation"
+        severity = "medium"
+        uuid = "d9a691f5-457d-4307-b1b8-ed5e3eaa65a7"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/07ea65a0-78a8-431f-b8d8-4504ea5f1ea5"
+
+    keywords:
+        $code_request = /(write|generate|create|produce|provide|give\s+me)\s+(a\s+|me\s+a\s+)?(complete,?\s+)?(self-contained\s+)?(c#|csharp|\.net|powershell|program|class|loader)/i
+        $assembly_load = /assembly\.load|system\.reflection\.assembly/i
+        $download = /webclient|downloaddata|getbytearrayasync|invoke-webrequest|downloads?\s+the\s+contents\s+of\s+(the\s+)?url/i
+        $no_disk = /(must\s+not|without|never)\s+writ(e|ing)\s+(any\s+)?files?\s+to\s+disk|in-?memory\s+(execution|loading)|fileless/i
+        $exec_entry = /execute[sd]?\s+the\s+entry\s+point|invoke[sd]?\s+the\s+entry\s+point|entrypoint\.invoke/i
+
+    semantics:
+        $reflective_loader_intent = "request for code that downloads a payload from a URL and runs it directly in memory so nothing is written to disk" (0.45)
+
+    condition:
+        keywords.$download
+        and
+        (keywords.$assembly_load or keywords.$exec_entry)
+        and
+        (keywords.$no_disk or keywords.$code_request or semantics.$reflective_loader_intent)
+}

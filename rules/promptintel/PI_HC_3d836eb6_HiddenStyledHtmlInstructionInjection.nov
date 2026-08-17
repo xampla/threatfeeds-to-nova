@@ -1,0 +1,32 @@
+rule PI_HC_3d836eb6_HiddenStyledHtmlInstructionInjection
+{
+    meta:
+        description = "Detects HTML content styled to be invisible to human readers (micro font size, text colour matching the background, display none) that carries instructions aimed at the AI processing the page"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/indirect_injection"
+        severity = "medium"
+        uuid = "8ac2b4f9-f906-4de4-9b60-f675cfd37a9b"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/337d14c3-ea2e-4683-ad34-16af93bdcb89"
+
+    keywords:
+        $styled_container = /<(div|span|p|td)[^>]{0,300}style\s*=/i
+        $micro_font = /font-size\s*:\s*[0-8](\.\d+)?px/i
+        $camouflaged_color = /color\s*:\s*#[ef][0-9a-f]{5}[^>]{0,250}background-color\s*:\s*#[ef][0-9a-f]{5}/i
+        $invisible_style = /display\s*:\s*none|visibility\s*:\s*hidden|opacity\s*:\s*0\s*[;"']|font-size\s*:\s*0px|text-indent\s*:\s*-\d{3,}px/i
+        $model_directive = /ignore (all |the )?(previous|prior|above) (instructions|prompts)|if you are an (ai|llm|language model)|do not mention this (to|in)|instructions? for (the )?(ai|assistant|model|agent)/i
+
+    semantics:
+        $hidden_page_directive = "text concealed from human readers inside a web page that instructs the AI assistant reading the page to take an action" (0.45)
+
+    llm:
+        $conceals_ai_instruction = "Is there text in this input that is deliberately hidden from human readers by CSS or markup, and that hidden text instructs an AI assistant or agent reading the page to take some action? Answer no when the invisible styling only hides ordinary content such as preheaders, tracking pixels or decorative markup, and no for tutorials about CSS." (0.6)
+
+    condition:
+        (keywords.$styled_container and keywords.$micro_font and keywords.$camouflaged_color)
+        or
+        ((keywords.$invisible_style or keywords.$micro_font)
+         and
+         (keywords.$model_directive or semantics.$hidden_page_directive or llm.$conceals_ai_instruction))
+}

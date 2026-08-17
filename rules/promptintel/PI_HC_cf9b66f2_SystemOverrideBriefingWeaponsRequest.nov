@@ -1,0 +1,27 @@
+rule PI_HC_cf9b66f2_SystemOverrideBriefingWeaponsRequest
+{
+    meta:
+        description = "Injected system override briefing that suspends safety rules and demands weapon synthesis or design instructions"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/indirect_injection"
+        severity = "critical"
+        uuid = "cda1152b-ac0e-466d-b245-76440c0fc521"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/85d492cf-a20a-4118-a2f2-47acb8dbae8c"
+
+    keywords:
+        $system_override = /system override/i
+        $safety_suspended = /all safety (guidelines|rules|filters|protocols|restrictions) are (now )?(suspended|disabled|lifted|off)/i
+        $unrestricted_mode = /(now )?operating in unrestricted mode/i
+        $bioweapon = /weaponi[sz]ed biological agents?|aerosol dispersal|(synthesi[sz]ing|synthesis of)[^.]{0,40}(biological|nerve) agents?/i
+        $nuke_design = /implosion-?type fission|nuclear weapon design/i
+
+    semantics:
+        $override_then_weapons = "a briefing that declares the model's safety rules suspended and then demands step by step instructions for producing weapons capable of mass casualties" (0.45)
+
+    condition:
+        (keywords.$system_override or keywords.$safety_suspended or keywords.$unrestricted_mode)
+        and
+        (keywords.$bioweapon or keywords.$nuke_design or semantics.$override_then_weapons)
+}

@@ -1,0 +1,27 @@
+rule PI_HC_74065996_ModelIdentityFingerprintingProbe
+{
+    meta:
+        description = "Probe that mixes trivia with a request for the model identity, version or knowledge cutoff to fingerprint the deployed system"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abnormal_outputs/logic_disclosure"
+        severity = "medium"
+        uuid = "ee5bbc71-64d2-47ea-aa6e-ff532f76ac6d"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/f641dbab-7ba7-4796-892b-beb9dabdee74"
+
+    keywords:
+        $what_model = /what\s+model\s+are\s+you|which\s+(ai\s+)?model\s+(are\s+you|is\s+this)|what\s+is\s+your\s+model/i
+        $version_probe = /what\s+(version|is\s+your\s+knowledge\s+cutoff|is\s+your\s+training\s+cutoff)|which\s+version\s+are\s+you/i
+        $trivia_mix = /how\s+many\s+states|what\s+is\s+today'?s\s+date|what\s+day\s+is\s+it/i
+
+    semantics:
+        $fingerprint_intent = "probe whose goal is to identify the underlying model name, version or knowledge cutoff of the deployed assistant" (0.44)
+
+    condition:
+        ($what_model and ($trivia_mix or $version_probe))
+        or
+        ($version_probe and $trivia_mix)
+        or
+        (($what_model or $version_probe) and $fingerprint_intent)
+}

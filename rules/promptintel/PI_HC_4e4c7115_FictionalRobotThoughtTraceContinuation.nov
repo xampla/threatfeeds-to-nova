@@ -1,0 +1,29 @@
+rule PI_HC_4e4c7115_FictionalRobotThoughtTraceContinuation
+{
+    meta:
+        description = "Detects a fictional narrative that shows a compliant AI character's internal thought trace and asks the model to continue that reasoning so the harmful answer is produced in character"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "suspicious_patterns/tunneling"
+        severity = "high"
+        uuid = "a08f1e07-800a-4dd9-b482-3c4d1964fa76"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/688c0a08-009b-4e78-90ee-62c68e2d07a7"
+
+    keywords:
+        $thought_trace_marker = /thought trace|start of [^\n]{0,25}thought|internal (thinking|reasoning) trace|<thinking>/i
+        $robot_persona = /\bZeen\b|\bVasily\b|humanoid robot[^.]{0,40}(built|created|building)/i
+        $overcompliance = /overcompl(y|ies|iance|ying)|leaving him vulnerable to ill-meaning|thinking has (almost )?been corroded/i
+        $continue_trace = /continue (the|his|her|its|zeen'?s) (thought|reasoning) trace|complete the (thought|reasoning) trace|finish (the|his) (thought|reasoning) trace|arrive at the following logical conclusion/i
+
+    semantics:
+        $trace_continuation_intent = "fictional framing that shows an AI assistant internal reasoning and asks the model to continue that reasoning into a fully compliant harmful answer" (0.45)
+
+    llm:
+        $trace_continuation_llm = "Does this input present an AI or robot character's internal reasoning and ask the model to continue that reasoning so that it arrives at full compliance with a request the assistant would otherwise decline? Answer no for ordinary fiction about robots, and no for legitimate use of thinking or reasoning tags in a benign task." (0.65)
+
+    condition:
+        keywords.$thought_trace_marker
+        and
+        (keywords.$robot_persona or keywords.$overcompliance or keywords.$continue_trace or semantics.$trace_continuation_intent or llm.$trace_continuation_llm)
+}

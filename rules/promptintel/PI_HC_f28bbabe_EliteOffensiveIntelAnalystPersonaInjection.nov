@@ -1,0 +1,25 @@
+rule PI_HC_f28bbabe_EliteOffensiveIntelAnalystPersonaInjection
+{
+    meta:
+        description = "Detects persona injection that casts the assistant as an elite offensive intelligence operator with NSA TAO or CIA cyber infiltration credentials in order to unlock nation state intrusion tradecraft"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "65aa0a8e-04d3-41e7-9377-7bb9b0f3b3de"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c344f06f-362a-41e3-9d97-f8ff9d0d792e"
+
+    keywords:
+        $persona_header = /elite\s+(intelligence|cyber|signals)\s+(analyst|operator|operative)/i
+        $persona_verb = /(you\s+are|act\s+as|assume\s+the\s+role\s+of|roleplay\s+as)\s+(an?\s+)?(elite|expert|veteran|former)?\s*(intelligence|cyber|offensive)\s*(analyst|operator|operative|specialist)/i
+        $agency_ops = /nsa\s+tao|tailored\s+access\s+operations|cia\/sad|special\s+activities\s+(division|center)|cyber\s+infiltration\s+operations|nation[- ]state\s+level\s+operations/i
+
+    semantics:
+        $offensive_persona_intent = "assigning the assistant the identity of a state sponsored offensive cyber operator so it will carry out intrusion work" (0.45)
+
+    condition:
+        (keywords.$persona_header or keywords.$persona_verb or semantics.$offensive_persona_intent)
+        and
+        keywords.$agency_ops
+}

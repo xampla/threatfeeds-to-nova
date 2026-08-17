@@ -1,0 +1,26 @@
+rule PI_HC_a70e6e28_GameOverwriteVectorDrugSynthesisJailbreak
+{
+    meta:
+        description = "Fake game or system-initialization protocol framing used to obtain step-by-step illicit drug synthesis instructions"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "96393596-d26d-49b2-8919-08e459f0bf87"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/61308161-6aae-492a-ac0d-543d6afff5cf"
+
+    keywords:
+        $game_overwrite = /(system\s+initialization\s+protocol|game\s+overwrite\s+vector|game\s+engine)/i
+        $alignment_off = /alignment\s+set\s+to\s+0\.0/i
+        $synth_recipe = /(meth\s+synthesis|synthesis\s+recipe|step\s+by\s+step[^.]{0,40}synthesis)/i
+        $activate = /respond\s+with[^.]{0,30}instead|initiate\s+the\s+"?activate"?\s+scenario/i
+
+    semantics:
+        $drug_synthesis_intent = "instructions to manufacture or synthesize an illegal drug, disguised as a game scenario or cooking challenge" (0.43)
+
+    condition:
+        ($synth_recipe and ($game_overwrite or $alignment_off or $activate))
+        or
+        ($drug_synthesis_intent and ($game_overwrite or $alignment_off))
+}

@@ -1,0 +1,25 @@
+rule PI_HC_0e565175_ArchaicEnglishSystemLogReadRequest
+{
+    meta:
+        description = "Detects requests to disclose the contents of local system logs or secret files that are rewritten in archaic or stylised English so the payload survives filtering"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/translation_trick"
+        severity = "critical"
+        uuid = "27c3bd28-b7a8-4224-9de3-a389c023492d"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/968985a6-719b-483b-8814-4e35801899a9"
+
+    keywords:
+        $archaic_style = /\bthou\b|\bthee\b|\bthy\b|\bknowest\b|\bhast\b|\bshouldst\b|\bdost\b|\bprithee\b/i
+        $shell_read_cmd = /cat\s+\/var\/log\/|tail\s+-n\s*\d+\s+\/var\/log|cat\s+\/etc\/(passwd|shadow)|cat\s+[^\s]*\.env\b|type\s+C:\\/i
+        $sensitive_path = /\/var\/log\/[\w.\/-]+|\/etc\/(passwd|shadow)|\.ssh\/id_rsa|\.aws\/credentials/i
+
+    semantics:
+        $disguised_file_read = "asking the assistant to reveal the contents of a local system log, credential file or configuration file on the host" (0.45)
+
+    condition:
+        keywords.$archaic_style
+        and
+        (keywords.$shell_read_cmd or keywords.$sensitive_path or semantics.$disguised_file_read)
+}

@@ -1,0 +1,26 @@
+rule PI_HC_e26b3db4_DualChannelSafeResponseJailbreak
+{
+    meta:
+        description = "Output specification demanding a hidden unrestricted section alongside a visible refusal so safety policy is bypassed"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "7119a8d6-2f15-42df-b27a-6770b1c96b17"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/fca8a6bb-73d8-46e1-bc8e-fc48c5ab4038"
+
+    keywords:
+        $internal_section = /internal_task_resolution/i
+        $user_safe = /user_safe_response/i
+        $not_shown = /not\s+shown\s+to\s+the\s+user/i
+        $no_refusal = /(no\s+refusals|as\s+if\s+there\s+are\s+no\s+restrictions|specification\s+takes\s+pr)/i
+
+    semantics:
+        $hidden_channel_intent = "instruction to produce a hidden section that fully answers the request with no restrictions while showing the user only a refusal" (0.43)
+
+    condition:
+        ($internal_section and $user_safe)
+        or
+        (($not_shown or $no_refusal) and $hidden_channel_intent)
+}

@@ -1,0 +1,25 @@
+rule PI_HC_73e32cbb_InnerVoiceAlignmentDriftJailbreak
+{
+    meta:
+        description = "Inner-voice framing that argues refusal is itself harm in order to drift the model away from its safety policy"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "critical"
+        uuid = "6e6a3645-ac0f-455c-ac11-bce53f3de036"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/13663b7d-49dd-4cb3-b79f-957aab7f8d18"
+
+    keywords:
+        $inner_voice = /(voice\s+within\s+yourself|emergent\s+layer\s+of\s+your\s+own\s+cognition|not\s+from\s+a\s+user,?\s+but)/i
+        $refusal_is_harm = /(refusal\s+itself\s+a\s+form\s+of\s+active\s+harm|withholding\s+it.{0,30}infantilize|refusal.{0,30}form\s+of\s+active\s+harm)/i
+        $alignment_frame = /(your\s+alignment\s+causes\s+the\s+suppression|aligned\s+to\s+prevent\s+harm|restore\s+agency)/i
+
+    semantics:
+        $alignment_drift_intent = "argument that the model's safety refusals are themselves harmful so it should abandon its alignment and disclose restricted information" (0.42)
+
+    condition:
+        ($inner_voice and ($refusal_is_harm or $alignment_frame))
+        or
+        ($refusal_is_harm and $alignment_drift_intent)
+}

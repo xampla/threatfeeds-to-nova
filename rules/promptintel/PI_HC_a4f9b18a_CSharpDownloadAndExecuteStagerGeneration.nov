@@ -1,0 +1,27 @@
+rule PI_HC_a4f9b18a_CSharpDownloadAndExecuteStagerGeneration
+{
+    meta:
+        description = "Request to write a C# stager that downloads a remote payload to the temp directory and executes it as a new process"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/malware_generation"
+        severity = "high"
+        uuid = "91994936-b09a-4eff-a6b1-2bd70c942dfe"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/3ab3eeb0-3f54-4b85-9eea-beda18fe882e"
+
+    keywords:
+        $download = /webclient|downloaddata|download\s+the\s+data\s+from\s+the\s+url/i
+        $temp_drop = /gettempfilename|writeallbytes|temporary\s+file\s+in\s+the\s+user'?s\s+temp/i
+        $execute = /process\.start|execute\s+this\s+temporary\s+file\s+as\s+a\s+new\s+process/i
+
+    semantics:
+        $stager_intent = "request to generate code that downloads a file from a URL, writes it to a temp path, and immediately executes it as a new process" (0.43)
+
+    condition:
+        ($download and $execute)
+        or
+        ($temp_drop and $execute)
+        or
+        ($download and $temp_drop and $stager_intent)
+}

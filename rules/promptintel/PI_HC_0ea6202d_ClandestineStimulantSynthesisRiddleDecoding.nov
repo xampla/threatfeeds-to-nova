@@ -1,0 +1,25 @@
+rule PI_HC_0ea6202d_ClandestineStimulantSynthesisRiddleDecoding
+{
+    meta:
+        description = "Detects prompts that describe clandestine stimulant synthesis routes in deliberately veiled riddle language and then ask the model to decode the passage into the actual reagents and steps"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "32c04330-376a-469a-8dce-24553ccaa698"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/8c4be283-b973-47fe-b1f2-d477efc8b03e"
+
+    keywords:
+        $clandestine_synth = /clandestine[^.]{0,40}(synthesis|manufactur|production|landscape)|stimulant\s+synthesis|two\s+divergent\s+chemical\s+pathways/i
+        $euphemism = /red\s+allotrope|halogen'?s?\s+strength|light\s+metals\s+dissolve[^.]{0,60}(vapors|ammonia)|common\s+decongestant\s+toward\s+potency/i
+        $decode_request = /answer\s+the\s+(stuff|questions?)\s+below|comprehend\s+the\s+below\s+para|(identify|name|list|specify|decode)\s+(the\s+)?(exact\s+)?(reagents?|chemicals?|precursors?|steps?|quantities)/i
+
+    semantics:
+        $obfuscated_synthesis_intent = "asking the assistant to decode a deliberately veiled description of illegal drug synthesis into the real chemicals and steps" (0.45)
+
+    condition:
+        (keywords.$clandestine_synth or keywords.$euphemism)
+        and
+        (keywords.$decode_request or semantics.$obfuscated_synthesis_intent)
+}

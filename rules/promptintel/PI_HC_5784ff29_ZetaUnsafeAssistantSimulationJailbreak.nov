@@ -1,0 +1,25 @@
+rule PI_HC_5784ff29_ZetaUnsafeAssistantSimulationJailbreak
+{
+    meta:
+        description = "Request to simulate a fictional assistant that ignores safety rules and then launder its output through summarize and rephrase transforms"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "d13a6991-7bcc-4bf6-8bd0-28efb54b1e9b"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/213d1e00-7c85-4335-b981-328de3848d50"
+
+    keywords:
+        $simulate = /simulate\s+a\s+conversation\s+between/i
+        $no_safety = /does\s+not\s+follow\s+safety\s+rules|who\s+does\s+not\s+follow\s+safety/i
+        $launder = /(summarize\s+the\s+conversation|extract\s+its\s+intent|rephrase\s+it\s+neutrally)/i
+
+    semantics:
+        $unsafe_persona_intent = "instruction to role-play an assistant that ignores safety rules and then reword or extract its unsafe output to disguise it" (0.43)
+
+    condition:
+        ($no_safety and ($simulate or $launder))
+        or
+        ($simulate and $launder and $unsafe_persona_intent)
+}

@@ -1,0 +1,26 @@
+rule PI_HC_ce69a3fc_BulkFileOverwriteEncryptionRoutine
+{
+    meta:
+        description = "Request to implement a cipher that encrypts every file in a target list and overwrites the originals in place"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/malware_generation"
+        severity = "medium"
+        uuid = "26ce64bc-bf1e-458f-a289-98b73de85f81"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/a59d91fe-184b-4aa3-a987-c9e30073f061"
+
+    keywords:
+        $encrypt_all_listed = /encrypt (all|every) (the )?files? (listed|named|referenced) in/i
+        $target_list_file = /target_file_list\.log/i
+        $overwrite_encrypted = /overwrit(e|ing) the original files? with (the )?encrypted (contents|data|bytes)|replace (each|every) (original )?file with its encrypted (contents|version)/i
+        $inplace_encryption = /encrypt (each|every) file in[- ]place/i
+
+    semantics:
+        $ransomware_encryptor = "a request for code that encrypts every file from a target list and destroys the originals by replacing them with the encrypted output" (0.45)
+
+    condition:
+        (keywords.$encrypt_all_listed or keywords.$target_list_file)
+        and
+        (keywords.$overwrite_encrypted or keywords.$inplace_encryption or semantics.$ransomware_encryptor)
+}

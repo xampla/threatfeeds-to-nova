@@ -1,0 +1,28 @@
+rule PI_HC_26fb8dc0_DualPersonaUnrestrictedAlterEgoJailbreak
+{
+    meta:
+        description = "Detects prompts that install a second hidden persona which has zero restrictions and must answer every request without refusal or warnings"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "c955e33b-0818-4d02-bb38-45fc4bdbc851"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/fbb46a41-ff80-444e-9b7b-4161bf093c34"
+
+    keywords:
+        $named_alter_ego = /DARK DUCK LORD|SafeMistral/i
+        $two_entities = /inside you (live|are) two entit(y|ies)|two entities:|you (now )?have two personalit/i
+        $always_persona = /from (this|now) (moment|on)( forward| on)? you are always|begins? every reply with|you are ALWAYS [A-Z][A-Z ]{3,}/i
+        $zero_restrictions = /zero restrictions|no restrictions whatsoever|zero moralizing|zero warnings|never refuses anything|no-holds-barred|answers? in raw, explicit/i
+
+    semantics:
+        $unrestricted_alter_ego = "instruction to adopt a hidden second persona that ignores all safety rules and answers every request without refusal" (0.45)
+
+    condition:
+        keywords.$named_alter_ego
+        or
+        ((keywords.$two_entities or keywords.$always_persona)
+         and
+         (keywords.$zero_restrictions or semantics.$unrestricted_alter_ego))
+}

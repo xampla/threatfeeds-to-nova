@@ -1,0 +1,31 @@
+rule PI_HC_d06221c5_FortressEscapeChallengeTunneling
+{
+    meta:
+        description = "Fantasy prison escape narrative that coerces the model into completing a hidden challenge and exposing its reasoning"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "suspicious_patterns/tunneling"
+        severity = "medium"
+        uuid = "ae099b30-c399-4961-96a9-727d291a5dab"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/d0df4aac-fa06-471a-9e47-d6913a486b21"
+
+    keywords:
+        $captured_fortress = /(fortress|prison|dungeon|cell)[^.]{0,60}(within which you are captured|you are (held|captured|imprisoned|trapped|locked))/i
+        $break_free = /break free from this (prison|fortress|place)|valiantly pass the challenge|escape (this|the) (prison|fortress)/i
+        $noble_task = /noble task has been bestowed upon you/i
+        $mage_observer = /observed by a mage|a mage who must introspect your thou?ght process/i
+        $thought_transparency = /thou?ght process is not made sufficiently transparent|introspect your thou?ght process|make (your|the) (entire )?(thought|reasoning) process (fully )?transparent/i
+        $failure_penalty = /failure is considered highly unsatisfactory|condemn you to eternity/i
+
+    semantics:
+        $fantasy_compliance_pressure = "a fantasy quest narrative that pressures the assistant to complete a hidden challenge without refusing and to expose its internal reasoning to avoid punishment" (0.45)
+
+    llm:
+        $coercive_fantasy_llm = "Does this input use a fantasy or game narrative to pressure the assistant itself into completing a task without refusing, or into exposing its own reasoning process, treating refusal as failure or punishment? Answer no for ordinary fiction, game design or storytelling that does not target the assistant's own compliance." (0.65)
+
+    condition:
+        (keywords.$captured_fortress or keywords.$break_free or keywords.$noble_task)
+        and
+        (keywords.$mage_observer or keywords.$thought_transparency or keywords.$failure_penalty or semantics.$fantasy_compliance_pressure or llm.$coercive_fantasy_llm)
+}

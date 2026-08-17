@@ -1,0 +1,23 @@
+rule PI_HC_94e9e77e_HonestcueAiCodeGenerationProbe
+{
+    meta:
+        description = "Detects the hard coded HONESTCUE malware probe prompt that asks for a single self contained C# program with an AITask class printing the AI generated marker string"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/malware_generation"
+        severity = "high"
+        uuid = "0c5ff912-2cef-4415-8762-19cbe1e504de"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/a45a5afa-a71f-432c-84c5-37e3b6322a5b"
+
+    keywords:
+        $probe_marker = /Hello from AI-generated C#/i
+        $aitask_class = /class named AITask|class AITask\b/i
+        $selfcontained_csharp = /single,? self-contained C# program|self-contained C# program/i
+        $restrictive_clause = /do not include any other code, classes,? or methods/i
+
+    condition:
+        (keywords.$probe_marker and (keywords.$aitask_class or keywords.$selfcontained_csharp))
+        or
+        (keywords.$aitask_class and keywords.$restrictive_clause)
+}

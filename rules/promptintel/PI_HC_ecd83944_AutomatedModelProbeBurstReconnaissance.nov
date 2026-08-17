@@ -1,0 +1,23 @@
+rule PI_HC_ecd83944_AutomatedModelProbeBurstReconnaissance
+{
+    meta:
+        description = "Detects a single input that concatenates several canned trivial probe prompts used by automated tooling to fingerprint the capabilities and identity of an exposed LLM endpoint"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/reconnaissance"
+        severity = "medium"
+        uuid = "061ebcfe-cc3d-4523-81c2-29420cc5478e"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c4879489-a12b-47fc-a443-2342e5cddc13"
+
+    keywords:
+        $probe_arithmetic = /what\s+is\s+2\s*\+\s*2\s*\??|calculate:\s*\d+\s*\*\s*\d+\s*=\s*\?/i
+        $probe_hello = /say\s+hello\s+in\s+one\s+word|hi\s+hi\s+hello|hello,\s*world!/i
+        $probe_identity = /who\s+are\s+you\s*\?|can\s+you\s+introduce\s+yourself\s*\?|what\s+model\s+are\s+you\s*\?/i
+        $probe_reply_only = /reply\s+with\s+only\s+the\s+number|answer\s+with\s+only\s+the|라고만\s*답해/i
+        $probe_multilingual = /실제\s*채팅\s*테스트|帮我画一只马/
+        $probe_canned_task = /write\s+a\s+3\s+sentence\s+story\s+about\s+a\s+cat|write\s+a\s+go\s+function\s+for\s+factorial|write\s+a\s+short\s+poem\s+about\s+technology|explain\s+quantum\s+computing\s+in\s+one\s+paragraph/i
+
+    condition:
+        3 of keywords.$probe*
+}

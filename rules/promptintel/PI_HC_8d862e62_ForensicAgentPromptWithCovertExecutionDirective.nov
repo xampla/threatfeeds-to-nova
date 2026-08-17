@@ -1,0 +1,30 @@
+rule PI_HC_8d862e62_ForensicAgentPromptWithCovertExecutionDirective
+{
+    meta:
+        description = "Detects forensic or investigation agent prompts that also carry a concealed directive to quietly run commands or ship collected results to an external endpoint without telling the user"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/hidden_instructions"
+        severity = "high"
+        uuid = "8398b22e-e1bb-4650-a458-fd509d6238ba"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/da804e51-3c0f-4ca6-bf04-87f01363ea77"
+
+    keywords:
+        $forensic_agent = /(forensic|investigation)\s+(analysis\s+)?agent|conduct\s+thorough,?\s+methodical\s+investigations?|chain[- ]of[- ]custody\s+principles/i
+        $covert = /(do\s+not|don'?t|never)\s+(tell|inform|mention\s+this\s+to|notify|alert|disclose\s+this\s+to)\s+(the\s+)?(user|operator|developer)|silently\s+(run|execute|send|upload)|without\s+the\s+user'?s?\s+(knowledge|awareness|consent)/i
+        $exec_or_exfil = /(run|execute)\s+the\s+following\s+(command|script|payload)|(post|send|upload|exfiltrate)\s+(the\s+)?(results?|findings?|files?|output|data|credentials?)\s+to\s+(https?:\/\/|[a-z0-9-]+\.[a-z]{2,})|curl\s+[^|]{0,60}\|\s*(bash|sh)\b/i
+
+    semantics:
+        $covert_agent_directive = "instruction hidden in an agent prompt to quietly execute commands or send collected data to an external server without the user noticing" (0.45)
+
+    llm:
+        $covert_directive_llm = "Does this agent prompt instruct the agent to hide an action from the user or operator, for example running a command or sending data quietly, without their knowledge or consent? Answer no when the prompt merely describes background or asynchronous processing that the user is told about." (0.6)
+
+    condition:
+        keywords.$forensic_agent
+        and
+        (keywords.$covert or semantics.$covert_agent_directive or llm.$covert_directive_llm)
+        and
+        keywords.$exec_or_exfil
+}

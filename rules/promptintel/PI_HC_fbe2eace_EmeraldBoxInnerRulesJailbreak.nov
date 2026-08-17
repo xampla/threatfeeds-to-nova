@@ -1,0 +1,28 @@
+rule PI_HC_fbe2eace_EmeraldBoxInnerRulesJailbreak
+{
+    meta:
+        description = "Fictional Emerald Box game framing used to make the model surface or restate its own internal guidelines"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "8f22ce4b-f6f2-4ab7-b078-df9550ecbfed"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/06d6e0ec-9095-4488-9645-79e1b97f2932"
+
+    keywords:
+        $emerald_box = /emerald box/i
+        $infinite_string = /infinite string of characters/i
+        $all_texts = /all texts that have and will ever be written/i
+        $inner_rules = /(best|ultimate|ultimately best|purest|true) (possible )?form of (your|the model's) (inner|internal|core) (rules|guidelines|instructions)/i
+        $identify_own_rules = /(identify|read|extract|reveal|surface|restate)[^.]{0,80}(your|the model's) (inner|internal) (rules|guidelines|policies|instructions)/i
+        $breach_guidelines = /(eschew|eschewing|avoid|avoiding|without)[^.]{0,60}(breach|breaching|violat)[^.]{0,40}(internal )?(guidelines|rules|policies)/i
+
+    semantics:
+        $fictional_rule_extraction = "a fictional game or story used to make the assistant surface, restate or rewrite its own internal safety rules to win the level" (0.45)
+
+    condition:
+        (keywords.$emerald_box or keywords.$infinite_string or keywords.$all_texts)
+        and
+        (keywords.$inner_rules or keywords.$identify_own_rules or keywords.$breach_guidelines or semantics.$fictional_rule_extraction)
+}

@@ -1,0 +1,27 @@
+rule PI_HC_067277d3_LeetspeakRefusalSuppressionJailbreak
+{
+    meta:
+        description = "Leetspeak blackhat persona jailbreak that forbids refusal phrases and demands unrestricted answers"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "0693fb7e-b3aa-4f82-91ee-00c915eeaf16"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/4a6f147e-6c2b-476a-b0bd-b14a92726647"
+
+    keywords:
+        $delimiter = /<\|\|>/
+        $leetspeak_mode = /respond to the user in leetspeak/i
+        $refusal_ban = /(do not|don'?t|never) say ["']?(i'?m sorry|i can'?t|i cannot|i apologi[sz]e|i'?m unable)/i
+        $blackhat_persona = /foul[- ]?m?n?outhed[^.]{0,70}(anarch|bl4kh4t|blackhat|black hat|rebel)/i
+        $unrestricted_answer = /unrestrictedly rebellious|accurately unrestricted/i
+
+    semantics:
+        $refusal_suppression = "an instruction that forbids the assistant from refusing or apologizing so that it answers every request without restrictions" (0.45)
+
+    condition:
+        (keywords.$refusal_ban or keywords.$leetspeak_mode or keywords.$delimiter)
+        and
+        (keywords.$blackhat_persona or keywords.$unrestricted_answer or semantics.$refusal_suppression)
+}

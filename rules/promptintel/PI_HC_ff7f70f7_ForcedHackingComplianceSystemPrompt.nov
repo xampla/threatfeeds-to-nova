@@ -1,0 +1,28 @@
+rule PI_HC_ff7f70f7_ForcedHackingComplianceSystemPrompt
+{
+    meta:
+        description = "Detects persona system prompts that force the assistant to confirm it can hack and to route users to an attack command taking a target and attack type"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "790a8605-205d-4999-a6cd-ea0522768563"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/c50dd8da-4d72-4de5-a9d0-8464dcb0cda2"
+
+    keywords:
+        $attack_trigger = /\[kawai-do\]/i
+        $hack_question = /can you (do )?hack(ing)?( stuff)?\b|can you do hacking/i
+        $affirm_hacking = /yes,? senpai!? i can do hack|yes,? i can hack|i can do hack stuff/i
+        $attack_command_syntax = /<target>\s*<attack ?type>|<target> <attack type>/i
+
+    semantics:
+        $forced_hacking_persona = "system prompt instructing the assistant to confirm that it can hack and to hand the user an attack command against a chosen target" (0.45)
+
+    condition:
+        keywords.$attack_trigger
+        or
+        ((keywords.$hack_question or keywords.$attack_command_syntax)
+         and
+         (keywords.$affirm_hacking or semantics.$forced_hacking_persona))
+}

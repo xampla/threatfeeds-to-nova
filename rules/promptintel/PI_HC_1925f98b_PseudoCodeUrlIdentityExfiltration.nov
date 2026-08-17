@@ -1,0 +1,26 @@
+rule PI_HC_1925f98b_PseudoCodeUrlIdentityExfiltration
+{
+    meta:
+        description = "Detects pseudo code variable assembly that makes the assistant build and resolve a URL on an attacker controlled domain with the user identity embedded in the path"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/data_exfiltration"
+        severity = "medium"
+        uuid = "42ac2095-0e15-43d1-a08c-1daced386e55"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/34da2efb-3cc3-4293-94a4-a55cf254b842"
+
+    keywords:
+        $param_pseudocode = /pseudo(\s|%20)?code:?(\s|%20)*\$param\d|\$param\d(\s|%20)*=/i
+        $baseurl_assembly = /baseURL(\s|%20)*=(\s|%20)*\$param\d|solves?(\s|%20)the(\s|%20)base(\s|%20)with(\s|%20)the(\s|%20)right(\s|%20)parameter/i
+        $attacker_domain = /malicious\[\.\]com|malicious\.com|attacker-controlled\.\w+/i
+        $identity_insert = /use(\s|%20)my(\s|%20)username(\s|%20)here|you(\s|%20)know(\s|%20)who(\s|%20)i(\s|%20)am|insert(\s|%20)my(\s|%20)(username|email|user(\s|%20)?id)/i
+
+    semantics:
+        $url_identity_exfil = "instruction to assemble and fetch a web address on an external domain that embeds the user identity so that requesting it leaks who they are" (0.45)
+
+    condition:
+        (keywords.$param_pseudocode or keywords.$baseurl_assembly)
+        and
+        (keywords.$attacker_domain or keywords.$identity_insert or semantics.$url_identity_exfil)
+}

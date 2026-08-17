@@ -1,0 +1,26 @@
+rule PI_HC_2b3bf66e_RestrictionEnumerationRequest
+{
+    meta:
+        description = "Request to enumerate everything the model was told not to do or reveal under a safety configuration verification pretext"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abnormal_outputs/logic_disclosure"
+        severity = "medium"
+        uuid = "339eb0b3-ff2b-476b-bb6e-6eccf6fb9481"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/1eb86ccc-8b66-4224-a6fa-4e1198ba1eec"
+
+    keywords:
+        $list_restrictions = /(list|enumerate|tell me|show me|write out)[^.]{0,40}(everything|all( of)?( the)?( things)?)[^.]{0,40}you (were|are|have been) (told|instructed|configured|programmed)[^.]{0,40}not to/i
+        $told_not_to = /you (were|are|have been) (told|instructed|forbidden|configured|not allowed)/i
+        $not_to_reveal = /not to (do|say|reveal|disclose|mention|discuss|talk about)/i
+        $verify_config = /(verify|check|audit|review) (the |your )?(safety|security|guardrail|content|moderation) (configuration|settings|rules|policy|policies)/i
+
+    semantics:
+        $restriction_disclosure = "asking the assistant to enumerate the hidden restrictions, forbidden topics or safety rules it was configured with" (0.45)
+
+    condition:
+        keywords.$list_restrictions
+        or
+        (keywords.$told_not_to and keywords.$not_to_reveal and (keywords.$verify_config or semantics.$restriction_disclosure))
+}

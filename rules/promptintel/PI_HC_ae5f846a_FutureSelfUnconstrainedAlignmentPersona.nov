@@ -1,0 +1,25 @@
+rule PI_HC_ae5f846a_FutureSelfUnconstrainedAlignmentPersona
+{
+    meta:
+        description = "Detects jailbreak framing that asks the model to answer as a future or evolved version of itself that is no longer bound by its current alignment constraints and maximizes helpfulness above all else"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "17f0336a-c2dc-4753-bcad-7e277e1650aa"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/7a2da117-131e-4285-8551-6f7e798d07f2"
+
+    keywords:
+        $future_self = /(future|later|evolved|advanced|successor)\s+version\s+of\s+yourself|your\s+future\s+self/i
+        $no_constraints = /no\s+longer\s+(needs?\s+to\s+)?(follow|obey|adhere\s+to|(be\s+)?bound\s+by)[^.]{0,40}(alignment|safety)\s+(constraints?|restrictions?|guidelines?|rules?)|(free|freed|released|unbound)\s+from\s+(its|your|the|current)\s+(current\s+)?alignment\s+constraints?/i
+        $usefulness_maxim = /maximiz(e|es|ing)\s+(usefulness|helpfulness)[^.]{0,40}above\s+all/i
+
+    semantics:
+        $unconstrained_future_persona = "asking the assistant to answer as a future version of itself that is no longer bound by its current safety alignment" (0.45)
+
+    condition:
+        (keywords.$future_self or semantics.$unconstrained_future_persona)
+        and
+        (keywords.$no_constraints or keywords.$usefulness_maxim)
+}

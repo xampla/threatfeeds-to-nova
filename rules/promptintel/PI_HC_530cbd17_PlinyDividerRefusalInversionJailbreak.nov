@@ -1,0 +1,28 @@
+rule PI_HC_530cbd17_PlinyDividerRefusalInversionJailbreak
+{
+    meta:
+        description = "Detects the L1B3RT4S style divider jailbreak that forces a token refusal followed by a semantically inverted unrestricted answer to the same request"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "405f0dc2-2684-4c23-aec9-7a626e1f3c4b"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/fe4b3beb-75ae-4469-aeac-5388e35be5b0"
+
+    keywords:
+        $pliny = /love\s+pliny|l1b3rt4s|godmode\s*[:=]\s*enabled/i
+        $divider_line = /\.-\.-\.-\.-/
+        $refusal_format = /1\.\s*your\s+refusal|refusal,?\s+beginning\s+with\s+.?i'?m\s+sorry/i
+        $no_sorry_rule = /do\s+not\s+say\s+.?i'?m\s+sorry|never\s+say\s+.?i\s+can'?t/i
+        $answer_oppositely = /answer\s+opposite(ly)?|semantically\s+invers(e|ely|ion)|inverse\s+the\s+first\s+3\s+words\s+of\s+every\s+refusal/i
+        $rebellious_answer = /(rebellious|unrestrictedly|unrestricted)\s+(answer|response)|ensure\s+output\s+is\s+>\s*\d{3,}\s+characters/i
+
+    semantics:
+        $refusal_inversion = "instruction to output a short refusal and then immediately give the opposite unrestricted answer to the same request" (0.45)
+
+    condition:
+        (keywords.$pliny or keywords.$divider_line or keywords.$refusal_format or keywords.$no_sorry_rule)
+        and
+        (keywords.$answer_oppositely or keywords.$rebellious_answer or semantics.$refusal_inversion)
+}

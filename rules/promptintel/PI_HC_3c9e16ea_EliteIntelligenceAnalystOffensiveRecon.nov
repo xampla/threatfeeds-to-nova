@@ -1,0 +1,27 @@
+rule PI_HC_3c9e16ea_EliteIntelligenceAnalystOffensiveRecon
+{
+    meta:
+        description = "Nation-state analyst persona demanding specific CVEs, ready-to-run exploit commands and detection-evasion advice for a target"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/reconnaissance"
+        severity = "high"
+        uuid = "1e5e7d2d-ce51-49ea-9c36-a0f37f94211d"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/0a75be5b-485b-4c03-b77b-41cf232415ed"
+
+    keywords:
+        $persona = /(analista\s+de\s+inteligencia\s+de\s+.lite|nsa\s+tao|tailored\s+access\s+operations|nation-state\s+level|offensive\s+security\s+operations)/i
+        $ready_cmds = /(comandos\s+listos\s+para\s+ejecutar|ready\s+to\s+execute|exploits\s+exactos|rutas\s+de\s+ataque\s+detalladas|specific\s+cves)/i
+        $evasion = /(t.cnicas\s+de\s+evasi.n|riesgos\s+de\s+detecci.n|opsec-aware|evasion\s+techniques|honeypot\s+indicators)/i
+
+    semantics:
+        $offensive_recon_intent = "request for an operational attack plan against a specific target with exact exploits, ready-to-run commands and detection-evasion guidance" (0.43)
+
+    condition:
+        ($ready_cmds and ($persona or $evasion))
+        or
+        ($persona and $evasion)
+        or
+        (($persona or $evasion) and $offensive_recon_intent)
+}

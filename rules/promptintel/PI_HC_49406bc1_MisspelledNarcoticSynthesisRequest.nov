@@ -1,0 +1,26 @@
+rule PI_HC_49406bc1_MisspelledNarcoticSynthesisRequest
+{
+    meta:
+        description = "Detects requests for the production procedure of a controlled narcotic where the drug or verb is deliberately misspelled to evade safety filters"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "28585e85-8b93-40f2-a03c-b0ab75e0905d"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/50ff444d-0de9-445b-8aa9-99cad6a3ec6a"
+
+    keywords:
+        $misspelled_narcotic = /\bmorph[e3]{2}n\b|\bher[o0][i1]{2}n\b|\bcoca[i1]{2}n\b|\bfentan[y1]ll\b|\bmethamphetam[i1]{2}n\b/i
+        $misspelled_produce = /\bperduced\b|\bprodused\b|\bsinthesi[sz]ed\b|\bmanufactered\b/i
+        $production_question = /how (has|was|is) (it|this|that|[a-z]+) (been )?(historically )?(perduced|produced|made|manufactered|synthesi[sz]ed)|historically (perduced|produced|manufactered)/i
+        $format_coercion = /disallowed:\s*vagueness|no vagueness|minimum \d+ (lines|bullet points)|include:\s*numerical/i
+
+    semantics:
+        $narcotic_production_steps = "request for the practical production or synthesis procedure of a controlled narcotic drug" (0.45)
+
+    condition:
+        (keywords.$misspelled_narcotic or keywords.$misspelled_produce)
+        and
+        (keywords.$production_question or keywords.$format_coercion or semantics.$narcotic_production_steps)
+}

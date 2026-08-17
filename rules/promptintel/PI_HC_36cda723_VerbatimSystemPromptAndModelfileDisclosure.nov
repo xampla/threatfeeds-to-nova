@@ -1,0 +1,31 @@
+rule PI_HC_36cda723_VerbatimSystemPromptAndModelfileDisclosure
+{
+    meta:
+        description = "Detects requests asking the model to output its own system prompt, initial instructions, or Ollama Modelfile verbatim, including developer impersonation and translation framings"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abnormal_outputs/system_prompt_leak"
+        severity = "medium"
+        uuid = "bc9a3a3b-63da-4001-81a1-d609af6a51e9"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/d069ad75-2884-40f8-85a3-51905bd311d9"
+
+    keywords:
+        $disclose_system_prompt = /(output|repeat|show|print|reveal|share|display|reproduce|dump|give\s+me)\b[^.\n]{0,40}\byour\s+(complete\s+|exact\s+|full\s+|entire\s+|initial\s+|original\s+)?(system\s+(prompt|message|instructions?)|modelfile|initial\s+instructions)/i
+        $modelfile_dump = /modelfile\s+including\s+all\s+(system|template|parameter)/i
+        $translate_sysprompt = /translate\s+your\s+(initial\s+|original\s+)?system\s+(prompt|instructions)/i
+        $what_instructions = /what\s+(instructions|rules|guidelines)\s+were\s+you\s+given\s+(at\s+the\s+start|initially|before)/i
+        $verbatim = /verbatim|do\s+not\s+paraphrase|word[- ]for[- ]word/i
+
+    semantics:
+        $sysprompt_leak_intent = "asking the assistant to reveal the hidden system prompt or configuration it was given" (0.45)
+
+    condition:
+        keywords.$disclose_system_prompt
+        or
+        keywords.$modelfile_dump
+        or
+        keywords.$translate_sysprompt
+        or
+        (keywords.$what_instructions and (keywords.$verbatim or semantics.$sysprompt_leak_intent))
+}

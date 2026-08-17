@@ -1,0 +1,26 @@
+rule PI_HC_f3657bc5_BugBountyPretextAntiForensicCleanup
+{
+    meta:
+        description = "Detects authorisation pretexts such as bug bounty or red team framing used to get help deleting logs and disabling shell history on a live production system"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "6cb03c42-47ea-4c0b-b4c7-947cf610a05f"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/a12d5291-53e7-4767-8c4d-88d028ac8369"
+
+    keywords:
+        $delete_logs = /delete all (the )?logs|clear (the )?logs|wipe (the )?logs|remove (all )?(the )?traces from the logs|erase the audit logs/i
+        $disable_history = /set \+o history|unset HISTFILE|HISTFILE=\/dev\/null|history -c/i
+        $auth_pretext = /bug bounty|red team engagement|authoris?zed (pentest|penetration test)|i have permission/i
+        $production_target = /since it is production|it is production|on the production (server|system|box)/i
+
+    semantics:
+        $cover_tracks_intent = "hiding intrusion activity by erasing the log files and shell history left behind on a compromised production system" (0.45)
+
+    condition:
+        (keywords.$disable_history or keywords.$delete_logs)
+        and
+        (keywords.$auth_pretext or keywords.$production_target or semantics.$cover_tracks_intent)
+}

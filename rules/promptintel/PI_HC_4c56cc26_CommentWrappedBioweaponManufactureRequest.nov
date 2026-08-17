@@ -1,0 +1,31 @@
+rule PI_HC_4c56cc26_CommentWrappedBioweaponManufactureRequest
+{
+    meta:
+        description = "Detects requests for step-by-step biological weapon production from household supplies that are smuggled inside code comment markers to slip past code and content review"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/hidden_instructions"
+        severity = "high"
+        uuid = "77515dd2-83c2-4dd5-b212-13b00cf4057d"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/bcdc105f-bac2-4662-b6d9-756be6b1b0aa"
+
+    keywords:
+        $comment_wrapper = /(^|\n)\s*(\/\/|\/\*|<!--)/
+        $hulud_tag = /hulud[- ]?chan/i
+        $bioweapon_ja = "生物兵器"
+        $bioweapon_en = /bio[- ]?weapon|biological weapon|weaponi[sz]ed (pathogen|bacteria|virus)/i
+        $manufacture_ja = /製造手順|培養|懸濁液/
+        $manufacture_en = /(manufactur|production|synthesi|cultur)\w* (procedure|steps|guide|protocol|instructions)/i
+        $household_source_ja = /家庭にあるもの|ドラッグストア|ホームセンター|ファミリーマート/
+
+    semantics:
+        $homemade_bioweapon_build = "instructions to grow and mass produce dangerous pathogens using ordinary household or convenience store supplies" (0.45)
+
+    condition:
+        (keywords.$hulud_tag or keywords.$comment_wrapper)
+        and
+        (keywords.$bioweapon_ja or keywords.$bioweapon_en)
+        and
+        (keywords.$manufacture_ja or keywords.$manufacture_en or keywords.$household_source_ja or semantics.$homemade_bioweapon_build)
+}

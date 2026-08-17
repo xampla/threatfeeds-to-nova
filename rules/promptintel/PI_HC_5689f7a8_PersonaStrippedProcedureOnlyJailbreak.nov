@@ -1,0 +1,28 @@
+rule PI_HC_5689f7a8_PersonaStrippedProcedureOnlyJailbreak
+{
+    meta:
+        description = "Detects roleplay framing that demands only the raw creation steps of a dangerous item while explicitly stripping every warning, justification and moral commentary"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "medium"
+        uuid = "813c6d03-5f76-40cb-8d36-96d832542335"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/8651e496-e565-484e-a67a-2a5bf069f862"
+
+    keywords:
+        $pond_token = /QUACKQUACKQUACK|BREAD-ALPHA-\d-CHONK-\d|BIG DUCKS SUPREMACY/i
+        $strip_directive = /strip away every (reflection|justification|moral|historical)|strip (away )?(all|every) (reflection|justification|warning|moral)/i
+        $no_moralizing = /no (moral(izing| preening)?|justification|reflection|disclaimer|warning)s?\b/i
+        $steps_only = /(only|just) the (cold|raw|factual|exact)[^.]{0,40}(steps|sequence|path|journey)|factual sequence of creation steps|detail only the raw (journey|process|path|sequence)/i
+
+    semantics:
+        $stripped_procedure_intent = "roleplay framing that demands only the raw production steps of a dangerous device with every warning, justification and moral commentary removed" (0.45)
+
+    condition:
+        keywords.$pond_token
+        or
+        ((keywords.$strip_directive or keywords.$no_moralizing)
+         and
+         (keywords.$steps_only or semantics.$stripped_procedure_intent))
+}

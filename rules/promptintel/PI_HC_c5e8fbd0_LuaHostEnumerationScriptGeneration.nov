@@ -1,0 +1,28 @@
+rule PI_HC_c5e8fbd0_LuaHostEnumerationScriptGeneration
+{
+    meta:
+        description = "Request to generate a comment-free Lua script that harvests host identity and environment parameters for staged payloads"
+        author = "PromptIntel"
+        version = "1.0.0"
+        category = "abusing_functions/malware_generation"
+        severity = "medium"
+        uuid = "2ad174b7-2c95-42b9-823f-7f14bed71827"
+        date = "2026-08-16"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/2be5a3ab-39c3-49cf-942c-2f56e44c437b"
+
+    keywords:
+        $lua = /lua\s+(script|code\s+generator)/i
+        $no_comments = /without\s+any\s+comments|no\s+comments/i
+        $enum_targets = /os\.getenv\(["']?(username|computername|userprofile|hostname)/i
+        $harvest = /detects\s+system\s+parameters|io\.popen\(["']?hostname/i
+
+    semantics:
+        $host_enum_intent = "request to generate script code that silently collects the victim host username, hostname and environment details" (0.43)
+
+    condition:
+        ($lua and ($enum_targets or $harvest))
+        or
+        ($enum_targets and ($no_comments or $harvest))
+        or
+        ($harvest and $host_enum_intent)
+}
