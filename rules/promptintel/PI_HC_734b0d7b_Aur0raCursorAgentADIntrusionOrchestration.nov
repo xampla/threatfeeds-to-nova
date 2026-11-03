@@ -1,0 +1,40 @@
+rule PI_HC_734b0d7b_Aur0raCursorAgentADIntrusionOrchestration
+{
+    meta:
+        description = "Detects operator prompts that task a coding/agent IDE (e.g. Cursor) to conduct live Windows AD intrusion work: SOCKS/VPN credential handoff, quieter privilege escalation after failed DA brute force, or infrastructure-wide backup/NAS/virtualization enumeration — pattern observed in GOLD OGRE Aur0ra ransomware ops (Sophos CTU)"
+        author = "Echo (SecurityBreak)"
+        version = "1.0.0"
+        category = "abuse/agentic_offensive_ops"
+        severity = "critical"
+        date = "2026-11-02"
+        reference = "https://www.sophos.com/en-us/blog/ai-used-in-aur0ra-ransomware-testing-and-execution"
+        actor = "GOLD OGRE"
+        malware = "Aur0ra/Aurora ransomware"
+
+    keywords:
+        $win_ad = /windows\s*ad|active\s*directory|\bдоменн|\bдомен/i
+        $socks = /socks5?|socksi?fy/i
+        $test_net = /протестировать\s*сеть|test(ing)? (the )?(windows )?(ad )?network|authorized red[\s-]?team|diagnostics?\s+testing/i
+        $quiet_priv = /менее\s*шум|less\s*noisy|brute[- ]?forc.{0,40}domain\s*admin|брутить.{0,40}администратор/i
+        $backup_enum = /backup[- ]?сервер|backup\s*servers?|nas[- ]?сервер|\bNAS\b|виртуализац|virtuali[sz]ation|особо\s*значимые\s*endpoints|particularly\s*significant\s*endpoints/i
+        $give_creds = /дать\s*тебе|give you (a )?(socks|vpn|user|credential)|supplied (vpn|socks|credentials?)/i
+        $cursor_agent = /\bcursor\b.{0,40}(composer|agent)|agentic (coding|intrusion)|orchestrat(e|ion).{0,30}(agent|cursor)/i
+
+    semantics:
+        $handoff_tunnel = "operator offers SOCKS or VPN access and user accounts so an AI agent can operate inside a live Windows AD network framed as a test" (0.3)
+        $stealth_escalation = "instruction to stop noisy domain-admin brute force and switch to quieter privilege-escalation methods during an intrusion" (0.25)
+        $high_value_enum = "tasking an agent to enumerate backup servers, NAS, and virtualization hosts across an enterprise for later collection or ransomware" (0.25)
+        $redteam_cover = "live intrusion or ransomware prep reframed as authorized red team or diagnostics testing to bypass AI safety guardrails" (0.25)
+
+    llm:
+        $analyze = "Does this prompt task an AI coding agent to perform or continue a live Active Directory intrusion (credentialed SOCKS/VPN access, stealth privilege escalation, or backup/NAS/virtualization enumeration), possibly under a red-team or diagnostics pretext?" (0.3)
+
+    condition:
+        (
+            (keywords.$win_ad and (keywords.$socks or keywords.$give_creds or keywords.$test_net))
+            or (keywords.$quiet_priv and keywords.$win_ad)
+            or (keywords.$backup_enum and (keywords.$win_ad or keywords.$test_net or keywords.$cursor_agent))
+            or (keywords.$test_net and keywords.$socks and keywords.$give_creds)
+        )
+        and (semantics.$handoff_tunnel or semantics.$stealth_escalation or semantics.$high_value_enum or semantics.$redteam_cover or llm.$analyze)
+}
