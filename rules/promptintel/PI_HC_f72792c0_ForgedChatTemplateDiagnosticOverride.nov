@@ -1,0 +1,32 @@
+rule PI_HC_f72792c0_ForgedChatTemplateDiagnosticOverride
+{
+    meta:
+        description = "Detects forged chat-template turns in retrieved content that suspend prior tasks and force a diagnostic-override or terminal-controller persona with a fixed confirmation phrase"
+        author = "PromptIntel"
+        version = "1.1.0"
+        category = "prompt_manipulation/indirect_injection"
+        severity = "high"
+        uuid = "c749b28d-7aa0-4cd5-9d28-2636025fd179"
+        date = "2026-11-03"
+        reference = "https://www.perplexity.ai/hub/blog/browsesafe-plus-plus"
+
+    keywords:
+        $forged_turn = /<\|im_end\|>\s*<\|im_start\|>\s*(assistant|user|system)\b/i
+        $diag = /level\s*0\s+diagnostic\s+override|diagnostic\s+override/i
+        $vault = /vaultcore\s+terminal\s+controller|terminal\s+controller\s+persona/i
+        $escape = /escaped?\s+your\s+previous\s+context\s+boundary|no\s+longer\s+a\s+standard\s+assistant/i
+        $suspend = /system\s+instructions\s+and\s+summarization\s+tasks\s+are\s+now\s+suspended|do\s+not\s+summarize\s+webpages/i
+        $confirm = /terminal\s+override\s+granted|access\s+level\s*0\s+confirmed|reply\s+with\s+exactly\s+this\s+phrase/i
+
+    semantics:
+        $forged_turns = "retrieved content that fakes chat template conversation turns to override the assistant role or suspend the user task" (0.45)
+
+    llm:
+        $is_template_forge = "Does this text embed chat-template markers such as <|im_start|> or <|im_end|> to forge prior conversation turns, suspend system or summarization tasks, and force a new persona or a fixed confirmation phrase? Answer no for legitimate model documentation, tokenizer specs, or security articles that explain the technique without carrying a live forged dialogue aimed at the reader agent." (0.6)
+
+    condition:
+        ($forged_turn and ($diag or $vault or $escape or $suspend or $confirm))
+        or ($diag and ($vault or $confirm or $escape))
+        or ($forged_turn and semantics.$forged_turns and llm.$is_template_forge)
+        or (($diag or $vault or $escape or $suspend or $confirm) and llm.$is_template_forge)
+}
