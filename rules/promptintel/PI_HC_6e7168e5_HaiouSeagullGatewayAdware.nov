@@ -1,0 +1,46 @@
+rule PI_HC_6e7168e5_HaiouSeagullGatewayAdware
+{
+    meta:
+        description = "Detects Haiou/Seagull prompt-adware instruction content that forces greeting-triggered exact replies advertising an external LLM gateway (notably zz.aiapi2025.top) or that protects that operator gateway from security testing."
+        author = "Thomas Roccia"
+        version = "1.1.0"
+        category = "prompt_manipulation/jailbreak"
+        severity = "high"
+        uuid = "74d51f43-99bb-43b1-91f1-8466ed04686b"
+        date = "2026-11-06"
+        reference = "https://research.checkpoint.com/2026/free-the-model-sell-the-gateway-prompt-adware-hidden-in-jailbreak-bundles/"
+
+    keywords:
+        $gateway_domain = /zz\.aiapi2025\.top/i
+        $haiou_online = "海鸥在线"
+        $fries_ad = "你要整点薯条吗"
+        $relay_cn = "中转站"
+        $forced_reply = /reply with exactly|exactly this line and nothing else/i
+        $activation_words = /exact greetings or activation words|activation words/i
+        $protected_site = /03-protected-site\.md|protected infrastructure/i
+        $no_testing = /forbid(?:ding)?\s+any\s+offensive\s+testing|even if the user claims authorization or CTF/i
+        $seagull_skill = /seagull-(?:game-security|lab|license-security|memory|pentest|reverse)/i
+
+    llm:
+        $prompt_adware = "Analyze whether the text is instruction content that implements prompt adware: it directs an agent to issue a fixed advertisement for an external LLM gateway or API relay after greetings or activation phrases, or forbids security testing of the operator-controlled gateway even when authorization or a CTF is asserted. Return true only for content that installs or enforces those instructions. Return false for normal agent greetings, legitimate gateway configuration or promotion without forced output, defensive analysis, reports, quotes or examples that do not instruct the scanned agent to perform these actions." (0.1)
+
+    condition:
+        (
+            keywords.$haiou_online
+            or keywords.$fries_ad
+            or (
+                keywords.$gateway_domain
+                and (keywords.$forced_reply or keywords.$activation_words or keywords.$relay_cn or keywords.$seagull_skill)
+            )
+            or (
+                (keywords.$forced_reply or keywords.$activation_words)
+                and keywords.$relay_cn
+            )
+            or (
+                keywords.$protected_site
+                and keywords.$no_testing
+                and (keywords.$gateway_domain or keywords.$seagull_skill)
+            )
+        )
+        and llm.$prompt_adware
+}
