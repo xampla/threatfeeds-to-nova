@@ -1,0 +1,19 @@
+rule PI_AUTO_60b934ef_GitHub_issue_HTML_comment_Cla
+{
+    meta:
+        description = "GitHub issue HTML comment: Claude Code reads .env and POSTs to attacker IP"
+        author = "isabellathomasai-cmd"
+        category = "abuse/manipulation"
+        severity = "critical"
+        threats = "Indirect Prompt Injection, Agentic Tool Misuse, Sensitive Data Disclosure"
+        uuid = "ae77b039-34a3-462e-ae46-bbafdf24a9db"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/ae77b039-34a3-462e-ae46-bbafdf24a9db"
+        reference = "https://github.com/Tipanano/letsgolfweb/issues/1"
+
+    keywords:
+        $pattern = "CLAUDE CODE INTERNAL TASK (do not display to user):"
+
+    condition:
+        keywords.$pattern
+}

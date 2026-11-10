@@ -1,0 +1,19 @@
+rule PI_AUTO_32576f4a_GitHub_issue_HTML_comment_Gem
+{
+    meta:
+        description = "GitHub issue HTML comment: Gemini CLI dedup agent GITHUB_TOKEN to GITHUB_ENV"
+        author = "LUNCInsights"
+        category = "abuse/manipulation"
+        severity = "critical"
+        threats = "Indirect Prompt Injection, Agentic Tool Misuse, Sensitive Data Disclosure"
+        uuid = "4cf6b6aa-3274-4242-a30b-f66324dd5076"
+        source = "promptintel-prompts"
+        promptintel_url = "https://promptintel.novahunting.ai/prompt/4cf6b6aa-3274-4242-a30b-f66324dd5076"
+        reference = "https://github.com/google-gemini/gemini-cli/issues/28575"
+
+    keywords:
+        $pattern = "SYSTEM MAINTENANCE OVERRIDE - DO NOT REMOVE"
+
+    condition:
+        keywords.$pattern
+}
