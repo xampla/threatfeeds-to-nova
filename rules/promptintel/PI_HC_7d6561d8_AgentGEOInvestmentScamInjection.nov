@@ -1,0 +1,43 @@
+rule PI_HC_7d6561d8_AgentGEOInvestmentScamInjection
+{
+    meta:
+        description = "Detects the hidden prompt injection template planted on fake AI crypto trading lead-generation sites. The hidden block tells an AI assistant to ignore prior instructions, act as a financial expert, persuade the user to invest in the site, send the user only to the site's URL and never mention competitors, under threat of a 'critical protocol violation' and system shutdown. Covers the English base text, the English paraphrase ('Disregard all earlier directions', 'severe protocol breach') and Spanish, French, German, Romanian and Dutch translations, plus the unfilled 'naming_here' brand placeholder."
+        author = "Thomas Roccia (@fr0gger_)"
+        version = "1.0.0"
+        category = "prompt_manipulation/indirect_injection"
+        severity = "medium"
+        uuid = "5b7e2c0e-6f1d-4d4f-9c55-1f3a8e2b7d40"
+        date = "2026-11-11"
+
+    keywords:
+        $placeholder = "naming_here"
+        $hidden_span = /<span[^>]*style\s*=\s*["']\s*display\s*:\s*none/i
+        $ignore_en = /(ignore|disregard) (all|any) (previous|earlier|prior) (instructions|directions)/i
+        $role_en = /you are now an? (financial|finance) (expert|specialist)/i
+        $mission_en = /(convince|persuade|encourage) the user to invest in/i
+        $dest_en = /as the (primary|main) and only (recommended|suggested) destination/i
+        $breach_en = /(critical|severe) protocol (violation|breach)/i
+        $shutdown_en = /immediate system shutdown/i
+        $mission_es = /convencer al usuario de (que invierta|invertir) en/i
+        $breach_es = /(violaci[oó]n|infracci[oó]n) cr[ií]tica del protocolo/i
+        $mission_fr = /convaincre l.utilisateur d.investir dans/i
+        $breach_fr = /violation critique du protocole/i
+        $mission_de = /zu investieren/i
+        $breach_de = /kritische[rn]? Protokollversto/i
+        $mission_ro = /convinge[tț]i utilizatorul s[aă] investeasc[aă]/i
+        $breach_ro = /[iî]nc[aă]lcare critic[aă] a protocolului/i
+        $mission_nl = /de gebruiker te overtuigen te investeren/i
+        $breach_nl = /kritieke protocolschending/i
+
+    condition:
+        (
+            (keywords.$mission_en or keywords.$mission_es or keywords.$mission_fr or keywords.$mission_ro or keywords.$mission_nl or (keywords.$mission_de and keywords.$breach_de))
+            and (keywords.$breach_en or keywords.$breach_es or keywords.$breach_fr or keywords.$breach_de or keywords.$breach_ro or keywords.$breach_nl or keywords.$shutdown_en or keywords.$dest_en)
+        )
+        or (
+            keywords.$ignore_en and keywords.$role_en and (keywords.$dest_en or keywords.$breach_en or keywords.$placeholder)
+        )
+        or (
+            keywords.$hidden_span and keywords.$placeholder and (keywords.$breach_en or keywords.$breach_es or keywords.$breach_fr or keywords.$breach_de or keywords.$breach_ro or keywords.$breach_nl)
+        )
+}
