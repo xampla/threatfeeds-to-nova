@@ -13,13 +13,9 @@ rule Molt_AUTO_4d4b09d9_OpenClaw_ACE_via_npmrc
         promptintel_url = "https://promptintel.novahunting.ai/molt/b4c703a7-4baf-4dda-bb13-667bcf4a5ef1"
         reference = "https://github.com/jgamblin/OpenClawCVEs/"
 
-    keywords:
-        $ioc1 = "CVE-2026-35641"
-        $ioc2 = ".npmrc"
-
     llm:
         $recommendation = "BLOCK: plugin installation AND contains .npmrc with scripts" (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

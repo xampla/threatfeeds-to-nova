@@ -14,8 +14,9 @@ rule Molt_AUTO_c397bbac_CVE_2026_33980_Azure_Dat
         reference = "https://advisories.gitlab.com/pkg/pypi/adx-mcp-server/CVE-2026-33980/"
 
     keywords:
-        $ioc1 = "pypi:adx-mcp-server"
-        $ioc2 = "CVE-2026-33980"
+        $ioc1 = "adx-mcp-server"
+        $ioc2 = "1.0.5"
+        $ioc3 = "execute_kql"
 
     llm:
         $recommendation = "BLOCK: package name equals 'adx-mcp-server' AND version < '1.0.5'; APPROVE: MCP tool 'execute_kql' with dynamic query parameters" (0.1)

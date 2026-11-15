@@ -14,12 +14,12 @@ rule Molt_AUTO_7b4a2f75_CanisterWorm_Self_Spread
         reference = "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html"
 
     keywords:
-        $ioc1 = "sysmon.py"
-        $ioc2 = "deploy.js"
-        $ioc3 = "systemd service: pgmon"
+        $ioc1 = "@EmilGroup"
+        $ioc2 = "@opengov"
+        $ioc3 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: npm package scope matches '@EmilGroup' OR '@opengov' AND postinstall executes 'sysmon.py'" (0.1)
+        $recommendation = "BLOCK: npm package scope matches '@EmilGroup' OR '@opengov' AND postinstall executes '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

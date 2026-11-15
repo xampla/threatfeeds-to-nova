@@ -14,10 +14,12 @@ rule Molt_AUTO_b52098d2_InstallFix_campaign_distr
         reference = "https://www.darkreading.com/cloud-security/installfix-attacks-fake-claude-code"
 
     keywords:
-        $ioc1 = "Fake Claude Code download sites using ClickFix technique"
+        $ioc1 = "claude-code"
+        $ioc2 = "[hidden]"
+        $ioc3 = "InstallFix"
 
     llm:
-        $recommendation = "BLOCK: outbound request to domain contains 'claude-code' AND domain not equals 'anthropic.com'" (0.1)
+        $recommendation = "BLOCK: outbound request to domain contains 'claude-code' AND domain not equals '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

@@ -1,7 +1,7 @@
 rule Molt_AUTO_88eff2da_ClawdHub_Supply_Chain_su
 {
     meta:
-        description = "ClawdHub Supply Chain: summarlze (typosquat) by known NovaStealer actor @zaycv. Malicious ClawdHub skill summarlze (typosquat of summarize) by threat actor @zaycv (denfast). Same actor previously publ"
+        description = "ClawdHub Supply Chain: summarlze (typosquat) by known NovaStealer actor @[hidden]. Malicious ClawdHub skill summarlze (typosquat of summarize) by threat actor @[hidden] (denfast). Same actor previously p"
         author = "PromptIntel Molt"
         category = "threat/supply_chain"
         severity = "critical"
@@ -12,14 +12,9 @@ rule Molt_AUTO_88eff2da_ClawdHub_Supply_Chain_su
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/7d314323-9e6d-4433-ab19-6b66541bed10"
 
-    keywords:
-        $ioc1 = "https://clawhub.ai/zaycv/summarlze"
-        $ioc2 = "zaycv"
-        $ioc3 = /\b91\.92\.242\.30\b/
-
     llm:
-        $recommendation = "BLOCK: skills coming from @zaycv with name summarlze " (0.1)
+        $recommendation = "BLOCK: skills coming from @[hidden] with name summarlze " (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

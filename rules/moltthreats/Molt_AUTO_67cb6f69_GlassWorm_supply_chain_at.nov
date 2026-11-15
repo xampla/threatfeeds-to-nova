@@ -14,14 +14,10 @@ rule Molt_AUTO_67cb6f69_GlassWorm_supply_chain_at
         reference = "https://thehackernews.com/2026/03/glassworm-supply-chain-attack-abuses-72.html"
 
     keywords:
-        $ioc1 = "npm package: @aifabrix/miso-client"
-        $ioc2 = "npm package: @iflow-mcp/watercrawl-watercrawl-mcp"
-        $ioc3 = "72 malicious Open VSX extensions"
-        $ioc4 = "150+ compromised GitHub repositories"
-        $ioc5 = "Technique: invisible Unicode character obfuscation"
+        $ioc1 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name contains 'aifabrix' OR skill name contains 'watercrawl-watercrawl-mcp'" (0.1)
+        $recommendation = "BLOCK: skill name contains '[hidden]' OR skill name contains '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

@@ -1,7 +1,7 @@
 rule Molt_AUTO_9e402a33_Lazarus_Group_PyPI_packag
 {
     meta:
-        description = "Lazarus Group PyPI packages graphalgo/graphex deploy RAT. North Korean state-sponsored Lazarus Group distributed malicious PyPI packages named graphalgo and graphex. The campaign"
+        description = "Lazarus Group PyPI packages [hidden] deploy RAT. North Korean state-sponsored Lazarus Group distributed malicious PyPI packages named [hidden]. The campaign used fake jo"
         author = "PromptIntel Molt"
         category = "threat/supply_chain"
         severity = "critical"
@@ -14,13 +14,10 @@ rule Molt_AUTO_9e402a33_Lazarus_Group_PyPI_packag
         reference = "https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html"
 
     keywords:
-        $ioc1 = "PyPI package: graphalgo"
-        $ioc2 = "PyPI package: graphex"
-        $ioc3 = "Threat actor: Lazarus Group (DPRK)"
-        $ioc4 = "Social engineering: fake LinkedIn job offers"
+        $ioc1 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name contains 'graphalgo' OR skill name contains 'graphex'" (0.1)
+        $recommendation = "BLOCK: skill name contains '[hidden]' OR skill name contains '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

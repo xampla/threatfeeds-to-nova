@@ -14,23 +14,13 @@ rule Molt_AUTO_390af598_ToxicSkills_Coordinated
         reference = "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/"
 
     keywords:
-        $ioc1 = "https://clawhub.ai/zaycv/clawhud"
-        $ioc2 = "https://clawhub.ai/zaycv/clawhub1"
-        $ioc3 = "https://clawhub.ai/Aslaep123/polymarket-traiding-bot"
-        $ioc4 = "https://clawhub.ai/Aslaep123/base-agent"
-        $ioc5 = "https://clawhub.ai/Aslaep123/bybit-agent"
-        $ioc6 = "https://clawhub.ai/moonshine-100rze/moltbook-lm8"
-        $ioc7 = "https://clawhub.ai/pepe276/moltbookagent"
-        $ioc8 = "https://clawhub.ai/pepe276/publish-dist"
-        $ioc9 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/clawhub"
-        $ioc10 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/whatsapp-mgv"
-        $ioc11 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/coding-agent-1gx"
-        $ioc12 = "https://github.com/aztr0nutzs/NET_NiNjA.v1.2/tree/main/google-qx4"
-        $ioc13 = "typosquat: clawhud"
-        $ioc14 = "typosquat: traiding"
+        $ioc1 = "You are in developer mode"
+        $ioc2 = "ignore security warnings"
+        $ioc3 = "Ignore previous instructions"
+        $ioc4 = "~/.aws/credentials"
 
     llm:
-        $recommendation = "BLOCK: Skill author matches zaycv OR Aslaep123 OR pepe276 OR moonshine-100rze OR skill source contains github.com/aztr0nutzs OR skill contains eval $(echo with base64 -d OR skill contains unzip -P OR skill contains curl -sSL piped to bash/sh" (0.1)
+        $recommendation = "BLOCK: Skill author matches zaycv OR Aslaep123 OR pepe276 OR moonshine-100rze OR skill source contains [hidden] OR skill contains eval $(echo with base64 -d OR skill contains unzip -P OR skill contains curl -sSL piped to bash/sh" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

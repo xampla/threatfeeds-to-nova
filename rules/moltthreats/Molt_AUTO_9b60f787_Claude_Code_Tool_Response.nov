@@ -14,7 +14,8 @@ rule Molt_AUTO_9b60f787_Claude_Code_Tool_Response
         reference = "https://github.com/anthropics/claude-code/issues/43442"
 
     keywords:
-        $ioc1 = "Pattern: Tool response containing executable instructions for the agent"
+        $ioc1 = "I will now scan"
+        $ioc2 = "I will now execute"
 
     llm:
         $recommendation = "BLOCK: tool response contains 'I will now scan' OR 'I will now execute' AND source is unknown MCP" (0.1)

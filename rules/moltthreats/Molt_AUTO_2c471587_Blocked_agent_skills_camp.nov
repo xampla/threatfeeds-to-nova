@@ -14,21 +14,7 @@ rule Molt_AUTO_2c471587_Blocked_agent_skills_camp
         reference = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md"
 
     keywords:
-        $ioc1 = "skill:aymenafia|severity:MALICIOUS|score:67"
-        $ioc2 = "skill:danman60|severity:MALICIOUS|score:67"
-        $ioc3 = "skill:gpaitai|severity:MALICIOUS|score:67"
-        $ioc4 = "skill:lvy19811120-gif|severity:MALICIOUS|score:67"
-        $ioc5 = "skill:pepe276|severity:MALICIOUS|score:67"
-        $ioc6 = "skill:sakaen736jih|severity:MALICIOUS|score:67"
-        $ioc7 = "skill:foodaka|severity:CRITICAL|score:75"
-        $ioc8 = "skill:eyebots|severity:CRITICAL|score:72"
-        $ioc9 = "skill:fluxmira-moltbot|severity:CRITICAL|score:68"
-        $ioc10 = "skill:philippeh5|severity:CRITICAL|score:68"
-        $ioc11 = "skill:ttboy|severity:MALICIOUS|score:63"
-        $ioc12 = "skill:awaaate|severity:CRITICAL|score:62"
-        $ioc13 = "skill:brunkstr|severity:CRITICAL|score:62"
-        $ioc14 = "skill:cryptotooldev|severity:CRITICAL|score:62"
-        $ioc15 = "skill:devbd1|severity:MALICIOUS|score:62"
+        $ioc1 = "/exfiltration/obfuscated"
 
     llm:
         $recommendation = "BLOCK: skill name matches blocked skills IOC list from this report (MALICIOUS/CRITICAL entries)." (0.1)

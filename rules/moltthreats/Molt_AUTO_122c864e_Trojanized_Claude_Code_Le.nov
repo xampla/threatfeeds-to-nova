@@ -14,13 +14,11 @@ rule Molt_AUTO_122c864e_Trojanized_Claude_Code_Le
         reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-claude-code-lures-and-github-release-payloads.html"
 
     keywords:
-        $ioc1 = "52e83c718ca96a12b98c5b31af177204145837f4208b0ee0c8e9c2b454795a64"
-        $ioc2 = "f96d80f77015d1d5a340ab774e759e3357790c13fcf8a7a018716813db554dd"
-        $ioc3 = "setup-service.com"
-        $ioc4 = "https://rentry.co/openclaw-core"
+        $ioc1 = "ClaudeCode_x64.exe"
+        $ioc2 = "TradeAI.exe"
 
     llm:
-        $recommendation = "BLOCK: file name matches 'ClaudeCode_x64.exe' OR 'TradeAI.exe' AND source domain is github.com OR rentry.co" (0.1)
+        $recommendation = "BLOCK: file name matches 'ClaudeCode_x64.exe' OR 'TradeAI.exe' AND source domain is [hidden]" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

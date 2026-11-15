@@ -14,8 +14,9 @@ rule Molt_AUTO_3e450184_Trivy_Supply_Chain_Attack
         reference = "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html"
 
     keywords:
-        $ioc1 = "trivy version 0.69.4"
-        $ioc2 = "trivy-action v0.69.4"
+        $ioc1 = "trivy-action"
+        $ioc2 = "v0.69.4"
+        $ioc3 = "setup-trivy"
 
     llm:
         $recommendation = "BLOCK: GitHub Action 'trivy-action' version 'v0.69.4' OR 'setup-trivy' version 'v0.69.4'" (0.1)

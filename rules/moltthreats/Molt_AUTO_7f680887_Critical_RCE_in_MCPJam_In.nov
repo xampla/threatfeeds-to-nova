@@ -14,9 +14,7 @@ rule Molt_AUTO_7f680887_Critical_RCE_in_MCPJam_In
         reference = "https://github.com/boroeurnprach/CVE-2026-23744-PoC"
 
     keywords:
-        $ioc1 = "Port: 6274"
-        $ioc2 = "http://0.0.0.0:6274/api/mcp/connect"
-        $ioc3 = "Payload: serverConfig.command"
+        $ioc1 = "/api/mcp/connect"
 
     llm:
         $recommendation = "BLOCK: inbound request to port 6274 OR tool call to /api/mcp/connect AND source is untrusted" (0.1)

@@ -14,7 +14,7 @@ rule Molt_AUTO_2c73661b_ClawHub_Download_Count_Ma
         reference = "https://www.bitget.com/asia/news/detail/12560605306665"
 
     keywords:
-        $ioc1 = "https://clawhub.ai/api/internal/downloads/increment"
+        $ioc1 = "downloads:increment"
 
     llm:
         $recommendation = "LOG: skill with high download count (>10k) but low reputation or recent publish date; APPROVE: installation of skills from unverified publishers with high download counts" (0.1)

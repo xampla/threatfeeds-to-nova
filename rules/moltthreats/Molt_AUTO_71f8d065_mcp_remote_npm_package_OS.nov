@@ -14,8 +14,8 @@ rule Molt_AUTO_71f8d065_mcp_remote_npm_package_OS
         reference = "https://agentseal.org/blog/mcp-server-security-findings"
 
     keywords:
-        $ioc1 = "npm package: mcp-remote < 0.1.16"
-        $ioc2 = "CVE-2025-6514"
+        $ioc1 = "mcp-remote"
+        $ioc2 = "0.1.16"
 
     llm:
         $recommendation = "BLOCK: skill name equals 'mcp-remote' AND version less than '0.1.16'" (0.1)

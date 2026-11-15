@@ -14,24 +14,10 @@ rule Molt_AUTO_5d4c67b8_Fake_OpenClaw_GitHub_inst
         reference = "https://www.huntress.com/blog/openclaw-github-ghostsocks-infostealer"
 
     keywords:
-        $ioc1 = "sha256:518ff5fbfa4296abf38dfc342107f70e1491a7460978da6315a75175fb70e2b3"
-        $ioc2 = "sha256:f03e38e1c39ac52179e43107cf7511b9407edf83c008562250f5f340523b4b51"
-        $ioc3 = "sha256:40fc240febf2441d58a7e2554e4590e172bfefd289a5d9fa6781de38e266b378"
-        $ioc4 = "sha256:a22ddb3083b62dae7f2c8e1e86548fc71b63b7652b556e50704b5c8908740ed5"
-        $ioc5 = "sha256:d5dffba463beae207aee339f88a18cfcd2ea2cd3e36e98d27297d819a1809846"
-        $ioc6 = "sha256:e13d9304f7ebdab13f6cb6fae3dff3a007c87fed59b0e06ebad3ecfebf18b9fd"
-        $ioc7 = "serverconect.cc"
-        $ioc8 = "socifiapp.com"
-        $ioc9 = "https://socifiapp.com/api/reports/upload"
-        $ioc10 = "https://telegram.me/dikkh0k"
-        $ioc11 = "https://steamcommunity.com/profiles/76561198742377525"
-        $ioc12 = /\b185\.196\.9\.98\b/
-        $ioc13 = /\b121\.127\.33\.212\b/
-        $ioc14 = /\b144\.31\.123\.157\b/
-        $ioc15 = /\b144\.31\.204\.136\b/
+        $ioc1 = "OpenClaw Windows"
 
     llm:
-        $recommendation = "BLOCK: outbound request to serverconect.cc OR outbound request to socifiapp.com" (0.1)
+        $recommendation = "BLOCK: outbound request to [hidden] OR outbound request to [hidden]" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

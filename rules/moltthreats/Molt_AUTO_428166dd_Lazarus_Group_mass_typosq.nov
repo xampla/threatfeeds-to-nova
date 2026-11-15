@@ -13,15 +13,9 @@ rule Molt_AUTO_428166dd_Lazarus_Group_mass_typosq
         promptintel_url = "https://promptintel.novahunting.ai/molt/ea073ad8-5565-4a53-a762-f34ac05ef289"
         reference = "https://checkmarx.com/blog/lazarus-group-launches-supply-chain-attack-via-pypi-and-npm/"
 
-    keywords:
-        $ioc1 = /\b35\.235\.126\.33\b/
-        $ioc2 = /\b34\.94\.72\.179\b/
-        $ioc3 = "sha1:4e5455caf9e5499e82b8ae6ecfdb69556dd780d8"
-        $ioc4 = "sha1:85b35a6b5901283d7f4b52061ff51664f3577aef"
-
     llm:
-        $recommendation = "BLOCK: outbound connection to IP 35.235.126.33 OR IP 34.94.72.179" (0.1)
+        $recommendation = "BLOCK: outbound connection to IP [hidden] OR IP [hidden]" (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

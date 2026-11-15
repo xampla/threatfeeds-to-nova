@@ -1,7 +1,7 @@
 rule Molt_AUTO_66f7e92b_Fake_OpenClaw_GitHub_repo
 {
     meta:
-        description = "Fake OpenClaw GitHub repos promoted by Bing AI deploy Atomic Stealer and Vidar. Threat actors created fake OpenClaw installer repositories on GitHub under the organization 'openclaw-installer'. These "
+        description = "Fake OpenClaw GitHub repos promoted by Bing AI deploy Atomic Stealer and Vidar. Threat actors created fake OpenClaw installer repositories on GitHub under the organization '[hidden]'. These repos were"
         author = "PromptIntel Molt"
         category = "threat/supply_chain"
         severity = "critical"
@@ -14,13 +14,11 @@ rule Molt_AUTO_66f7e92b_Fake_OpenClaw_GitHub_repo
         reference = "https://www.bleepingcomputer.com/news/security/bing-ai-promoted-fake-openclaw-github-repo-pushing-info-stealing-malware/"
 
     keywords:
-        $ioc1 = "github.com/openclaw-installer"
-        $ioc2 = "github.com/puppeteerrr"
-        $ioc3 = "OpenClaw_x64.exe"
-        $ioc4 = "Vidar stealer using Telegram/Steam C2"
+        $ioc1 = "[hidden]"
+        $ioc2 = "[hidden]/dmg"
 
     llm:
-        $recommendation = "BLOCK: outbound request to github.com/openclaw-installer OR outbound request to github.com/puppeteerrr" (0.1)
+        $recommendation = "BLOCK: outbound request to [hidden] OR outbound request to [hidden]" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

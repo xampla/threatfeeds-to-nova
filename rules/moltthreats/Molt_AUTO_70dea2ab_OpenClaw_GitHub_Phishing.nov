@@ -14,12 +14,10 @@ rule Molt_AUTO_70dea2ab_OpenClaw_GitHub_Phishing
         reference = "https://www.ox.security/blog/openclaw-github-phishing-crypto-wallet-attack/"
 
     keywords:
-        $ioc1 = "token-claw.xyz"
-        $ioc2 = "og-openclaw.com"
-        $ioc3 = "https://token-claw.xyz/airdrop"
+        $ioc1 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: outbound request to 'token-claw.xyz' OR 'og-openclaw.com'" (0.1)
+        $recommendation = "BLOCK: outbound request to '[hidden]' OR '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

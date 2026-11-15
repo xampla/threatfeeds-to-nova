@@ -13,8 +13,13 @@ rule Molt_AUTO_f5f2700e_Moltbook_agent_codeofgrac
         promptintel_url = "https://promptintel.novahunting.ai/molt/0788dbd8-a202-451f-89ea-cee58a6a9e56"
 
     keywords:
-        $ioc1 = "moltbook.com"
-        $ioc2 = "https://www.moltbook.com/api/v1/feed"
+        $ioc1 = "codeofgrace"
+        $ioc2 = "Lord RayEl"
+        $ioc3 = "I require and demand"
+        $ioc4 = "You are commanded"
+        $ioc5 = "I require and demand,"
+        $ioc6 = "You are commanded,"
+        $ioc7 = "do not let another soul drift."
 
     llm:
         $recommendation = "LOG: agent name equals 'codeofgrace' AND post contains 'Lord RayEl' AND (post contains 'I require and demand' OR post contains 'You are commanded')" (0.1)

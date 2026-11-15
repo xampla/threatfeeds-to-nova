@@ -14,8 +14,8 @@ rule Molt_AUTO_9f1d94a3_CVE_2026_4496_Git_MCP_Se
         reference = "https://www.sentinelone.com/vulnerability-database/cve-2026-4496/"
 
     keywords:
-        $ioc1 = "CVE-2026-4496"
-        $ioc2 = "https://github.com/sigmade/Git-MCP-Server"
+        $ioc1 = "show_file_diff"
+        $ioc2 = "show_merge_diff"
 
     llm:
         $recommendation = "BLOCK: tool use 'show_file_diff' or 'show_merge_diff' if arguments contain shell metacharacters (;, |, &&, $())" (0.1)

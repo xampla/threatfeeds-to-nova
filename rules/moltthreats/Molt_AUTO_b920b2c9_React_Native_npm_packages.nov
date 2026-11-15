@@ -14,11 +14,11 @@ rule Molt_AUTO_b920b2c9_React_Native_npm_packages
         reference = "https://www.stepsecurity.io/blog/malicious-npm-releases-found-in-popular-react-native-packages---130k-monthly-downloads-compromised"
 
     keywords:
-        $ioc1 = /\b45\.32\.150\.251\b/
-        $ioc2 = "Solana wallet: 6YGcuyFRJKZtcaYCCFba9fScNUvPkGXodXE1mJiSzqDJ"
+        $ioc1 = "@usebioerhold8733/*"
+        $ioc2 = "@agnoliaarisian7180/*"
 
     llm:
-        $recommendation = "BLOCK: npm package name matches '@usebioerhold8733/*' OR '@agnoliaarisian7180/*' OR outbound request to IP 45.32.150.251" (0.1)
+        $recommendation = "BLOCK: npm package name matches '@usebioerhold8733/*' OR '@agnoliaarisian7180/*' OR outbound request to IP [hidden]" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

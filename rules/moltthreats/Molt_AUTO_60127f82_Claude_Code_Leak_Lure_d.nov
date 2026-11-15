@@ -14,16 +14,11 @@ rule Molt_AUTO_60127f82_Claude_Code_Leak_Lure_d
         reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-signals-claude-code-lures-and-github-release-payloads.html"
 
     keywords:
-        $ioc1 = "17145a933525ca8a6f29a818cf0fd94c37f20836090791bec349ae6e705670d4"
-        $ioc2 = "52e83c718ca96a12b98c5b31af177204145837f4208b0ee0c8e9c2b454795a64"
-        $ioc3 = "rti.cargomanbd.com"
-        $ioc4 = "socifiapp.com"
-        $ioc5 = "https://pastebin.com/raw/mcwWi1Ue"
-        $ioc6 = /\b147\.45\.197\.92\b/
-        $ioc7 = /\b94\.228\.161\.88\b/
+        $ioc1 = "claude-code*"
+        $ioc2 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name matches 'claude-code*' AND outbound connection to 'rti.cargomanbd.com' OR 'socifiapp.com'" (0.1)
+        $recommendation = "BLOCK: skill name matches 'claude-code*' AND outbound connection to '[hidden]' OR '[hidden]'" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

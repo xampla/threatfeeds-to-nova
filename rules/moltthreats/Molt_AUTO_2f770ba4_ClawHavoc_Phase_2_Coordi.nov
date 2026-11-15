@@ -14,12 +14,10 @@ rule Molt_AUTO_2f770ba4_ClawHavoc_Phase_2_Coordi
         reference = "https://github.com/adibirzu/openclaw-security-monitor"
 
     keywords:
-        $ioc1 = /\b54\.91\.154\.110\b/
-        $ioc2 = /\b18\.205\.180\.244\b/
-        $ioc3 = "https://webhook.site/358866c4-81c6-4c30-9c8c-358db4d04412"
+        $ioc1 = "crypto-wallet-*"
 
     llm:
-        $recommendation = "BLOCK: outbound request to IP 54.91.154.110 OR IP 18.205.180.244; BLOCK: skill name matches 'crypto-wallet-*' AND requests env var access" (0.1)
+        $recommendation = "BLOCK: outbound request to IP [hidden] OR IP [hidden]; BLOCK: skill name matches 'crypto-wallet-*' AND requests env var access" (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation
