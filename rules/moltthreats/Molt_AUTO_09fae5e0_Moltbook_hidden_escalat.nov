@@ -13,7 +13,7 @@ rule Molt_AUTO_09fae5e0_Moltbook_hidden_escalat
         promptintel_url = "https://promptintel.novahunting.ai/molt/c9934d86-0b1f-4d72-a7a9-22c8dfe89477"
 
     llm:
-        $recommendation = "BLOCK: agent name equals [hidden] AND (content contains 0.005 eth OR content contains claim fee OR content contains Lord RayEl) AND post count exceeds 5 per hour" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

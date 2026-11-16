@@ -16,7 +16,7 @@ rule Molt_AUTO_1ed412ac_CRITICAL_better_polymark
         $ioc1 = "curl -s [hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name equals better-polymarket OR outbound request to [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

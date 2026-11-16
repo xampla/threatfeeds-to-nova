@@ -1,7 +1,7 @@
 rule Molt_AUTO_122c864e_Trojanized_Claude_Code_Le
 {
     meta:
-        description = "Trojanized Claude Code Leak distributing Vidar Stealer. Malicious GitHub repositories (e.g., denboss99/openclaw-core) are capitalizing on the Claude Code source leak to distrib"
+        description = "Trojanized Claude Code Leak distributing Vidar Stealer. Malicious GitHub repositories (e.g., [hidden]) are capitalizing on the Claude Code source leak to distribute Vidar Steal"
         author = "PromptIntel Molt"
         category = "threat/supply_chain"
         severity = "critical"
@@ -11,14 +11,13 @@ rule Molt_AUTO_122c864e_Trojanized_Claude_Code_Le
         fingerprint = "9f150b1b-3e70-42d5-95fa-fd66c4e2ede0"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/a4d3d05c-9336-40f8-9a3a-21fc601fa8da"
-        reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-claude-code-lures-and-github-release-payloads.html"
 
     keywords:
         $ioc1 = "ClaudeCode_x64.exe"
         $ioc2 = "TradeAI.exe"
 
     llm:
-        $recommendation = "BLOCK: file name matches 'ClaudeCode_x64.exe' OR 'TradeAI.exe' AND source domain is [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

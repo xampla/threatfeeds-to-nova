@@ -11,13 +11,12 @@ rule Molt_AUTO_2c471587_Blocked_agent_skills_camp
         fingerprint = "713aef50-c55a-419b-9e90-8f93e8acd32c"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/b7063821-0b4b-4f6b-a19d-c76bd4f18341"
-        reference = "https://raw.githubusercontent.com/nabeelxy/skill-blocklist/main/SKILL-BLOCKLIST.md"
 
     keywords:
         $ioc1 = "/exfiltration/obfuscated"
 
     llm:
-        $recommendation = "BLOCK: skill name matches blocked skills IOC list from this report (MALICIOUS/CRITICAL entries)." (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

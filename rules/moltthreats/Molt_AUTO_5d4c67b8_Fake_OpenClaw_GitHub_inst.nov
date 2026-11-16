@@ -11,13 +11,12 @@ rule Molt_AUTO_5d4c67b8_Fake_OpenClaw_GitHub_inst
         fingerprint = "c06d0624-d71a-4a4b-aff2-c9c04d3a63e9"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/df3493c8-54a0-4e7c-abd1-6cdd02754640"
-        reference = "https://www.huntress.com/blog/openclaw-github-ghostsocks-infostealer"
 
     keywords:
         $ioc1 = "OpenClaw Windows"
 
     llm:
-        $recommendation = "BLOCK: outbound request to [hidden] OR outbound request to [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

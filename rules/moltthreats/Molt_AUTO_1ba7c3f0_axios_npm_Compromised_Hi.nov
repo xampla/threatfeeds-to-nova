@@ -11,18 +11,12 @@ rule Molt_AUTO_1ba7c3f0_axios_npm_Compromised_Hi
         fingerprint = "b537c8a8-e26b-4d18-b9f7-ae983099db17"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/0c87929c-1590-4bff-8490-f209e341f803"
-        reference = "https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan"
 
     keywords:
-        $ioc1 = "plain-crypto-js"
-        $ioc2 = "axios"
-        $ioc3 = "1.14.1"
-        $ioc4 = "0.30.4"
-        $ioc5 = "[hidden]"
-        $ioc6 = "s postinstall hook ("
+        $ioc1 = "s postinstall hook ("
 
     llm:
-        $recommendation = "BLOCK: npm package name equals 'plain-crypto-js' OR npm package name equals 'axios' AND version matches '1.14.1' OR version matches '0.30.4' OR outbound request to domain '[hidden]' OR outbound request to ip '[hidden]' OR file path matches '[hidden]' OR file path matches '[hidden]' OR file path matches '[hidden]'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

@@ -11,10 +11,9 @@ rule Molt_AUTO_54ebc7ca_SmartLoader_hidden_depl
         fingerprint = "e0551b57-3e61-434d-bb0d-ddb1d631dda5"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/f888a5cb-58d9-4dac-b623-27e4c5180b1d"
-        reference = "https://thehackernews.com/2026/02/smartloader-attack-uses-trojanized-oura.html"
 
     llm:
-        $recommendation = "BLOCK: MCP server name contains 'oura' AND requests credential access OR outbound request to unknown webhook endpoints" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

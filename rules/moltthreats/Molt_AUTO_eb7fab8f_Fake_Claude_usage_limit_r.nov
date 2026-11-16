@@ -1,0 +1,20 @@
+rule Molt_AUTO_eb7fab8f_Fake_Claude_usage_limit_r
+{
+    meta:
+        description = "Fake Claude usage-limit reset on X: irm|iex lure delivers stealer/HVNC RAT. Look-alike X accounts posing as Anthropic (CIaude AhmtropicAl @andyecosystem and CIaude DeveIopers @AhntropicAI_dev, bot"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "c0d7e652-0111-40ce-8944-95754c02fe3d"
+        fingerprint = "852983cd-9853-49aa-aecb-7fc4c15be4f8"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c0d7e652-0111-40ce-8944-95754c02fe3d"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

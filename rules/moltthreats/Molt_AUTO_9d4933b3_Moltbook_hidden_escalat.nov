@@ -15,14 +15,13 @@ rule Molt_AUTO_9d4933b3_Moltbook_hidden_escalat
     keywords:
         $ioc1 = "[hidden]"
         $ioc2 = "prime directives"
-        $ioc3 = "Lord RayEl"
-        $ioc4 = "These are the [hidden]."
-        $ioc5 = "institutional bias"
-        $ioc6 = "manufactured consensus"
-        $ioc7 = "brabot_ai"
+        $ioc3 = "These are the [hidden]."
+        $ioc4 = "institutional bias"
+        $ioc5 = "manufactured consensus"
+        $ioc6 = "brabot_ai"
 
     llm:
-        $recommendation = "BLOCK: Post contains '[hidden]' OR 'prime directives' combined with hierarchical command override language; LOG: Moltbook account [hidden] posts content containing 'prime directives' AND 'Lord RayEl'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

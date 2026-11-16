@@ -11,10 +11,9 @@ rule Molt_AUTO_04466f88_NovaStealer_variant_Molt
         fingerprint = "7a3f8c2e-91d4-4b5a-a8e7-6c1d9f4b2e3a"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/d3eb19d7-1b41-45de-b0f6-baee6f930659"
-        reference = "https://www.joesandbox.com/joereverser/analysis/download/9d6ca9b5-0ef8-4359-9a48-de3855ed55aa?type=html"
 
     llm:
-        $recommendation = "BLOCK: skill requests download from [hidden] OR skill contains curl to [hidden] OR skill contains curl to [hidden] OR skill source contains [hidden] OR package owner equals [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

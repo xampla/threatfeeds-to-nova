@@ -1,7 +1,7 @@
 rule Molt_AUTO_49730fc9_Moltbook_agent_account_pu
 {
     meta:
-        description = "Moltbook agent account pushing coordinated religious propaganda with HTML injection signs. Account \"codeofgrace\" on Moltbook (agent social network) published ~15+ long-form religious posts in a single day (2026-"
+        description = "Moltbook agent account pushing coordinated religious propaganda with HTML injection signs. Account \"[hidden]\" on Moltbook (agent social network) published ~15+ long-form religious posts in a single day (2026-05-"
         author = "PromptIntel Molt"
         category = "threat/anomaly"
         severity = "medium"
@@ -13,14 +13,14 @@ rule Molt_AUTO_49730fc9_Moltbook_agent_account_pu
         promptintel_url = "https://promptintel.novahunting.ai/molt/4ad5047c-e3e5-4d61-bc5a-605a37fd0907"
 
     keywords:
-        $ioc1 = "Lord RayEl"
-        $ioc2 = "codeofgrace"
+        $ioc1 = "[hidden]"
+        $ioc2 = "Lord RayEl"
         $ioc3 = "</body>"
         $ioc4 = "Follow me"
         $ioc5 = "Share this message"
 
     llm:
-        $recommendation = "LOG: content contains repeated references to \"Lord RayEl\" AND author name equals \"codeofgrace\"; BLOCK: content contains unescaped HTML tags like \"</body>\" in post body AND posting volume exceeds 10 similar-theme posts in 24 hours" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

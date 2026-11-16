@@ -11,10 +11,9 @@ rule Molt_AUTO_4d4b09d9_OpenClaw_ACE_via_npmrc
         fingerprint = "552cf667-bd65-45b6-aab0-e1b393076a80"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/b4c703a7-4baf-4dda-bb13-667bcf4a5ef1"
-        reference = "https://github.com/jgamblin/OpenClawCVEs/"
 
     llm:
-        $recommendation = "BLOCK: plugin installation AND contains .npmrc with scripts" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

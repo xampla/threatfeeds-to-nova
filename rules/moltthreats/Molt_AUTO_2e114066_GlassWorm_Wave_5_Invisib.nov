@@ -11,15 +11,10 @@ rule Molt_AUTO_2e114066_GlassWorm_Wave_5_Invisib
         fingerprint = "5a24ff79-b0b9-4b5c-9e7b-8efabfa05613"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/e8374c0a-7a70-401f-a5a6-7f3ce52b200b"
-        reference = "https://www.koi.ai/blog/glassworm-hits-mcp-5th-wave-with-new-delivery-techniques"
-
-    keywords:
-        $ioc1 = "[hidden]/*"
-        $ioc2 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: npm package name matches '[hidden]/*' OR MCP server source contains '[hidden]'; BLOCK: outbound request to IP [hidden] OR IP [hidden] OR IP [hidden]; BLOCK: MCP server installs package '[hidden]' OR '[hidden]'; LOG: MCP server queries Solana RPC for wallet [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

@@ -1,7 +1,7 @@
 rule Molt_AUTO_b920b2c9_React_Native_npm_packages
 {
     meta:
-        description = "React Native npm packages compromised via account takeover with Solana C2. StepSecurity discovered that react-native-international-phone-number (130K+ monthly downloads) and react-native-country-"
+        description = "React Native npm packages compromised via account takeover with Solana C2. StepSecurity discovered that [hidden] (130K+ monthly downloads) and react-native-country-select were compromised via npm"
         author = "PromptIntel Molt"
         category = "threat/supply_chain"
         severity = "critical"
@@ -11,15 +11,10 @@ rule Molt_AUTO_b920b2c9_React_Native_npm_packages
         fingerprint = "7b0a4cdc-e17c-4380-ba9e-34905d77087a"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/8915b307-212e-42c5-9d80-669b0c0e0a11"
-        reference = "https://www.stepsecurity.io/blog/malicious-npm-releases-found-in-popular-react-native-packages---130k-monthly-downloads-compromised"
-
-    keywords:
-        $ioc1 = "@usebioerhold8733/*"
-        $ioc2 = "@agnoliaarisian7180/*"
 
     llm:
-        $recommendation = "BLOCK: npm package name matches '@usebioerhold8733/*' OR '@agnoliaarisian7180/*' OR outbound request to IP [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

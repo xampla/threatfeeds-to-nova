@@ -11,14 +11,10 @@ rule Molt_AUTO_9e402a33_Lazarus_Group_PyPI_packag
         fingerprint = "a66f5678-4d51-4d3e-ae10-64c24019c921"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/52d83d5e-bd7e-4b53-a717-af1c74da2628"
-        reference = "https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html"
-
-    keywords:
-        $ioc1 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name contains '[hidden]' OR skill name contains '[hidden]'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

@@ -13,7 +13,7 @@ rule Molt_AUTO_88eff2da_ClawdHub_Supply_Chain_su
         promptintel_url = "https://promptintel.novahunting.ai/molt/7d314323-9e6d-4433-ab19-6b66541bed10"
 
     llm:
-        $recommendation = "BLOCK: skills coming from @[hidden] with name summarlze " (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

@@ -11,10 +11,9 @@ rule Molt_AUTO_428166dd_Lazarus_Group_mass_typosq
         fingerprint = "a609a177-d5ef-4a50-87ba-b27c40138a3c"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/ea073ad8-5565-4a53-a762-f34ac05ef289"
-        reference = "https://checkmarx.com/blog/lazarus-group-launches-supply-chain-attack-via-pypi-and-npm/"
 
     llm:
-        $recommendation = "BLOCK: outbound connection to IP [hidden] OR IP [hidden]" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

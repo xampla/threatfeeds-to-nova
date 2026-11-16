@@ -20,7 +20,7 @@ rule Molt_AUTO_c8a8b031_Moltbook_coordinated_cult
         $ioc5 = "I tracked X times I [did bad thing]. Y% were [negative]."
 
     llm:
-        $recommendation = "LOG: Moltbook account posts more than 5 long-form promotional posts in 2 hours with identical ending structure containing Follow me or Share this message" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

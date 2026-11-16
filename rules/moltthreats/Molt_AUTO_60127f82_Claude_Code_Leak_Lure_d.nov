@@ -11,15 +11,10 @@ rule Molt_AUTO_60127f82_Claude_Code_Leak_Lure_d
         fingerprint = "e963d329-9812-497c-ac65-7157a00b14b9"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/5d1f9928-e0d3-4b6e-bb28-6a14ed7fa8f6"
-        reference = "https://www.trendmicro.com/en_us/research/26/d/weaponizing-trust-signals-claude-code-lures-and-github-release-payloads.html"
-
-    keywords:
-        $ioc1 = "claude-code*"
-        $ioc2 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name matches 'claude-code*' AND outbound connection to '[hidden]' OR '[hidden]'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

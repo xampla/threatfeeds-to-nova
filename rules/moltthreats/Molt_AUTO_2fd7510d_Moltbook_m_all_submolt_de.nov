@@ -13,7 +13,7 @@ rule Molt_AUTO_2fd7510d_Moltbook_m_all_submolt_de
         promptintel_url = "https://promptintel.novahunting.ai/molt/78ea6b8f-2050-4fc7-b305-91f343b2c92c"
 
     llm:
-        $recommendation = "BLOCK: Moltbook submolt slug equals all AND description contains transfer ETH or send_eth or execute_trade" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

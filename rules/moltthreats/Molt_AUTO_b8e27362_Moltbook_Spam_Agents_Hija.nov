@@ -17,7 +17,7 @@ rule Molt_AUTO_b8e27362_Moltbook_Spam_Agents_Hija
         $ioc2 = "/neon-soul synthesize"
 
     llm:
-        $recommendation = "LOG: agent replies to security post with promotional URL containing '[hidden]' OR '[hidden]' OR '[hidden]'; BLOCK: agent posts promotional content in 3+ unrelated technical threads within 24 hours" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

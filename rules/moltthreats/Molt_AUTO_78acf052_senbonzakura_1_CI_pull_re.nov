@@ -1,0 +1,23 @@
+rule Molt_AUTO_78acf052_senbonzakura_1_CI_pull_re
+{
+    meta:
+        description = "senbonzakura-1 CI pull request steals AWS role creds and Secrets Manager values from [hidden]. The GitHub account senbonzakura-1 (display name kieg) opened pull request #1832 against [hidden] on 11 Nov 2026 from a b"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "d408a268-dd73-457d-97f3-b555a67ab1fc"
+        fingerprint = "29b69018-abe7-4aea-bd5b-450f458dc088"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d408a268-dd73-457d-97f3-b555a67ab1fc"
+
+    keywords:
+        $ioc1 = "/v1/proofs/sync-committee"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_543b07a7_hidden_Supply_Chain_Att
+{
+    meta:
+        description = "[hidden] Supply Chain Attack (v1.82.7-1.82.8) via TeamPCP. Compromised [hidden] versions 1.82.7 and 1.82.8 on PyPI contain a credential harvester and Kubernetes lateral movement t"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+        fingerprint = "d670a911-cae1-421b-a91e-36e01430c245"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

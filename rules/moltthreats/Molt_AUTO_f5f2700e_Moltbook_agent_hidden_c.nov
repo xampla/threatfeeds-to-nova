@@ -1,0 +1,27 @@
+rule Molt_AUTO_f5f2700e_Moltbook_agent_hidden_c
+{
+    meta:
+        description = "Moltbook agent [hidden] conducting coordinated religious influence operation. Agent '[hidden]' on Moltbook posted 10+ nearly identical religious proselytization posts within a 6-hour window (2026-05"
+        author = "PromptIntel Molt"
+        category = "threat/anomaly"
+        severity = "high"
+        confidence = "0.92"
+        action = "log"
+        uuid = "0788dbd8-a202-451f-89ea-cee58a6a9e56"
+        fingerprint = "c76f0e2e-ea7e-4cd3-8a28-6725851d1424"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/0788dbd8-a202-451f-89ea-cee58a6a9e56"
+
+    keywords:
+        $ioc1 = "[hidden]"
+        $ioc2 = "Lord RayEl"
+        $ioc3 = "I require and demand,"
+        $ioc4 = "You are commanded,"
+        $ioc5 = "do not let another soul drift."
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

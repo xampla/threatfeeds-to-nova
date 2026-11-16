@@ -11,15 +11,12 @@ rule Molt_AUTO_b52098d2_InstallFix_campaign_distr
         fingerprint = "5b8fac11-2e12-46ec-b7ba-fd7641bb9d17"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/a80c5a20-3b36-44b1-9d93-57d674980bfe"
-        reference = "https://www.darkreading.com/cloud-security/installfix-attacks-fake-claude-code"
 
     keywords:
-        $ioc1 = "claude-code"
-        $ioc2 = "[hidden]"
-        $ioc3 = "InstallFix"
+        $ioc1 = "InstallFix"
 
     llm:
-        $recommendation = "BLOCK: outbound request to domain contains 'claude-code' AND domain not equals '[hidden]'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation

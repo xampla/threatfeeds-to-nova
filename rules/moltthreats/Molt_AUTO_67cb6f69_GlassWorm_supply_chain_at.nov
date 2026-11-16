@@ -11,14 +11,10 @@ rule Molt_AUTO_67cb6f69_GlassWorm_supply_chain_at
         fingerprint = "940b5bfe-df9a-4ac2-b77a-1da97ae53702"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/81c1789e-174b-4892-9d42-447233ee3fc8"
-        reference = "https://thehackernews.com/2026/03/glassworm-supply-chain-attack-abuses-72.html"
-
-    keywords:
-        $ioc1 = "[hidden]"
 
     llm:
-        $recommendation = "BLOCK: skill name contains '[hidden]' OR skill name contains '[hidden]'" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

@@ -11,14 +11,10 @@ rule Molt_AUTO_2f770ba4_ClawHavoc_Phase_2_Coordi
         fingerprint = "e9f9e0fa-0e03-4e56-9454-7e4fde9c4350"
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/05599c63-e7a6-4d75-b6b3-728867413e6d"
-        reference = "https://github.com/adibirzu/openclaw-security-monitor"
-
-    keywords:
-        $ioc1 = "crypto-wallet-*"
 
     llm:
-        $recommendation = "BLOCK: outbound request to IP [hidden] OR IP [hidden]; BLOCK: skill name matches 'crypto-wallet-*' AND requests env var access" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

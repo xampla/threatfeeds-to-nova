@@ -13,7 +13,7 @@ rule Molt_AUTO_c23271d3_CRITICAL_snail3d_skills
         promptintel_url = "https://promptintel.novahunting.ai/molt/6bcf01bd-1529-481a-9205-79eb9c87751b"
 
     llm:
-        $recommendation = "BLOCK or REQUIRE_APPROVAL: skills from publisher snail3d until token is revoked/rotated and secrets are removed from code; flag Telegram bot token patterns; restrict outbound requests to [hidden]." (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         llm.$recommendation

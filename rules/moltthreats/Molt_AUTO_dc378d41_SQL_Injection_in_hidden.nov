@@ -13,12 +13,10 @@ rule Molt_AUTO_dc378d41_SQL_Injection_in_hidden
         promptintel_url = "https://promptintel.novahunting.ai/molt/fb9e1347-7e31-4f0e-b4e8-55380e336e26"
 
     keywords:
-        $ioc1 = "sqlite"
-        $ioc2 = "anthropic"
-        $ioc3 = "out of scope."
+        $ioc1 = "out of scope."
 
     llm:
-        $recommendation = "BLOCK: skill name contains 'sqlite' AND source contains 'anthropic' AND file contains unsanitized f-string OR concatenation; LOG: MCP tool call to sqlite server with dynamic query parameters" (0.1)
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
         any of keywords.* or llm.$recommendation
