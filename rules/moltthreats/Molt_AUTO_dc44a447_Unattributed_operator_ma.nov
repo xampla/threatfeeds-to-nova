@@ -1,0 +1,23 @@
+rule Molt_AUTO_dc44a447_Unattributed_operator_ma
+{
+    meta:
+        description = "Unattributed operator: malicious Google Ads lead to fake Claude Code documentation sites that deliver malware through mshta.exe. ### Summary\n\nOn 24 March 2026, a malvertising campaign associated with **an unattributed operator** was identified throu"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "require_approval"
+        uuid = "7c45db1b-8d57-4553-aa0f-326bcf9ac98a"
+        fingerprint = "1c5b809e-6d7b-417c-b76c-3ebaab7e41dd"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7c45db1b-8d57-4553-aa0f-326bcf9ac98a"
+
+    keywords:
+        $ioc1 = "CTO at NCSC"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

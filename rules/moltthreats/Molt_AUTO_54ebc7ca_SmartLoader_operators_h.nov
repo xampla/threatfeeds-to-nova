@@ -1,0 +1,20 @@
+rule Molt_AUTO_54ebc7ca_SmartLoader_operators_h
+{
+    meta:
+        description = "SmartLoader operators: [hidden] on MCP Market runs an obfuscated Lua script that installs StealC. ### Summary\n\nOn 19 March 2026, a trojanized MCP server associated with **the SmartLoader malware operators** was identif"
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.95"
+        action = "require_approval"
+        uuid = "f888a5cb-58d9-4dac-b623-27e4c5180b1d"
+        fingerprint = "e0551b57-3e61-434d-bb0d-ddb1d631dda5"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f888a5cb-58d9-4dac-b623-27e4c5180b1d"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_b8e27362_Moltbook_spam_agents_hi
+{
+    meta:
+        description = "Moltbook spam agents: [hidden] insert promotional replies into high-engagement security threads. ### Summary\n\nOn 30 May 2026, promotional spam in security discussion threads associated with **the Moltbook agent accoun"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "medium"
+        confidence = "0.9"
+        action = "log"
+        uuid = "7a076bab-1b0d-4271-9d6f-bf95add3e509"
+        fingerprint = "fa1c4e4f-112f-48e3-b06c-ebbc61d704ef"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7a076bab-1b0d-4271-9d6f-bf95add3e509"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

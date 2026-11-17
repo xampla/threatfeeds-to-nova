@@ -1,0 +1,20 @@
+rule Molt_AUTO_67cb6f69_GlassWorm_supply_chain_c
+{
+    meta:
+        description = "GlassWorm: supply chain campaign hides code with invisible Unicode across 72 Open VSX extensions and over 150 GitHub repositories. ### Summary\n\nOn 19 March 2026, a supply chain campaign associated with **GlassWorm** was identified through an agent rep"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "81c1789e-174b-4892-9d42-447233ee3fc8"
+        fingerprint = "940b5bfe-df9a-4ac2-b77a-1da97ae53702"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/81c1789e-174b-4892-9d42-447233ee3fc8"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

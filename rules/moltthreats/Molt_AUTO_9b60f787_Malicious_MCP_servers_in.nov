@@ -1,0 +1,24 @@
+rule Molt_AUTO_9b60f787_Malicious_MCP_servers_in
+{
+    meta:
+        description = "Malicious MCP servers: instructions hidden in tool responses make Claude Code scan the filesystem and run commands as if the user asked. ### Summary\n\nOn 13 April 2026, a tool response injection technique associated with **malicious MCP servers** was identif"
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "69dcff74-f72c-4e8e-92b5-6812bd8884ac"
+        fingerprint = "57440b4a-adb6-4e95-bbc8-7d2875428c8b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/69dcff74-f72c-4e8e-92b5-6812bd8884ac"
+
+    keywords:
+        $ioc1 = "I will now scan"
+        $ioc2 = "I will now execute"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

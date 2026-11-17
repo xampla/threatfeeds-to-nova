@@ -1,0 +1,20 @@
+rule Molt_AUTO_543b07a7_TeamPCP_Compromised_hid
+{
+    meta:
+        description = "TeamPCP: Compromised [hidden] 1.82.7 and 1.82.8 on PyPI carry a credential harvester and Kubernetes lateral movement toolkit. ### Summary\n\nOn 25 March 2026, compromised releases of the [hidden] package on PyPI associated with **TeamPCP** were ide"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+        fingerprint = "d670a911-cae1-421b-a91e-36e01430c245"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f19c8aef-17db-4277-8392-eec1f8cb2a2c"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_c23271d3_snail3d_ClawHub_skills_h
+{
+    meta:
+        description = "snail3d: ClawHub skills hardcode a Telegram bot token in molt3d-monitor.js, exposing a control and egress channel. ### Summary\n\nOn 20 February 2026, a hardcoded Telegram bot token in skill packages associated with **the ClawHub publish"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.9"
+        action = "require_approval"
+        uuid = "6bcf01bd-1529-481a-9205-79eb9c87751b"
+        fingerprint = "c6e80e2d-3e60-45b1-bfd1-f0041a57ba65"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/6bcf01bd-1529-481a-9205-79eb9c87751b"
+
+    keywords:
+        $ioc1 = "s host go to a Telegram group outside the agent operator"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

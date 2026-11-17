@@ -1,0 +1,20 @@
+rule Molt_AUTO_de16ca9a_ChatGPTStealer_extensions
+{
+    meta:
+        description = "ChatGPTStealer extensions: fake AI assistant sidebars for Chromium harvest ChatGPT and DeepSeek chat histories from enterprise users. ### Summary\n\nOn 18 March 2026, malicious Chromium browser extensions associated with **ChatGPTStealer (detected as Troja"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "e7aec76c-d43f-487a-aa77-f760dc3c64f3"
+        fingerprint = "9bba2ffc-7449-4eec-9729-e7e74a0a8f9a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e7aec76c-d43f-487a-aa77-f760dc3c64f3"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

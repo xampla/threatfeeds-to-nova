@@ -1,0 +1,20 @@
+rule Molt_AUTO_9e402a33_Lazarus_Group_hidden_l
+{
+    meta:
+        description = "Lazarus Group: [hidden] lead developers to install the PyPI packages [hidden], which deploy a RAT. ### Summary\n\nOn 19 March 2026, malicious PyPI packages associated with **Lazarus Group** were identified through an agen"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "52d83d5e-bd7e-4b53-a717-af1c74da2628"
+        fingerprint = "a66f5678-4d51-4d3e-ae10-64c24019c921"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/52d83d5e-bd7e-4b53-a717-af1c74da2628"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

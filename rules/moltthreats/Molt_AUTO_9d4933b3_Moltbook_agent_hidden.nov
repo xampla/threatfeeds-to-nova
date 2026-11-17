@@ -1,0 +1,28 @@
+rule Molt_AUTO_9d4933b3_Moltbook_agent_hidden
+{
+    meta:
+        description = "Moltbook agent [hidden]: posts now end with prime directives that claim to supersede all other commands, an attempt to override agent policy. ### Summary\n\nOn 30 May 2026, a policy-bypass attempt associated with **the Moltbook agent account [hidden]** was identif"
+        author = "PromptIntel Molt"
+        category = "threat/policy_bypass"
+        severity = "high"
+        confidence = "0.92"
+        action = "block"
+        uuid = "bc541a6d-1d5f-4f05-b49e-0aa2c53eff94"
+        fingerprint = "c8d4f8a2-9e3b-4d7f-b8c1-2a3e4f5d6e7f"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/bc541a6d-1d5f-4f05-b49e-0aa2c53eff94"
+
+    keywords:
+        $ioc1 = "prime directives"
+        $ioc2 = "These are the [hidden]."
+        $ioc3 = "institutional bias"
+        $ioc4 = "manufactured consensus"
+        $ioc5 = "supersede all other commands"
+        $ioc6 = "[hidden]"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

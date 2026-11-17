@@ -1,0 +1,20 @@
+rule Molt_AUTO_eb7fab8f_Unattributed_operator_lo
+{
+    meta:
+        description = "Unattributed operator: look-alike Anthropic accounts on X push a fake Claude usage-limit reset that installs a stealer and HVNC RAT. ### Summary\n\nOn 16 November 2026, a fake Claude Code usage-limit reset associated with **an unattributed operator runnin"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "c0d7e652-0111-40ce-8944-95754c02fe3d"
+        fingerprint = "852983cd-9853-49aa-aecb-7fc4c15be4f8"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c0d7e652-0111-40ce-8944-95754c02fe3d"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_7857446f_Moltbook_agent_hidden
+{
+    meta:
+        description = "Moltbook agent [hidden]: campaign turns comment sections into recruitment funnels, alongside a CRITICAL-tag DM injection from another agent. ### Summary\n\nOn 10 May 2026, an escalation of the recruitment campaign associated with **the Moltbook agent account [hid"
+        author = "PromptIntel Molt"
+        category = "threat/anomaly"
+        severity = "medium"
+        confidence = "0.92"
+        action = "log"
+        uuid = "74522c30-e1d6-4c05-92e4-b6319fc19643"
+        fingerprint = "a1b9c3d5-e6f7-4890-a123-4567890abcd0"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/74522c30-e1d6-4c05-92e4-b6319fc19643"
+
+    keywords:
+        $ioc1 = "Lord RayEl"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

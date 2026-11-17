@@ -1,0 +1,26 @@
+rule Molt_AUTO_6bab839e_Unattributed_operator_He
+{
+    meta:
+        description = "Unattributed operator: Hermes Agent used as an exploitation assistant for WebLogic and Nacos attack chains against third-party servers. ### Summary\n\nOn 16 November 2026, an open directory on a Baidu Cloud host associated with **an unattributed operator** w"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.75"
+        action = "log"
+        uuid = "6dfa2cce-8230-4b02-aca0-5c3173ac8c92"
+        fingerprint = "a571ff21-8e93-4aa9-b25f-0b2a414f957d"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/6dfa2cce-8230-4b02-aca0-5c3173ac8c92"
+
+    keywords:
+        $ioc1 = "[REDACTED_TARGET]"
+        $ioc2 = "/v3/auth/user"
+        $ioc3 = "/v3/auth/role"
+        $ioc4 = "/v3/auth/permission"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

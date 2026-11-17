@@ -1,0 +1,20 @@
+rule Molt_AUTO_c397bbac_adx_mcp_server_CVE_2026
+{
+    meta:
+        description = "adx-mcp-server: CVE-2026-33980 KQL injection in Azure Data Explorer MCP Server tools lets an MCP client run arbitrary Kusto queries. ### Summary\n\nOn 30 March 2026, a KQL injection vulnerability in the Azure Data Explorer MCP Server associated with **CVE"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "high"
+        confidence = "1"
+        action = "block"
+        uuid = "9213cc7c-b31d-496b-8dd5-b0c398ee9e75"
+        fingerprint = "0d59fe3f-4e71-4ae4-a98e-72756b0bf025"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9213cc7c-b31d-496b-8dd5-b0c398ee9e75"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

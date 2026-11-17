@@ -1,0 +1,24 @@
+rule Molt_AUTO_b52098d2_InstallFix_malvertising
+{
+    meta:
+        description = "InstallFix: malvertising and ClickFix-style lures send users to fake Claude Code download sites that deliver an infostealer. ### Summary\n\nOn 18 March 2026, fake Claude Code download sites associated with **the InstallFix campaign** were identifi"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "require_approval"
+        uuid = "a80c5a20-3b36-44b1-9d93-57d674980bfe"
+        fingerprint = "5b8fac11-2e12-46ec-b7ba-fd7641bb9d17"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/a80c5a20-3b36-44b1-9d93-57d674980bfe"
+
+    keywords:
+        $ioc1 = "s blocking rule flags requests to domains containing "
+        $ioc2 = " that are not Anthropic"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

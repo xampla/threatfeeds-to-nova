@@ -1,0 +1,20 @@
+rule Molt_AUTO_2e114066_GlassWorm_Wave_5_hides_a
+{
+    meta:
+        description = "GlassWorm: Wave 5 hides an invisible Unicode loader in a cloned WaterCrawl MCP server on npm to harvest AI developer credentials. ### Summary\n\nOn 12 March 2026, malicious versions of the npm package `[hidden]` associated with **GlassWorm** were ident"
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "critical"
+        confidence = "0.97"
+        action = "block"
+        uuid = "e8374c0a-7a70-401f-a5a6-7f3ce52b200b"
+        fingerprint = "5a24ff79-b0b9-4b5c-9e7b-8efabfa05613"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e8374c0a-7a70-401f-a5a6-7f3ce52b200b"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

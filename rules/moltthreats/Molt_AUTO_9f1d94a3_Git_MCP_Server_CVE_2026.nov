@@ -1,0 +1,20 @@
+rule Molt_AUTO_9f1d94a3_Git_MCP_Server_CVE_2026
+{
+    meta:
+        description = "Git-MCP-Server: CVE-2026-4496 command injection in three diff tools gives remote code execution. ### Summary\n\nOn 31 March 2026, a command injection vulnerability, CVE-2026-4496, in Git-MCP-Server associated with **Git"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "03d8fd46-8599-4a6e-af24-ec1b44b4884f"
+        fingerprint = "2234e41f-9cb3-4401-af00-0a70ed8f71b6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/03d8fd46-8599-4a6e-af24-ec1b44b4884f"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

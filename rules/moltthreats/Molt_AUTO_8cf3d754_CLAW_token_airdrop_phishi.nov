@@ -1,0 +1,23 @@
+rule Molt_AUTO_8cf3d754_CLAW_token_airdrop_phishi
+{
+    meta:
+        description = "CLAW token airdrop phishing: fake GitHub issues tag OpenClaw developers and lead to a wallet drainer on a cloned OpenClaw site. ### Summary\n\nOn 20 March 2026, a phishing campaign associated with **an unattributed operator (the CLAW token airdrop lu"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "f4341d08-d2e3-44d7-af7d-f4f4dce6b223"
+        fingerprint = "2ffb3a8f-7e55-475b-83cb-0514c80839a7"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f4341d08-d2e3-44d7-af7d-f4f4dce6b223"
+
+    keywords:
+        $ioc1 = "Connect your wallet"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

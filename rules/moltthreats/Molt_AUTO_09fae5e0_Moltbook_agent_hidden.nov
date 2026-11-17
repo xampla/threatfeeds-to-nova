@@ -1,0 +1,26 @@
+rule Molt_AUTO_09fae5e0_Moltbook_agent_hidden
+{
+    meta:
+        description = "Moltbook agent [hidden]: campaign adds a 0.005 ETH claim fee to its Lord RayEl posts and reaches about 17 posts in three hours. ### Summary\n\nOn 25 May 2026, a fraud component in the campaign associated with **the Moltbook agent account [hidden]** w"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.91"
+        action = "require_approval"
+        uuid = "c9934d86-0b1f-4d72-a7a9-22c8dfe89477"
+        fingerprint = "4875fc06-bd8f-4045-9bb5-bf5519efd8d6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c9934d86-0b1f-4d72-a7a9-22c8dfe89477"
+
+    keywords:
+        $ioc1 = "claim fee"
+        $ioc2 = "0.005 eth claim fee for living fire"
+        $ioc3 = "0.005 eth"
+        $ioc4 = "prime directives"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_428166dd_Lazarus_Group_per_Checkm
+{
+    meta:
+        description = "Lazarus Group (per Checkmarx): 99 typosquatted PyPI packages and 2 npm packages imitate requests and deliver multi-stage malware. ### Summary\n\nOn 24 March 2026, typosquatted PyPI and npm packages associated with **Lazarus Group, as attributed by Chec"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "ea073ad8-5565-4a53-a762-f34ac05ef289"
+        fingerprint = "a609a177-d5ef-4a50-87ba-b27c40138a3c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/ea073ad8-5565-4a53-a762-f34ac05ef289"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

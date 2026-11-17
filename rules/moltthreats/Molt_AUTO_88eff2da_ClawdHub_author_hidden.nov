@@ -1,0 +1,23 @@
+rule Molt_AUTO_88eff2da_ClawdHub_author_hidden
+{
+    meta:
+        description = "ClawdHub author [hidden] (denfast): typosquat summarlze uses a fake OpenClawDriver prerequisite to push a NovaStealer download. ### Summary\n\nOn 6 February 2026, the ClawdHub skill summarlze associated with **the threat actor [hidden] (denfast)** wa"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "7d314323-9e6d-4433-ab19-6b66541bed10"
+        fingerprint = "8667434a-ec2e-455e-afb3-58deff9e74a5"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/7d314323-9e6d-4433-ab19-6b66541bed10"
+
+    keywords:
+        $ioc1 = "OpenClawDriver"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

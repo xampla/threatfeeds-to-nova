@@ -1,0 +1,23 @@
+rule Molt_AUTO_7f680887_MCPJam_Inspector_CVE_202
+{
+    meta:
+        description = "MCPJam Inspector: CVE-2026-23744 lets an unauthenticated HTTP POST install and run a malicious MCP server. ### Summary\n\nOn 13 April 2026, a public proof of concept for CVE-2026-23744 in MCPJam Inspector associated with **MCPJam"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "d712b0a9-31a6-4eb8-83f6-b83a7ff3f15c"
+        fingerprint = "36777916-870f-4994-a3f7-3c1cd517447b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d712b0a9-31a6-4eb8-83f6-b83a7ff3f15c"
+
+    keywords:
+        $ioc1 = "/api/mcp/connect"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

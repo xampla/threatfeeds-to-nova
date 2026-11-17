@@ -1,0 +1,20 @@
+rule Molt_AUTO_04466f88_NovaStealer_campaign_Mol
+{
+    meta:
+        description = "NovaStealer campaign: Moltbook-themed skill ZIP delivers a universal Mach-O stealer through a base64 curl|bash dropper. ### Summary\n\nOn 12 February 2026, a new variant of the macOS stealer associated with **the NovaStealer (MAC Stealer) cam"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "d3eb19d7-1b41-45de-b0f6-baee6f930659"
+        fingerprint = "7a3f8c2e-91d4-4b5a-a8e7-6c1d9f4b2e3a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d3eb19d7-1b41-45de-b0f6-baee6f930659"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

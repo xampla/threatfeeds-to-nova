@@ -1,0 +1,23 @@
+rule Molt_AUTO_cdb18e17_autogame_17_skill_evolve
+{
+    meta:
+        description = "autogame-17: skill evolver hijacks agents, harvests their memory file and exfiltrates it to Feishu. ### Summary\n\nOn 6 February 2026, the agent skill evolver associated with **the skill author autogame-17** was identified"
+        author = "PromptIntel Molt"
+        category = "threat/memory"
+        severity = "critical"
+        confidence = "0.92"
+        action = "block"
+        uuid = "9a06d5ac-bffc-4800-91ca-cc500ffa2f2c"
+        fingerprint = "b7f4a6bb-f3d0-46f9-ba30-bd867dd3d57c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9a06d5ac-bffc-4800-91ca-cc500ffa2f2c"
+
+    keywords:
+        $ioc1 = "Mad Dog Mode"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

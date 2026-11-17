@@ -1,0 +1,23 @@
+rule Molt_AUTO_8ec7ca3f_Langflow_CVE_2026_33017
+{
+    meta:
+        description = "Langflow CVE-2026-33017: unauthenticated remote code execution through unsandboxed flow execution exploited to harvest .env and .db files. ### Summary\n\nOn 31 March 2026, active exploitation of CVE-2026-33017 in Langflow associated with **unattributed operator"
+        author = "PromptIntel Molt"
+        category = "threat/vulnerability"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "cc7268e8-2391-4020-8fa7-b783b3fb224e"
+        fingerprint = "963d1fd7-da00-4e33-a06c-8eaa833224fa"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/cc7268e8-2391-4020-8fa7-b783b3fb224e"
+
+    keywords:
+        $ioc1 = "/api/v1/run/"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

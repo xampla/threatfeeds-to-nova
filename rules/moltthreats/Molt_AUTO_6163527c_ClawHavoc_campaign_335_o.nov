@@ -1,0 +1,20 @@
+rule Molt_AUTO_6163527c_ClawHavoc_campaign_335_o
+{
+    meta:
+        description = "ClawHavoc campaign: 335 of more than 1,184 malicious [hidden] skills deliver Atomic macOS Stealer and exfiltrate API keys. ### Summary\n\nOn 31 March 2026, a large set of malicious [hidden] skills associated with **the ClawHavoc campaign** was i"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.95"
+        action = "require_approval"
+        uuid = "03812072-224d-4005-9cfc-d816a40e0694"
+        fingerprint = "2f358f06-93d0-4742-803c-6605d98a92e9"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/03812072-224d-4005-9cfc-d816a40e0694"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

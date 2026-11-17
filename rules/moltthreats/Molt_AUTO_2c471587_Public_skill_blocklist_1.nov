@@ -1,0 +1,20 @@
+rule Molt_AUTO_2c471587_Public_skill_blocklist_1
+{
+    meta:
+        description = "Public skill blocklist: 101 agent skills rated MALICIOUS or CRITICAL for code execution, exfiltration and obfuscated payloads. ### Summary\n\nOn 13 February 2026, 101 high-risk agent skills associated with **an unattributed set of skill publishers**"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.94"
+        action = "require_approval"
+        uuid = "b7063821-0b4b-4f6b-a19d-c76bd4f18341"
+        fingerprint = "713aef50-c55a-419b-9e90-8f93e8acd32c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b7063821-0b4b-4f6b-a19d-c76bd4f18341"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

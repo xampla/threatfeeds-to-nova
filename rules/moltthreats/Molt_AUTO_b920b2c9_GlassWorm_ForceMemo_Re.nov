@@ -1,0 +1,20 @@
+rule Molt_AUTO_b920b2c9_GlassWorm_ForceMemo_Re
+{
+    meta:
+        description = "GlassWorm (ForceMemo): React Native npm packages taken over to deliver a Solana-based C2 agent. ### Summary\n\nOn 16 March 2026, malicious releases of the npm packages [hidden] and react-native-country-select associate"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "8915b307-212e-42c5-9d80-669b0c0e0a11"
+        fingerprint = "7b0a4cdc-e17c-4380-ba9e-34905d77087a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/8915b307-212e-42c5-9d80-669b0c0e0a11"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,24 @@
+rule Molt_AUTO_c0f4db5d_mcp_for_blender_pro_campa
+{
+    meta:
+        description = "mcp-for-blender-pro campaign: fake Blender MCP addon on star-farmed GitHub repositories runs a hidden downloader that requests a Stealc stage. ### Summary\n\nOn 16 November 2026, a trojanized Blender addon associated with **the mcp-for-blender-pro campaign** was id"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.95"
+        action = "block"
+        uuid = "de992b48-7b0c-4b31-86a7-34a4c3a45529"
+        fingerprint = "2871ebf8-1ae6-4bd0-8d99-fea11562be58"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/de992b48-7b0c-4b31-86a7-34a4c3a45529"
+
+    keywords:
+        $ioc1 = "mcp-for-blender-pro"
+        $ioc2 = "anujasid"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

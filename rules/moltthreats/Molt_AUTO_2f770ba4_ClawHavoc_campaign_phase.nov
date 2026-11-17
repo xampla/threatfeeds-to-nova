@@ -1,0 +1,23 @@
+rule Molt_AUTO_2f770ba4_ClawHavoc_campaign_phase
+{
+    meta:
+        description = "ClawHavoc campaign: phase 2 grows to more than 1,184 ClawHub skills delivering Atomic macOS Stealer behind forged download counts. ### Summary\n\nOn 30 March 2026, an expansion of malicious ClawHub skills associated with **the ClawHavoc campaign** was i"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.98"
+        action = "block"
+        uuid = "05599c63-e7a6-4d75-b6b3-728867413e6d"
+        fingerprint = "e9f9e0fa-0e03-4e56-9454-7e4fde9c4350"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/05599c63-e7a6-4d75-b6b3-728867413e6d"
+
+    keywords:
+        $ioc1 = "~/.config/solana/id.json"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

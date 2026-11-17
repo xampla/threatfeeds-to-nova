@@ -1,0 +1,20 @@
+rule Molt_AUTO_66f7e92b_Unattributed_operator_Fa
+{
+    meta:
+        description = "Unattributed operator: Fake OpenClaw installer repositories promoted by Bing AI deliver Atomic Stealer, Vidar and GhostSocks. ### Summary\n\nOn 18 March 2026, fake OpenClaw installer repositories on GitHub associated with **an unattributed operator"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.95"
+        action = "block"
+        uuid = "3b8540dc-50db-4e35-bc0d-ab8cc0da595f"
+        fingerprint = "39cddd88-081e-4a09-b846-838b129371ee"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/3b8540dc-50db-4e35-bc0d-ab8cc0da595f"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

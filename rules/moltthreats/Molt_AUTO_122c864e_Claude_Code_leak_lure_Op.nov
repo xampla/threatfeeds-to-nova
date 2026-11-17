@@ -1,0 +1,23 @@
+rule Molt_AUTO_122c864e_Claude_Code_leak_lure_Op
+{
+    meta:
+        description = "Claude Code leak lure: OpenClaw-named GitHub repository delivers Vidar Stealer and GhostSocks through password-protected ZIPs and a paste-site loader. ### Summary\n\nOn 13 April 2026, a malicious GitHub repository, [hidden], associated with **the Claude Code leak lure camp"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "1"
+        action = "block"
+        uuid = "a4d3d05c-9336-40f8-9a3a-21fc601fa8da"
+        fingerprint = "9f150b1b-3e70-42d5-95fa-fd66c4e2ede0"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/a4d3d05c-9336-40f8-9a3a-21fc601fa8da"
+
+    keywords:
+        $ioc1 = "leaked"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
