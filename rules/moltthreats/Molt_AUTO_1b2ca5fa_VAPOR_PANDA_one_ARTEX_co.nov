@@ -1,0 +1,20 @@
+rule Molt_AUTO_1b2ca5fa_VAPOR_PANDA_one_ARTEX_co
+{
+    meta:
+        description = "VAPOR PANDA: one ARTEX controller runs parallel intrusions at 200+ organizations and hunts for hosts without Falcon before deploying BLOODALCHEMY. ### Summary\n\nOn 17 November 2026, an ARTEX controller, BLOODALCHEMY C2 and staged files associated with **VAPOR PANDA, a"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.9"
+        action = "log"
+        uuid = "1eab0b22-bcbf-45d4-915b-4226fa1805ea"
+        fingerprint = "399bae47-44e7-4ac1-b02b-2802408b73cd"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/1eab0b22-bcbf-45d4-915b-4226fa1805ea"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

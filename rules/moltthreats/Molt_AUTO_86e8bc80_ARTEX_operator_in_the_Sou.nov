@@ -1,0 +1,23 @@
+rule Molt_AUTO_86e8bc80_ARTEX_operator_in_the_Sou
+{
+    meta:
+        description = "ARTEX operator in the South Korean financial campaign: console [hidden] and a Hong Kong jump host with Claude Code shims and 19 skills. ### Summary\n\nOn 16 November 2026, an ARTEX console and a jump host associated with **an unattributed, financially motiva"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "88d53368-52f1-45fa-8728-27e29ca0c73e"
+        fingerprint = "9bed3fd5-7b94-441a-8cd6-355c9912e814"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/88d53368-52f1-45fa-8728-27e29ca0c73e"
+
+    keywords:
+        $ioc1 = "ARTEX - 自主渗透测试控制台"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

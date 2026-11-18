@@ -1,0 +1,24 @@
+rule Molt_AUTO_77a8b9d2_CL_STA_1238_China_nexus
+{
+    meta:
+        description = "CL-STA-1238: China-nexus operators run a customised Cairn fork on GLM and DeepSeek against semiconductor, defense and civil-society targets. ### Summary\n\nOn 14 November 2026, a Cairn controller and an egress and staging node associated with **CL-STA-1238, Chine"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "b6818fec-4172-4e77-8887-fff154971235"
+        fingerprint = "bd5e7902-cf9a-4e3c-90aa-032a9b6845a5"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b6818fec-4172-4e77-8887-fff154971235"
+
+    keywords:
+        $ioc1 = "AIScan Runner Skills"
+        $ioc2 = "breach <target> as fast as possible"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

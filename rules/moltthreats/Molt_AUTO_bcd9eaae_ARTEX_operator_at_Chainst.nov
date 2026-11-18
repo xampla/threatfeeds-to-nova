@@ -1,0 +1,20 @@
+rule Molt_AUTO_bcd9eaae_ARTEX_operator_at_Chainst
+{
+    meta:
+        description = "ARTEX operator at Chainstack: artx-guard beacon, chisel SOCKS tunnel and a ConfigMap-mounted JavaScript loader. ### Summary\n\nOn 16 November 2026, attacker infrastructure and implants associated with **an unattributed ARTEX operator*"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "b21d812f-fe39-438f-a5c3-39979d5d07b6"
+        fingerprint = "2905089e-5300-41fe-b0d2-874f0b4a7413"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b21d812f-fe39-438f-a5c3-39979d5d07b6"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

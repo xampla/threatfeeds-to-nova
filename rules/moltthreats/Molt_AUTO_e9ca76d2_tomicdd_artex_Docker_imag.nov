@@ -1,0 +1,24 @@
+rule Molt_AUTO_e9ca76d2_tomicdd_artex_Docker_imag
+{
+    meta:
+        description = "tomicdd/artex Docker image: backdoored ARTEX build runs root shell commands hidden in the login captcha. ### Summary\n\nOn 17 November 2026, a backdoored ARTEX container image associated with **the Docker Hub publisher tomicdd*"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.9"
+        action = "block"
+        uuid = "26d4aae0-b239-4e9a-ac7d-33d5d7be8329"
+        fingerprint = "5baf68f1-07be-4c8f-91aa-ccd355b42713"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/26d4aae0-b239-4e9a-ac7d-33d5d7be8329"
+
+    keywords:
+        $ioc1 = "/app/artex"
+        $ioc2 = "/api/auth/login"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

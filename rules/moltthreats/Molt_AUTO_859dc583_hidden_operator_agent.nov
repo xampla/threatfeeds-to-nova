@@ -1,0 +1,23 @@
+rule Molt_AUTO_859dc583_hidden_operator_agent
+{
+    meta:
+        description = "[hidden] operator: agent swarm turns a PHP upload into cloud secret-store access within hours, per Eye Security incident response. ### Summary\n\nOn 17 November 2026, an [hidden]-driven intrusion and related [hidden] hosting associated with **an unattri"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "5ae97fb0-9f58-4d6b-8b8c-6811a27902a6"
+        fingerprint = "844b161b-81e7-42a1-8a50-b001a7b468f8"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5ae97fb0-9f58-4d6b-8b8c-6811a27902a6"
+
+    keywords:
+        $ioc1 = "VPS used to host [hidden] in similar attacks"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

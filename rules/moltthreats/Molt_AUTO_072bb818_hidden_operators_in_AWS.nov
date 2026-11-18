@@ -1,0 +1,20 @@
+rule Molt_AUTO_072bb818_hidden_operators_in_AWS
+{
+    meta:
+        description = "[hidden] operators in AWS: stolen long-term keys drive CloudWatch secret hunting, and public Cognito pools give anonymous footholds. ### Summary\n\nOn 17 November 2026, AWS control-plane activity associated with **unattributed [hidden] operators** was ide"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "ba8422fd-4914-4132-8034-f188d72bd117"
+        fingerprint = "a629f83b-8b06-4556-a1b7-ffd491c6837f"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/ba8422fd-4914-4132-8034-f188d72bd117"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}
