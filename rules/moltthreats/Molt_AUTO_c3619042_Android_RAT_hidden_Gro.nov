@@ -1,0 +1,23 @@
+rule Molt_AUTO_c3619042_Android_RAT_hidden_Gro
+{
+    meta:
+        description = "Android RAT [hidden] (Groklem): Grok prompts run on victim devices to triage stolen SMS. ### Summary\n\nOn 14 November 2026, LLM-assisted data triage associated with **[hidden]** was identified through public re"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "2d0e5dd0-b33d-4961-b05b-5d8e5b3ffd58"
+        fingerprint = "4f03f3db-b600-4719-aa97-30839d5c33a1"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/2d0e5dd0-b33d-4961-b05b-5d8e5b3ffd58"
+
+    keywords:
+        $ioc1 = "Groklem"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_b406fe75_Unattributed_operators
+{
+    meta:
+        description = "Unattributed operators: [hidden] LLM orchestrator drives C2 beacons through education networks in Africa and Latin America. ### Summary\n\nOn 17 November 2026, [hidden] C2 servers and beacons associated with **unattributed operators** was identif"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.9"
+        action = "log"
+        uuid = "e3d6c14a-421e-4707-8221-4393692d997f"
+        fingerprint = "8e62be38-1381-47ee-8662-453dbe151f92"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e3d6c14a-421e-4707-8221-4393692d997f"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

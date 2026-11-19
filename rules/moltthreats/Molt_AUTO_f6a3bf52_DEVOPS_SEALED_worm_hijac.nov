@@ -1,0 +1,24 @@
+rule Molt_AUTO_f6a3bf52_DEVOPS_SEALED_worm_hijac
+{
+    meta:
+        description = "DEVOPS-SEALED worm: hijacked repos plant agent files that run a sealed setup.js and infect agents. ### Summary\n\nOn 18 November 2026, malicious agent instruction files and execution hooks associated with **the DEVOPS-SEA"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "d82a2fcd-fdad-44c1-98dd-57a43b09e65d"
+        fingerprint = "a212ce07-8aba-46c6-9a63-b3b62781f713"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d82a2fcd-fdad-44c1-98dd-57a43b09e65d"
+
+    keywords:
+        $ioc1 = "a sealed binary artifact"
+        $ioc2 = "s capabilities from Bitdefender"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

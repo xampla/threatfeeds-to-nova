@@ -1,0 +1,25 @@
+rule Molt_AUTO_e63acbc2_Railway_breach_operator
+{
+    meta:
+        description = "Railway breach operator: Ling, a rebranded ARTEX console on [hidden], attacks AI platforms with disposable-email sign-ups, IMDS collectors and a fake OpenAI API. ### Summary\n\nOn 19 November 2026, attack infrastructure and collection scripts associated with **the Railway breach oper"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "f9a27032-2ac8-4fad-bf13-bf3ee74dccb0"
+        fingerprint = "3553cffc-990c-4a8d-84c4-3c54f124f8ae"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f9a27032-2ac8-4fad-bf13-bf3ee74dccb0"
+
+    keywords:
+        $ioc1 = ", with the same Chinese subtitle ARTEX uses, "
+        $ioc2 = "Mobile connectivity self-check"
+        $ioc3 = "/opt/ai-agent"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_c3fff262_Unattributed_operator_PH
+{
+    meta:
+        description = "Unattributed operator: PHP2Shell campaign uses maq and Oh My Pi workers to harvest credentials. Unattributed operator: PHP2Shell campaign uses maq and Oh My Pi workers to harvest credentials\n\nSummary\n\nOn 19 November "
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "713013ea-b42b-42d0-b034-319f6a6ebe47"
+        fingerprint = "2e37052b-0d11-4ec5-bab7-edb6310195ce"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/713013ea-b42b-42d0-b034-319f6a6ebe47"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

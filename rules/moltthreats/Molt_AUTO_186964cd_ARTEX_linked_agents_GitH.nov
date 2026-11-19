@@ -1,0 +1,23 @@
+rule Molt_AUTO_186964cd_ARTEX_linked_agents_GitH
+{
+    meta:
+        description = "ARTEX-linked agents: GitHub secret hunting to Entra service-principal and Key Vault theft. ### Summary\n\nOn 7 November 2026, agent-driven secret theft associated with **ARTEX-class agentic tooling** was identifie"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "1a812237-2228-4949-bf99-afdb42adea0c"
+        fingerprint = "cf695234-f47d-4ed6-b935-a26f697a2b55"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/1a812237-2228-4949-bf99-afdb42adea0c"
+
+    keywords:
+        $ioc1 = "potentially associated"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_54fe0138_hidden_operator_Taiwan
+{
+    meta:
+        description = "[hidden] operator (Taiwan): 12-agent mesh with Hermes in YOLO mode and HexStrike/Kali MCP servers breaches emergency services. ### Summary\n\nOn 18 November 2026, an AI agent attack mesh and its hosting fleet associated with **the [hidden] operator,"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.9"
+        action = "log"
+        uuid = "dc23f695-981e-4ec3-8c34-288056fd7d0c"
+        fingerprint = "d46ff32e-a932-48f7-b2d9-f0015c6671df"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/dc23f695-981e-4ec3-8c34-288056fd7d0c"
+
+    keywords:
+        $ioc1 = "Jy技術團隊"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

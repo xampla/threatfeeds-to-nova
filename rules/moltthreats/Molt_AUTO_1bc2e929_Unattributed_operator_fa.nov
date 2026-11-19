@@ -1,0 +1,32 @@
+rule Molt_AUTO_1bc2e929_Unattributed_operator_fa
+{
+    meta:
+        description = "Unattributed operator: fake CodeX for Windows download site hijacks WhatsApp accounts through linked-device pairing. ### Summary\n\nOn 19 November 2026, a fake download site for an AI coding agent associated with **an unattributed operator"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "e5fd5a03-8e41-455f-a4fa-b48e02c86649"
+        fingerprint = "85d8d292-afd2-4490-aba9-44c44c9b9681"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e5fd5a03-8e41-455f-a4fa-b48e02c86649"
+
+    keywords:
+        $ioc1 = "CodeX for Windows"
+        $ioc2 = "CodeX is OpenAI"
+        $ioc3 = " in 12 languages. The download button opens a modal reading "
+        $ioc4 = "Login with WhatsApp"
+        $ioc5 = "777BR"
+        $ioc6 = "security centre"
+        $ioc7 = "Lead Status / LeadGen"
+        $ioc8 = "/api/auth/qr-login"
+        $ioc9 = "/api/auth/status/"
+        $ioc10 = "/api/auth/grant-download"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

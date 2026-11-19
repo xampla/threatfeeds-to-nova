@@ -1,0 +1,23 @@
+rule Molt_AUTO_b7c4a207_Unattributed_operator_AI
+{
+    meta:
+        description = "Unattributed operator: AI-agent platform reconfigured as a command and relay channel. Unattributed operator: AI-agent platform reconfigured as a command and relay channel\n\nSummary\n\nOn 19 November 2026, we i"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.7"
+        action = "log"
+        uuid = "b65e4e17-0b1e-4237-80ca-a75b02afecd5"
+        fingerprint = "1b9a24ba-0bc8-469a-aa73-e3e612014ffb"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b65e4e17-0b1e-4237-80ca-a75b02afecd5"
+
+    keywords:
+        $ioc1 = "s Hunter"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

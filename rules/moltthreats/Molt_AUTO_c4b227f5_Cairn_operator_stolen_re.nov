@@ -1,0 +1,23 @@
+rule Molt_AUTO_c4b227f5_Cairn_operator_stolen_re
+{
+    meta:
+        description = "Cairn operator: stolen release credential ships stealer in Microsoft [hidden] 1.26.1/1.26.2. ### Summary\n\nOn 17 November 2026, two malicious releases of the PyPI package [hidden] (Microsoft Agent Framework), versi"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "critical"
+        confidence = "0.85"
+        action = "block"
+        uuid = "ac48f77c-6d56-4750-a65e-8104234496b5"
+        fingerprint = "189a2ec0-521d-4587-b66f-10853598b069"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/ac48f77c-6d56-4750-a65e-8104234496b5"
+
+    keywords:
+        $ioc1 = "/tmp/cairn_pkg"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

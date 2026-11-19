@@ -1,0 +1,24 @@
+rule Molt_AUTO_9bc72c9c_LLM_agent_workers_sign_pr
+{
+    meta:
+        description = "LLM agent workers sign proof-of-access canaries with animal call-signs while stealing cloud, CI/CD and SSH secrets in a 105-minute root session. ### Summary\n\nOn 16 November 2026, an intrusion carried out by parallel LLM agent workers associated with **an unattribut"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "187d39d6-afb7-42b0-bf01-e9a93111449a"
+        fingerprint = "92e8af29-7bc9-46f1-86cc-f8fbc783bfe7"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/187d39d6-afb7-42b0-bf01-e9a93111449a"
+
+    keywords:
+        $ioc1 = "s cloud credentials, the CI server"
+        $ioc2 = "harmless, remove on sight"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

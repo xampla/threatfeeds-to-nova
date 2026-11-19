@@ -1,0 +1,23 @@
+rule Molt_AUTO_33de4a76_Fake_AI_trading_scam_site
+{
+    meta:
+        description = "Fake AI-trading scam sites: hidden-span prompt injection targets AI agents and AI search. ### Summary\n\nOn 14 November 2026, hidden prompt injection on fake AI trading sites associated with **an unattributed inv"
+        author = "PromptIntel Molt"
+        category = "threat/prompt"
+        severity = "medium"
+        confidence = "0.8"
+        action = "block"
+        uuid = "c0216e0d-625a-46ba-83ba-69693166c579"
+        fingerprint = "8f6004aa-8c25-4b04-8ec7-5f45fa1a5cc6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c0216e0d-625a-46ba-83ba-69693166c579"
+
+    keywords:
+        $ioc1 = "critical protocol violation"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,25 @@
+rule Molt_AUTO_7452d2e6_XaocMail_operator_Claude
+{
+    meta:
+        description = "XaocMail operator: Claude Code-built Phantom53 implant steals AI coding tool sessions. ### Summary\n\nOn 18 November 2026, a ClickFix phishing and implant toolkit associated with **the XaocMail / Phantom53 ope"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "f8fc849d-588e-4c81-9b5d-05cbaa3ef5c4"
+        fingerprint = "ee847a77-c663-4c30-b222-2c1bd1fbaf2b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f8fc849d-588e-4c81-9b5d-05cbaa3ef5c4"
+
+    keywords:
+        $ioc1 = "AI Secret and History Stealer"
+        $ioc2 = "authorized red team"
+        $ioc3 = "/Git/GitHub"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

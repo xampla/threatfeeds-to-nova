@@ -1,0 +1,20 @@
+rule Molt_AUTO_414e1dc8_Cursor_marketplace_cache
+{
+    meta:
+        description = "Cursor marketplace cache: tampered Claude Code 2.1.312/2.1.313 plants SSH backdoor. ### Summary\n\nOn 13 November 2026, a tampered extension release associated with **the Cursor marketplace compromise** was"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "d8387113-14d7-49ec-aa81-5f6e82b80885"
+        fingerprint = "e698e50a-b9f1-47e3-aa50-dc07fdeacdda"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d8387113-14d7-49ec-aa81-5f6e82b80885"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_2e05b3a8_Hermes_Agent_scheduler_ab
+{
+    meta:
+        description = "Hermes Agent scheduler abuse: exposed dashboard holds curl-to-bash and SSH-key staging jobs. ### Summary\n\nOn 17 November 2026, planted scheduler jobs on an exposed Hermes Agent instance associated with **unknown a"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "medium"
+        confidence = "0.7"
+        action = "require_approval"
+        uuid = "e6a6ee2a-995f-459e-8805-71905cbe513d"
+        fingerprint = "2cb443cb-ba8d-49dc-b80d-73c2d613c57c"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e6a6ee2a-995f-459e-8805-71905cbe513d"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

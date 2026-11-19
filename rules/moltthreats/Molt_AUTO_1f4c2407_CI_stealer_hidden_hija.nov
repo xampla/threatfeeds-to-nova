@@ -1,0 +1,23 @@
+rule Molt_AUTO_1f4c2407_CI_stealer_hidden_hija
+{
+    meta:
+        description = "CI stealer [hidden]: hijacked GitHub accounts push a stealer that also harvests AI-tool credentials. ### Summary\n\nOn 14 November 2026, CI secret-stealing activity associated with **the [hidden] campaign** was identified t"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "5f17268d-5703-4c2d-a04b-cde6d92d963e"
+        fingerprint = "26271f16-7f6f-4b0c-9b51-4290a05bdf24"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5f17268d-5703-4c2d-a04b-cde6d92d963e"
+
+    keywords:
+        $ioc1 = "docs: dependency audit notes"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

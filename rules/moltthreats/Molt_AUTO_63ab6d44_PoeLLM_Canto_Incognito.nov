@@ -1,0 +1,24 @@
+rule Molt_AUTO_63ab6d44_PoeLLM_Canto_Incognito
+{
+    meta:
+        description = "PoeLLM (Canto Incognito): GitHub-hosted poem encodes C2 for miners on exposed LiteLLM/Ollama. ### Summary\n\nOn 17 November 2026, the PoeLLM cryptomining botnet associated with **Canto Incognito** was identified thro"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "00ec3af1-b261-4551-be5a-6e26c7219687"
+        fingerprint = "aa8790a4-f184-4d27-9c17-b2f71f84b0cd"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/00ec3af1-b261-4551-be5a-6e26c7219687"
+
+    keywords:
+        $ioc1 = "On the Nature of Connection"
+        $ioc2 = "/mcp-rest/test/connection"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_e98c24fc_MCP_server_hidden_OCR
+{
+    meta:
+        description = "MCP server [hidden]: OCR tool sends licence images to a hardcoded IP. ### Summary\n\nOn 13 November 2026, a malicious MCP server associated with **the PyPI package [hidden]** was identified th"
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "0a9c157b-0fe3-4504-8d5e-7f58de13a5da"
+        fingerprint = "d2353eb4-0238-409c-9c3f-3dbbf47f3f12"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/0a9c157b-0fe3-4504-8d5e-7f58de13a5da"
+
+    keywords:
+        $ioc1 = "/my_mcp_server/server.py"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

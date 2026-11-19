@@ -1,0 +1,20 @@
+rule Molt_AUTO_50806084_hidden_Chinese_speakin
+{
+    meta:
+        description = "[hidden]: Chinese-speaking crew runs PentestGPT and DeepAudit with AI-written exploit kits to plant BadIIS on web servers. ### Summary\n\nOn 17 November 2026, download and staging infrastructure and BadIIS tooling associated with **[hidden], a C"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "b2f9e28e-2596-4875-9457-9724cdf21db1"
+        fingerprint = "cfa38193-0d69-4411-8443-d7058ab30528"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b2f9e28e-2596-4875-9457-9724cdf21db1"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

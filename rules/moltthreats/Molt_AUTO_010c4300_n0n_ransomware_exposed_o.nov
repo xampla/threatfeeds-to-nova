@@ -1,0 +1,20 @@
+rule Molt_AUTO_010c4300_n0n_ransomware_exposed_o
+{
+    meta:
+        description = "n0n ransomware: exposed operator workspace shows opencode agent running abliterated models. ### Summary\n\nOn 17 November 2026, an AI-assisted extortion workspace associated with **the n0n ransomware operation** wa"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "18dd02a4-f941-40aa-b025-38fe21785688"
+        fingerprint = "4811e857-4761-4616-9e7b-8d78fd859977"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/18dd02a4-f941-40aa-b025-38fe21785688"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}
