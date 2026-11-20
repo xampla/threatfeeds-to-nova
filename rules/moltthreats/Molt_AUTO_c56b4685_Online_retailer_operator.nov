@@ -1,0 +1,24 @@
+rule Molt_AUTO_c56b4685_Online_retailer_operator
+{
+    meta:
+        description = "Online-retailer operator: Hermes, Strix and Cairn harnesses breach hundreds of shops and plant card skimmers for about $25 a target. ### Summary\n\nOn 17 November 2026, a staging server, C2 hosts and checkout skimmer domains associated with **a financiall"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.9"
+        action = "log"
+        uuid = "9d477219-b4f4-4f6e-9817-47a20c48d00a"
+        fingerprint = "4f2b99dc-5cd0-47d6-88dd-328b5da4c614"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9d477219-b4f4-4f6e-9817-47a20c48d00a"
+
+    keywords:
+        $ioc1 = "SOUL - Red Team Operator"
+        $ioc2 = "s interim report and Symantec"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_599f6b04_ARTEX_consistent_operator
+{
+    meta:
+        description = "ARTEX-consistent operator: stolen vendor cloud key chained through about 10 Barracuda cloud accounts in 44 hours. ### Summary\n\nOn 10 November 2026, a cloud intrusion run at machine speed associated with **an unattributed, financially "
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.75"
+        action = "log"
+        uuid = "24eedf2b-2914-49b9-9465-ab1d288f8038"
+        fingerprint = "1c116695-1092-4a29-9cb7-a42944cb7264"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/24eedf2b-2914-49b9-9465-ab1d288f8038"
+
+    keywords:
+        $ioc1 = "s GitHub repository, exposed when that vendor"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

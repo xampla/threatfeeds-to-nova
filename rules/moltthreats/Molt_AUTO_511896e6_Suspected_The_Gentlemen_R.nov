@@ -1,0 +1,20 @@
+rule Molt_AUTO_511896e6_Suspected_The_Gentlemen_R
+{
+    meta:
+        description = "Suspected The Gentlemen RaaS affiliate: Claude Code runs a FortiGate LDAP pass-back and firewall changes across six intrusions. ### Summary\n\nOn 17 November 2026, a C2 server and a rogue LDAP listener associated with **a suspected affiliate of The G"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.75"
+        action = "log"
+        uuid = "4ef3a9f6-bdac-4981-96e3-015cfca75ae4"
+        fingerprint = "78b66518-ae3b-415c-9e9d-31d93c3e0422"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/4ef3a9f6-bdac-4981-96e3-015cfca75ae4"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

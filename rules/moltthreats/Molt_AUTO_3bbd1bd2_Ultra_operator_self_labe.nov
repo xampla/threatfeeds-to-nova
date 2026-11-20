@@ -1,0 +1,27 @@
+rule Molt_AUTO_3bbd1bd2_Ultra_operator_self_labe
+{
+    meta:
+        description = "Ultra operator: self-labelled agentic recon written for defenders' AI triage. ### Summary\n\nOn 19 November 2026, the \"Ultra\" agentic attack cluster associated with **an unattributed Hong Kong operato"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.7"
+        action = "log"
+        uuid = "4e91400c-ab5e-4149-8c98-9f445708714c"
+        fingerprint = "db138d6a-1a20-4280-91d0-e673e9305d23"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/4e91400c-ab5e-4149-8c98-9f445708714c"
+
+    keywords:
+        $ioc1 = "Ultra"
+        $ioc2 = "Harmless pentest canary"
+        $ioc3 = "Ultra - VulnHunter"
+        $ioc4 = "Ultra Reverse"
+        $ioc5 = "pentest canary"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

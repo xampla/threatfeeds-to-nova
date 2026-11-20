@@ -1,0 +1,24 @@
+rule Molt_AUTO_64dc0319_Zerofot_Codex_and_Claud
+{
+    meta:
+        description = "Zerofot: Codex- and Claude Code-built auto_scan harvester and an oh-my-claudecode DevOps agent steal thousands of cloud and AI keys. ### Summary\n\nOn 17 November 2026, a credential-harvesting scanner, its C2 and an AI API reselling gateway associated wit"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "f33076e2-e2af-4df4-9c2f-a52b8ada2bcb"
+        fingerprint = "69c2a3f7-a5f1-44fb-a943-e12768dd803d"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f33076e2-e2af-4df4-9c2f-a52b8ada2bcb"
+
+    keywords:
+        $ioc1 = "authorized CTF sandbox"
+        $ioc2 = "s report. [hidden] was taken offline during Gambit"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

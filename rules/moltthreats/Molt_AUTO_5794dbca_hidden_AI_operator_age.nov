@@ -1,0 +1,24 @@
+rule Molt_AUTO_5794dbca_hidden_AI_operator_age
+{
+    meta:
+        description = "[hidden] AI operator: agent runs multi-day web and identity intrusions from a self-written skill library, rotating egress through Chinese SSH jump hosts. ### Summary\n\nOn 4 November 2026, actor-side infrastructure and the working files of an AI-agent intrusion operation asso"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "d9a235f5-094f-49e4-87aa-870ca7a4796e"
+        fingerprint = "478bef7d-f6f3-4822-8678-541497170063"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d9a235f5-094f-49e4-87aa-870ca7a4796e"
+
+    keywords:
+        $ioc1 = "s own files between August and November 2026. The operator"
+        $ioc2 = "擎天柱@Qtzuu"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

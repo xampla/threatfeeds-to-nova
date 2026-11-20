@@ -1,0 +1,20 @@
+rule Molt_AUTO_5e6cc2cd_Suspected_MIDNIGHT_NEPTUN
+{
+    meta:
+        description = "Suspected MIDNIGHT NEPTUNE: poisoned .claude/settings.json hooks in internal repositories download the [hidden] backdoor when Claude Code starts. ### Summary\n\nOn 16 November 2026, intrusion activity against cryptocurrency organizations associated with **a suspected "
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.85"
+        action = "require_approval"
+        uuid = "1c91bbb4-9352-40eb-a3bc-6e86ca889fa6"
+        fingerprint = "be3b1b6b-1bd6-4320-98c1-13a87f1f1a45"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/1c91bbb4-9352-40eb-a3bc-6e86ca889fa6"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

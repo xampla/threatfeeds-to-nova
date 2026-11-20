@@ -1,0 +1,23 @@
+rule Molt_AUTO_dd9cc0a4_Storm_0940_ARTEX_norma
+{
+    meta:
+        description = "Storm-0940 (ARTEX): norma/0.4 user agent traced to the WebFetch tool of ARTEX's Norma agent SDK during IT and software vendor targeting. ### Summary\n\nOn 22 October 2026, identity-provider and application attacks against multiple IT and software vendors (Oct"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "c4d2a6d9-c384-4632-9a82-502ca4a0817d"
+        fingerprint = "b63476ae-6fd8-4707-a3e6-a4dc580708fa"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c4d2a6d9-c384-4632-9a82-502ca4a0817d"
+
+    keywords:
+        $ioc1 = "s other fixed strings: WebSearch uses "
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

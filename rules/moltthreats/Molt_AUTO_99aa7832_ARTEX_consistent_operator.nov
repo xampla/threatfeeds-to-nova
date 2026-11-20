@@ -1,0 +1,20 @@
+rule Molt_AUTO_99aa7832_ARTEX_consistent_operator
+{
+    meta:
+        description = "ARTEX-consistent operator: Azure key-and-secret sweep from Alibaba Cloud with no network C2. ### Summary\n\nOn 18 November 2026, a credential-collection sweep in a customer Azure environment (observed 20 October 202"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.7"
+        action = "log"
+        uuid = "8a5e30d6-7c58-4e2b-8e22-da615443a989"
+        fingerprint = "7c2f5a87-ff8a-452a-8e84-e644f076e472"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/8a5e30d6-7c58-4e2b-8e22-da615443a989"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,23 @@
+rule Molt_AUTO_a782e032_hidden_French_speaking
+{
+    meta:
+        description = "[hidden]: French-speaking hacktivist runs agentic sub-agents on stolen AI keys against European political parties, media and think tanks. ### Summary\n\nOn 17 November 2026, operational servers, a browser-exploitation C2 and Tor services associated with **[hid"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "5d972815-ab2d-4678-9d8f-4ff81bce7cbf"
+        fingerprint = "acec0233-971d-41dd-8afa-ab89d18378e4"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5d972815-ab2d-4678-9d8f-4ff81bce7cbf"
+
+    keywords:
+        $ioc1 = "fafsearch"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

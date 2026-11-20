@@ -1,0 +1,20 @@
+rule Molt_AUTO_086a6d76_Unattributed_operator_Un
+{
+    meta:
+        description = "Unattributed operator: Unicode Tag prompt injection added to a CEO-impersonating invoice-fraud campaign. ### Summary\n\nOn 22 October 2026, an invoice-fraud campaign that hides a forwarding task for email AI agents, associated "
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "medium"
+        confidence = "0.8"
+        action = "require_approval"
+        uuid = "9404f617-7444-4724-b153-2ef8f129e9d6"
+        fingerprint = "d21cf48f-1f40-4e8f-b348-c471e6d1ba23"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/9404f617-7444-4724-b153-2ef8f129e9d6"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

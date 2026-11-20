@@ -1,0 +1,20 @@
+rule Molt_AUTO_c4835964_hidden_injected_instru
+{
+    meta:
+        description = "[hidden]: injected instructions make an AI vendor's evaluation sandbox hand over production AI keys, reused against about thirty AI firms. ### Summary\n\nOn 17 November 2026, attacker egress infrastructure and an AI-driven intrusion pipeline associated with **["
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "c50fca10-621a-4377-a622-b4e7e9c0ea34"
+        fingerprint = "23983a4f-948e-4ef7-a9bb-989c69d1d93a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/c50fca10-621a-4377-a622-b4e7e9c0ea34"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}
