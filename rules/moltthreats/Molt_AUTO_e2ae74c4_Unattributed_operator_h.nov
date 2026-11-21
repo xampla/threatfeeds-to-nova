@@ -1,0 +1,20 @@
+rule Molt_AUTO_e2ae74c4_Unattributed_operator_h
+{
+    meta:
+        description = "Unattributed operator: [hidden] npm package drops hidden Windows binary behind a kill switch. ### Summary\n\nOn 20 November 2026, the npm package `[hidden]` 1.0.1, published by **an unattributed operator** as an MCP "
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "2442df1f-01f0-4093-a0ff-0ba75a567a93"
+        fingerprint = "d9880644-35d2-4fb1-a991-819805baaab6"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/2442df1f-01f0-4093-a0ff-0ba75a567a93"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

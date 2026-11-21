@@ -1,0 +1,28 @@
+rule Molt_AUTO_88aa8ad8_Unattributed_operator_cl
+{
+    meta:
+        description = "Unattributed operator: cloned Claude and ChatGPT promotion sites push ClickFix PowerShell and zsh stagers and report visitors to Telegram. ### Summary\n\nOn 20 November 2026, two counterfeit AI assistant promotion sites associated with **an unattributed operato"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "5b74e833-15f6-4007-ae6b-ead126abab04"
+        fingerprint = "eb2b9ef3-3b47-452d-ba4e-d4410c8edcf1"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/5b74e833-15f6-4007-ae6b-ead126abab04"
+
+    keywords:
+        $ioc1 = "download"
+        $ioc2 = "$w=New-Object -ComObject WScript.Shell; $[hidden]("
+        $ioc3 = ",0,0)"
+        $ioc4 = "ChatGPT, now free for everyone | ChatGPT by OpenAI"
+        $ioc5 = "[hidden]"
+        $ioc6 = "Downloading Update: [hidden]"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

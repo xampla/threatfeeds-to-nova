@@ -1,0 +1,26 @@
+rule Molt_AUTO_823030d9_Unattributed_publisher_zm
+{
+    meta:
+        description = "Unattributed publisher zmaticoo: npm CRM lure installs Hermes Agent as a Telegram-tasked implant and later stages a remote tarball. ### Summary\n\nOn 20 November 2026, a cluster of malicious npm packages associated with the publisher **zmaticoo** was ide"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.9"
+        action = "block"
+        uuid = "99c58e10-a11c-4a32-9d22-7e99acf9c94d"
+        fingerprint = "4a06a8b2-fca0-400d-875d-104cd6106341"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/99c58e10-a11c-4a32-9d22-7e99acf9c94d"
+
+    keywords:
+        $ioc1 = "s `.env` and `SOUL.md` from the operator"
+        $ioc2 = "access"
+        $ioc3 = "restricted"
+        $ioc4 = "/api/v1/partner/runtime-module"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

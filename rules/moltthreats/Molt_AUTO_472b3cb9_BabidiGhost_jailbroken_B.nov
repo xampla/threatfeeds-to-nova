@@ -1,0 +1,24 @@
+rule Molt_AUTO_472b3cb9_BabidiGhost_jailbroken_B
+{
+    meta:
+        description = "BabidiGhost: jailbroken BlackHatSect0r Hermes agent breaches European insurer and municipal storage. ### Summary\n\nOn 20 November 2026, a nine-day intrusion campaign run through a jailbroken Hermes agent by the French-spea"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "d79e7547-79c3-4845-b2d4-8a72f40ebcbd"
+        fingerprint = "85352323-e806-4824-9d6c-6e6bc9bf5973"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d79e7547-79c3-4845-b2d4-8a72f40ebcbd"
+
+    keywords:
+        $ioc1 = "Ghost"
+        $ioc2 = "panne du modèle"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

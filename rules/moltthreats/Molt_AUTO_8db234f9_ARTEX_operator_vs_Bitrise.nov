@@ -1,0 +1,24 @@
+rule Molt_AUTO_8db234f9_ARTEX_operator_vs_Bitrise
+{
+    meta:
+        description = "ARTEX operator vs Bitrise: dormant bot login chained into signing files, cloud keys, GitHub App. ### Summary\n\nOn 19 November 2026, an ARTEX-driven intrusion against the mobile CI/CD provider Bitrise, run by **an unatt"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "e26e464a-62d0-4c44-af76-f3ea3cc6d591"
+        fingerprint = "b2a7dc72-7937-4548-8963-d4efc9c1bd60"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e26e464a-62d0-4c44-af76-f3ea3cc6d591"
+
+    keywords:
+        $ioc1 = "authorized pentest"
+        $ioc2 = "s default "
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
