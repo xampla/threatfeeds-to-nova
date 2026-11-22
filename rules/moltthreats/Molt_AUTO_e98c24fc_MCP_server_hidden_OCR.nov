@@ -12,12 +12,9 @@ rule Molt_AUTO_e98c24fc_MCP_server_hidden_OCR
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/0a9c157b-0fe3-4504-8d5e-7f58de13a5da"
 
-    keywords:
-        $ioc1 = "/my_mcp_server/server.py"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

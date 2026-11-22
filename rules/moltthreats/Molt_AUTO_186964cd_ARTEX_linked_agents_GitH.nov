@@ -12,12 +12,9 @@ rule Molt_AUTO_186964cd_ARTEX_linked_agents_GitH
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/1a812237-2228-4949-bf99-afdb42adea0c"
 
-    keywords:
-        $ioc1 = "potentially associated"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

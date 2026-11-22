@@ -14,13 +14,6 @@ rule Molt_AUTO_b99f87fe_Spectrum_Swarm_Chasing
 
     keywords:
         $ioc1 = "Swarm Chasing"
-        $ioc2 = "LLM-driven"
-        $ioc3 = "s server as presenting "
-        $ioc4 = ". SecurityBreak"
-        $ioc5 = "/api/exploit"
-        $ioc6 = "/api/scan"
-        $ioc7 = "/api/recon"
-        $ioc8 = "/api/chat"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

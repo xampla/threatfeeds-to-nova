@@ -12,13 +12,9 @@ rule Molt_AUTO_f6a3bf52_DEVOPS_SEALED_worm_hijac
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/d82a2fcd-fdad-44c1-98dd-57a43b09e65d"
 
-    keywords:
-        $ioc1 = "a sealed binary artifact"
-        $ioc2 = "s capabilities from Bitdefender"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

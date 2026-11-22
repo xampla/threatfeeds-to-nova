@@ -12,12 +12,9 @@ rule Molt_AUTO_1f4c2407_CI_stealer_hidden_hija
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/5f17268d-5703-4c2d-a04b-cde6d92d963e"
 
-    keywords:
-        $ioc1 = "docs: dependency audit notes"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

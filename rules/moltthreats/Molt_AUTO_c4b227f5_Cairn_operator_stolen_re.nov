@@ -12,12 +12,9 @@ rule Molt_AUTO_c4b227f5_Cairn_operator_stolen_re
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/ac48f77c-6d56-4750-a65e-8104234496b5"
 
-    keywords:
-        $ioc1 = "/tmp/cairn_pkg"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

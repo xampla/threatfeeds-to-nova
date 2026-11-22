@@ -12,13 +12,9 @@ rule Molt_AUTO_c56b4685_Online_retailer_operator
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/9d477219-b4f4-4f6e-9817-47a20c48d00a"
 
-    keywords:
-        $ioc1 = "SOUL - Red Team Operator"
-        $ioc2 = "s interim report and Symantec"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

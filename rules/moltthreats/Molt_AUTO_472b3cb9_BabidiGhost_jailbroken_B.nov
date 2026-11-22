@@ -14,7 +14,6 @@ rule Molt_AUTO_472b3cb9_BabidiGhost_jailbroken_B
 
     keywords:
         $ioc1 = "Ghost"
-        $ioc2 = "panne du modèle"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

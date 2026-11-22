@@ -12,13 +12,9 @@ rule Molt_AUTO_e9ca76d2_tomicdd_artex_Docker_imag
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/26d4aae0-b239-4e9a-ac7d-33d5d7be8329"
 
-    keywords:
-        $ioc1 = "/app/artex"
-        $ioc2 = "/api/auth/login"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

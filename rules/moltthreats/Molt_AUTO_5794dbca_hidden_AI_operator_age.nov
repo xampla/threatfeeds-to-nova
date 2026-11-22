@@ -12,13 +12,9 @@ rule Molt_AUTO_5794dbca_hidden_AI_operator_age
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/d9a235f5-094f-49e4-87aa-870ca7a4796e"
 
-    keywords:
-        $ioc1 = "s own files between August and November 2026. The operator"
-        $ioc2 = "擎天柱@Qtzuu"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

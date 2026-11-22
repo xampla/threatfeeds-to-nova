@@ -12,13 +12,9 @@ rule Molt_AUTO_9bc72c9c_LLM_agent_workers_sign_pr
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/187d39d6-afb7-42b0-bf01-e9a93111449a"
 
-    keywords:
-        $ioc1 = "s cloud credentials, the CI server"
-        $ioc2 = "harmless, remove on sight"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

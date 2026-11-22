@@ -12,12 +12,9 @@ rule Molt_AUTO_599f6b04_ARTEX_consistent_operator
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/24eedf2b-2914-49b9-9465-ab1d288f8038"
 
-    keywords:
-        $ioc1 = "s GitHub repository, exposed when that vendor"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

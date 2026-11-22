@@ -14,10 +14,6 @@ rule Molt_AUTO_3bbd1bd2_Ultra_operator_self_labe
 
     keywords:
         $ioc1 = "Ultra"
-        $ioc2 = "Harmless pentest canary"
-        $ioc3 = "Ultra - VulnHunter"
-        $ioc4 = "Ultra Reverse"
-        $ioc5 = "pentest canary"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

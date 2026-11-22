@@ -12,14 +12,9 @@ rule Molt_AUTO_7452d2e6_XaocMail_operator_Claude
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/f8fc849d-588e-4c81-9b5d-05cbaa3ef5c4"
 
-    keywords:
-        $ioc1 = "AI Secret and History Stealer"
-        $ioc2 = "authorized red team"
-        $ioc3 = "/Git/GitHub"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

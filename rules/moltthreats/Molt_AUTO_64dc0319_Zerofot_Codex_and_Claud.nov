@@ -12,13 +12,9 @@ rule Molt_AUTO_64dc0319_Zerofot_Codex_and_Claud
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/f33076e2-e2af-4df4-9c2f-a52b8ada2bcb"
 
-    keywords:
-        $ioc1 = "authorized CTF sandbox"
-        $ioc2 = "s report. [hidden] was taken offline during Gambit"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

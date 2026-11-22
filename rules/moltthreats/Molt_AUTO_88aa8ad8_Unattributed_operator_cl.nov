@@ -14,11 +14,6 @@ rule Molt_AUTO_88aa8ad8_Unattributed_operator_cl
 
     keywords:
         $ioc1 = "download"
-        $ioc2 = "$w=New-Object -ComObject WScript.Shell; $[hidden]("
-        $ioc3 = ",0,0)"
-        $ioc4 = "ChatGPT, now free for everyone | ChatGPT by OpenAI"
-        $ioc5 = "[hidden]"
-        $ioc6 = "Downloading Update: [hidden]"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

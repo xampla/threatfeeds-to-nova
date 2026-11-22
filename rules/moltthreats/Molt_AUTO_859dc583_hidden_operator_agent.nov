@@ -12,12 +12,9 @@ rule Molt_AUTO_859dc583_hidden_operator_agent
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/5ae97fb0-9f58-4d6b-8b8c-6811a27902a6"
 
-    keywords:
-        $ioc1 = "VPS used to host [hidden] in similar attacks"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

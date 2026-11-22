@@ -14,7 +14,6 @@ rule Molt_AUTO_23509275_Hermes_Bot_weaponized_He
 
     keywords:
         $ioc1 = "s brief dated 15 November 2026 and [hidden]"
-        $ioc2 = "/api/cmd"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

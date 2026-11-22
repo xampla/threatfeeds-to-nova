@@ -12,13 +12,9 @@ rule Molt_AUTO_48776f3e_AIA0002_Cairn_operators
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/87597e15-80e1-417a-a78d-8852da0adf85"
 
-    keywords:
-        $ioc1 = "fetch credit cards"
-        $ioc2 = "fetch crypto"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

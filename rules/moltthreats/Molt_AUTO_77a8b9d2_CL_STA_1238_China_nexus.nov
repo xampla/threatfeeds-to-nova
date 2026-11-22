@@ -12,13 +12,9 @@ rule Molt_AUTO_77a8b9d2_CL_STA_1238_China_nexus
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/b6818fec-4172-4e77-8887-fff154971235"
 
-    keywords:
-        $ioc1 = "AIScan Runner Skills"
-        $ioc2 = "breach <target> as fast as possible"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

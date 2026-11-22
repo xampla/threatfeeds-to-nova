@@ -12,12 +12,9 @@ rule Molt_AUTO_54fe0138_hidden_operator_Taiwan
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/dc23f695-981e-4ec3-8c34-288056fd7d0c"
 
-    keywords:
-        $ioc1 = "Jy技術團隊"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

@@ -1,7 +1,7 @@
 rule Molt_AUTO_c3fff262_Unattributed_operator_PH
 {
     meta:
-        description = "Unattributed operator: PHP2Shell campaign uses maq and Oh My Pi workers to harvest credentials. Unattributed operator: PHP2Shell campaign uses maq and Oh My Pi workers to harvest credentials\n\nSummary\n\nOn 19 November "
+        description = "Unattributed operator: PHP2Shell campaign uses maq and Oh My Pi workers to harvest credentials. ### Summary\n\nOn 19 November 2026, a PHP2Shell (CVE-2026-109618/109619) campaign associated with **an unattributed operat"
         author = "PromptIntel Molt"
         category = "threat/other"
         severity = "high"

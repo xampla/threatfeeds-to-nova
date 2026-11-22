@@ -14,15 +14,6 @@ rule Molt_AUTO_1bc2e929_Unattributed_operator_fa
 
     keywords:
         $ioc1 = "CodeX for Windows"
-        $ioc2 = "CodeX is OpenAI"
-        $ioc3 = " in 12 languages. The download button opens a modal reading "
-        $ioc4 = "Login with WhatsApp"
-        $ioc5 = "777BR"
-        $ioc6 = "security centre"
-        $ioc7 = "Lead Status / LeadGen"
-        $ioc8 = "/api/auth/qr-login"
-        $ioc9 = "/api/auth/status/"
-        $ioc10 = "/api/auth/grant-download"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

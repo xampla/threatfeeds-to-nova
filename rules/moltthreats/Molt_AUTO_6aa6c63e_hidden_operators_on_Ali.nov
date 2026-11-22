@@ -12,12 +12,9 @@ rule Molt_AUTO_6aa6c63e_hidden_operators_on_Ali
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/ecf19cb2-386b-412b-967a-c41c5be17e04"
 
-    keywords:
-        $ioc1 = "[hidden] — 自主渗透测试控制台"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

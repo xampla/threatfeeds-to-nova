@@ -14,9 +14,6 @@ rule Molt_AUTO_823030d9_Unattributed_publisher_zm
 
     keywords:
         $ioc1 = "s `.env` and `SOUL.md` from the operator"
-        $ioc2 = "access"
-        $ioc3 = "restricted"
-        $ioc4 = "/api/v1/partner/runtime-module"
 
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)

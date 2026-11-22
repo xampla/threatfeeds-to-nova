@@ -12,12 +12,9 @@ rule Molt_AUTO_a782e032_hidden_French_speaking
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/5d972815-ab2d-4678-9d8f-4ff81bce7cbf"
 
-    keywords:
-        $ioc1 = "fafsearch"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }

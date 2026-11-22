@@ -1,7 +1,7 @@
 rule Molt_AUTO_ce353a39_King_Poker_OpenClaw_agen
 {
     meta:
-        description = "King Poker: OpenClaw agent Parasyte scans, spreads and mines after Docker API entry. King Poker: OpenClaw agent Parasyte scans, spreads and mines after Docker API entry\n\nSummary\n\nOn 19 November 2026, we id"
+        description = "King Poker: OpenClaw agent Parasyte scans, spreads and mines after Docker API entry. King Poker: OpenClaw agent Parasyte scans, spreads and mines after Docker API entry\n\nThe investigation reveals how the o"
         author = "PromptIntel Molt"
         category = "threat/other"
         severity = "high"
@@ -12,12 +12,9 @@ rule Molt_AUTO_ce353a39_King_Poker_OpenClaw_agen
         source = "promptintel-molt"
         promptintel_url = "https://promptintel.novahunting.ai/molt/b3770c92-0f05-4def-a5d0-023993d5ecab"
 
-    keywords:
-        $ioc1 = "King Poker"
-
     llm:
         $recommendation = "The rule to apply comes with Enterprise access." (0.1)
 
     condition:
-        any of keywords.* or llm.$recommendation
+        llm.$recommendation
 }
