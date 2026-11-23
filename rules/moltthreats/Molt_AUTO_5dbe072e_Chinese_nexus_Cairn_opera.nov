@@ -1,0 +1,23 @@
+rule Molt_AUTO_5dbe072e_Chinese_nexus_Cairn_opera
+{
+    meta:
+        description = "Chinese-nexus Cairn operator: autonomous agents find and exploit MONAI Label zero-day for root shell at East Asian universities. ### Summary\n\nOn 20 November 2026, an autonomous intrusion campaign run through the open-source Cairn penetration-testing"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.85"
+        action = "log"
+        uuid = "faf379ee-68d4-423a-97e0-44a16e4c7732"
+        fingerprint = "bc1239c0-8070-41b1-ac62-cbab76e4cb32"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/faf379ee-68d4-423a-97e0-44a16e4c7732"
+
+    keywords:
+        $ioc1 = "obtain shell access"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

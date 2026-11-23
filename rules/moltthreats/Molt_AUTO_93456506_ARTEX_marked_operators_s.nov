@@ -1,0 +1,20 @@
+rule Molt_AUTO_93456506_ARTEX_marked_operators_s
+{
+    meta:
+        description = "ARTEX-marked operators: seven further Previdian honeypot source addresses. ### Summary\n\nOn 23 November 2026, seven further source addresses from Previdian's ARTEX honeypot report associated with "
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "medium"
+        confidence = "0.6"
+        action = "log"
+        uuid = "db03ac4d-27d5-4a9f-8b8f-395db5d00674"
+        fingerprint = "45253030-715b-4d23-8467-e8634c0220ff"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/db03ac4d-27d5-4a9f-8b8f-395db5d00674"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

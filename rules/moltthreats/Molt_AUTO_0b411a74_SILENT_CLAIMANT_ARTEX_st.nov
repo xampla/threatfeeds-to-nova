@@ -1,0 +1,20 @@
+rule Molt_AUTO_0b411a74_SILENT_CLAIMANT_ARTEX_st
+{
+    meta:
+        description = "SILENT CLAIMANT: ARTEX-style agent exchanges stolen EKS pod tokens and IAM keys for AWS sessions to exfiltrate data. ### Summary\n\nOn 19 November 2026, a data-theft campaign against several unrelated organisations' AWS environments, run b"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "dde69f46-e0b4-40b4-98df-f4eb800e985d"
+        fingerprint = "5e6084c6-b026-462b-9faa-95b06a65ca41"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/dde69f46-e0b4-40b4-98df-f4eb800e985d"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

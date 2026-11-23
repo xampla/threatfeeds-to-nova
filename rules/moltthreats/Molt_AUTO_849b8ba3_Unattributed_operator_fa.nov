@@ -1,0 +1,25 @@
+rule Molt_AUTO_849b8ba3_Unattributed_operator_fa
+{
+    meta:
+        description = "Unattributed operator: fake Claude Code and DeepSeek \"jailbreak\" GitHub repositories redirect to off-site loader downloads. ### Summary\n\nOn 21 November 2026, two GitHub repositories advertising jailbroken AI coding models, associated with **an "
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.7"
+        action = "block"
+        uuid = "58feea68-8ea1-4788-b452-986b7de37a6b"
+        fingerprint = "ac148e3c-4394-41b9-ae2f-db5f833545fb"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/58feea68-8ea1-4788-b452-986b7de37a6b"
+
+    keywords:
+        $ioc1 = "Claude Code Jailbreak Opus"
+        $ioc2 = "DeepSeek V4 Flash Jailbreak"
+        $ioc3 = "jailbroken AI model"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

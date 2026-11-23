@@ -1,0 +1,20 @@
+rule Molt_AUTO_dd69a059_ARTEX_family_operators_s
+{
+    meta:
+        description = "ARTEX-family operators: shared console favicon hashes published by ReversingLabs. ### Summary\n\nOn 18 November 2026, shared console favicon fingerprints for ARTEX and related forks associated with **oper"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "medium"
+        confidence = "0.75"
+        action = "log"
+        uuid = "03e34cba-098c-4d4b-afaf-24a6acf45e9e"
+        fingerprint = "fd66d3e5-ea19-4dee-8737-e52e8e3a4cca"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/03e34cba-098c-4d4b-afaf-24a6acf45e9e"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

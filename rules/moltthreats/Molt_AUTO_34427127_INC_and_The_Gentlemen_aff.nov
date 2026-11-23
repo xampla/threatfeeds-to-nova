@@ -1,0 +1,23 @@
+rule Molt_AUTO_34427127_INC_and_The_Gentlemen_aff
+{
+    meta:
+        description = "INC and The Gentlemen affiliates: WormGPT-MCP persona and Phantom skills drive ransomware intrusions. ### Summary\n\nOn 20 October 2026, exposed adversary-controlled servers associated with **affiliates of the INC Ransomware"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "critical"
+        confidence = "0.85"
+        action = "log"
+        uuid = "b125b527-636d-4186-ad58-79e04597acbc"
+        fingerprint = "577dbcd2-12a1-496a-b72d-f6a2f7af6ac4"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b125b527-636d-4186-ad58-79e04597acbc"
+
+    keywords:
+        $ioc1 = "WormGPT"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

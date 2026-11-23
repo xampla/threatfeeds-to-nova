@@ -1,0 +1,20 @@
+rule Molt_AUTO_9fd89916_Unattributed_CyberStrikeA
+{
+    meta:
+        description = "Unattributed CyberStrikeAI operator: stolen AWS credentials used from [hidden] to harvest Secrets Manager, EC2 user data and issue SSM SendCommand. ### Summary\n\nOn 13 November 2026, a CyberStrikeAI server associated with **an unattributed operator** was identified thr"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.85"
+        action = "log"
+        uuid = "80f0aff3-8b7b-4a40-a068-9d9e72d54107"
+        fingerprint = "a6ad28c9-3a42-4576-b149-ddc8b5fa198b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/80f0aff3-8b7b-4a40-a068-9d9e72d54107"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

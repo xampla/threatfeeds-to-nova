@@ -1,0 +1,23 @@
+rule Molt_AUTO_14b450af_Bazuka_Android_fraud_fra
+{
+    meta:
+        description = "Bazuka: Android fraud framework uses an LLM in its control panel to score victims and plan permission grants. ### Summary\n\nOn 18 November 2026, a modular Android fraud framework named **Bazuka** was identified through ThreatFabric"
+        author = "PromptIntel Molt"
+        category = "threat/other"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "cdfafe64-f01f-492c-bc7f-3596cac5d3cd"
+        fingerprint = "b8e71893-c3f5-4f53-922f-9bcf59a65f51"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/cdfafe64-f01f-492c-bc7f-3596cac5d3cd"
+
+    keywords:
+        $ioc1 = "s operators use a large language model inside the malware"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

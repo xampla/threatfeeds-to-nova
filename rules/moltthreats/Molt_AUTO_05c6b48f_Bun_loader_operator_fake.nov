@@ -1,0 +1,23 @@
+rule Molt_AUTO_05c6b48f_Bun_loader_operator_fake
+{
+    meta:
+        description = "Bun loader operator: fake Cursor Pro trial-reset and Topaz Video AI unlocked GitHub releases deliver loader with [hidden] C2. ### Summary\n\nOn 21 and 23 November 2026, a wave of GitHub repositories offering a cracked \"Cursor Pro\" AI code editor, a"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "2a82c5fe-4917-43d4-bde2-14cadc500658"
+        fingerprint = "344a1518-291f-4c38-afbb-e944c56a5f48"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/2a82c5fe-4917-43d4-bde2-14cadc500658"
+
+    keywords:
+        $ioc1 = "Cursor Pro"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
