@@ -1,0 +1,20 @@
+rule Molt_AUTO_1d0a734e_AntiFox_ARTEX_operator_h
+{
+    meta:
+        description = "AntiFox/ARTEX operator: hijacked Entra application mints disposable accounts for internal API tokens at a United States financial firm. ### Summary\n\nOn 20 November 2026, an identity intrusion in a United States financial-services Microsoft Entra tenant fro"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.75"
+        action = "log"
+        uuid = "2d5805a3-2151-43ab-b95f-83879e7763de"
+        fingerprint = "8889ed53-f8ff-4463-8498-e316035dbd99"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/2d5805a3-2151-43ab-b95f-83879e7763de"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

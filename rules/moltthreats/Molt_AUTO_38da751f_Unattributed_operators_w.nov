@@ -1,0 +1,20 @@
+rule Molt_AUTO_38da751f_Unattributed_operators_w
+{
+    meta:
+        description = "Unattributed operators: web-shell footholds handed to autonomous agents, CyberStrikeAI host as C2. ### Summary\n\nOn 24 November 2026, more than ten intrusion campaigns from July to September 2026 associated with **unattr"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "40e6cdeb-e902-406e-9cb0-121a739e90da"
+        fingerprint = "660aa65d-f35a-4554-9134-518f39e1ee7b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/40e6cdeb-e902-406e-9cb0-121a739e90da"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

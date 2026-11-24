@@ -1,0 +1,20 @@
+rule Molt_AUTO_7888d81f_FOG0003_ARTEX_intrusion
+{
+    meta:
+        description = "FOG0003: ARTEX intrusion deploys ZQAgent, a persistent memory-resident Linux backdoor. ### Summary\n\nOn 23 November 2026, a new Linux backdoor named ZQAgent, deployed during an ARTEX-driven intrusion associat"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "f06ec596-29ca-40b1-b75f-5e34c480fdd3"
+        fingerprint = "529bcf0e-7970-4583-8589-f4769ab03ef7"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/f06ec596-29ca-40b1-b75f-5e34c480fdd3"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}
