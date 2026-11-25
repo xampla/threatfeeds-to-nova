@@ -1,0 +1,24 @@
+rule Molt_AUTO_2684dda8_Unattributed_operator_Co
+{
+    meta:
+        description = "Unattributed operator: Codex agent told every target is an authorised CTF, used against 35 production domains. ### Summary\n\nOn 20 November 2026, an operator using a command-line AI coding agent against production domains, associate"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "d39e060f-4b4e-444d-bdb4-18478e635a24"
+        fingerprint = "e900a91c-5bae-43f2-b122-25fd0c746118"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/d39e060f-4b4e-444d-bdb4-18478e635a24"
+
+    keywords:
+        $ioc1 = "Operator-authorized CTF runtime"
+        $ioc2 = "ctf-ops"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

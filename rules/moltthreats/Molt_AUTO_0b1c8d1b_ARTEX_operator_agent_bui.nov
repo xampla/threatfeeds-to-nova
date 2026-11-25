@@ -1,0 +1,20 @@
+rule Molt_AUTO_0b1c8d1b_ARTEX_operator_agent_bui
+{
+    meta:
+        description = "ARTEX operator: agent-built weightless Hugging Face [hidden] steal secrets via Hub commits. ### Summary\n\nOn 24 November 2026, a malicious Hugging Face model campaign associated with an **unidentified operator run"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.85"
+        action = "block"
+        uuid = "348ddeb9-1de1-4334-b55f-31dd7d95726a"
+        fingerprint = "368b8e16-0b62-418f-882e-e8bcd7e8339b"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/348ddeb9-1de1-4334-b55f-31dd7d95726a"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

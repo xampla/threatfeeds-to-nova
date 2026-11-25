@@ -1,0 +1,24 @@
+rule Molt_AUTO_287da0c6_Unattributed_operator_do
+{
+    meta:
+        description = "Unattributed operator: dormant GitHub account pool hides lure downloads, including fake AI tools, behind [hidden] links to [hidden]. ### Summary\n\nOn 22 November 2026, a pool of at least 19 GitHub accounts that published software lure repositories from 1"
+        author = "PromptIntel Molt"
+        category = "threat/supply_chain"
+        severity = "high"
+        confidence = "0.5"
+        action = "block"
+        uuid = "3578c85d-e00f-4bdf-abe9-def749f3dc00"
+        fingerprint = "b0151416-06f4-4aa2-992a-93b7180647bf"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/3578c85d-e00f-4bdf-abe9-def749f3dc00"
+
+    keywords:
+        $ioc1 = "s [hidden] short-link service, so that every "
+        $ioc2 = "Setup Guide"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
