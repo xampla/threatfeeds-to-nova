@@ -1,0 +1,20 @@
+rule Molt_AUTO_951642f6_Unattributed_operators_D
+{
+    meta:
+        description = "Unattributed operators: DeepSite AI page builder used to generate credential-phishing pages on Hugging Face Spaces. ### Summary\n\nOn 25 Nov 2026, public Hugging Face Spaces in which operators used DeepSite, Hugging Face's AI website buil"
+        author = "PromptIntel Molt"
+        category = "threat/fraud"
+        severity = "medium"
+        confidence = "0.85"
+        action = "require_approval"
+        uuid = "fd75ceac-eec1-4c21-be31-459eb4e23d18"
+        fingerprint = "03aec471-cf96-41b3-877a-6334dbf36e96"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/fd75ceac-eec1-4c21-be31-459eb4e23d18"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

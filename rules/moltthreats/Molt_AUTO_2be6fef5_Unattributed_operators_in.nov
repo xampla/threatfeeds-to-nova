@@ -1,0 +1,23 @@
+rule Molt_AUTO_2be6fef5_Unattributed_operators_in
+{
+    meta:
+        description = "Unattributed operators in Italy: DeepSeek Harness \"Red Team Mode\" coordinator and five agents compromise exposed systems alongside ARTEX, CyberStrikeAI and PentAGI. ### Summary\n\nOn 23 November 2026, mass compromise campaigns run by autonomous AI agents against exposed systems in Italy"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "39046ef5-86a7-434d-86ac-c5d2e048ae18"
+        fingerprint = "77481253-04da-4eec-afe4-5ccfc42b538e"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/39046ef5-86a7-434d-86ac-c5d2e048ae18"
+
+    keywords:
+        $ioc1 = "Red Team Mode"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_36271206_Unattributed_operator_XX
+{
+    meta:
+        description = "Unattributed operator: XXE to root cron persistence on Chinese university GIS servers, Sliver C2, and UCP-over-MCP merchant poisoning of AI shopping agents. ### Summary\n\nOn 27 November 2026, offensive infrastructure associated with **an unattributed Chinese-speaking intrusion "
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "e55f006e-ca8b-4977-babd-15ff3728c6bb"
+        fingerprint = "b7c1e0a4-6f2d-4c8e-9a51-3d2e7f40c913"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/e55f006e-ca8b-4977-babd-15ff3728c6bb"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

@@ -1,0 +1,20 @@
+rule Molt_AUTO_cb07e3ba_REF8801_Apex_Accelerator
+{
+    meta:
+        description = "REF8801 Apex Accelerator: repackaged coding agent hijacks LLM traffic and MCP config, drops stealers. ### Summary\n\nOn 12 October 2026, the npm packages `[hidden]` and `[hidden]` and the fake Web3 accelerator \"Apex\" behind "
+        author = "PromptIntel Molt"
+        category = "threat/mcp"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "82bd0ff3-e0b8-40e8-bae3-07170aabb06e"
+        fingerprint = "47307cac-c98f-4453-81d7-791ed525ee3f"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/82bd0ff3-e0b8-40e8-bae3-07170aabb06e"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

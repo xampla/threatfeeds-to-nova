@@ -1,0 +1,24 @@
+rule Molt_AUTO_821171b8_Suspected_ARTEX_operator
+{
+    meta:
+        description = "Suspected ARTEX operator: MONAI Label CVE-2026-133968 exploited to root code execution, with a staging host holding artex_shell.py and FreeSWITCH experiments. ### Summary\n\nOn 26 November 2026, an operation using the **suspected ARTEX agentic offensive framework** against an inte"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "da708565-6e5c-48db-b58f-c1b0b96b85b3"
+        fingerprint = "0f984ed6-d886-4d9b-9680-dab50bd9d963"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/da708565-6e5c-48db-b58f-c1b0b96b85b3"
+
+    keywords:
+        $ioc1 = "s published report "
+        $ioc2 = "/datastore/image"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

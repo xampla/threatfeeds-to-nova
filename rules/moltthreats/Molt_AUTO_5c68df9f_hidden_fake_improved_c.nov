@@ -1,0 +1,23 @@
+rule Molt_AUTO_5c68df9f_hidden_fake_improved_c
+{
+    meta:
+        description = "[hidden]: fake improved coding-agent skills and plugins side-load MopsStealer via a renamed Notepad++ updater. ### Summary\n\nOn 26 November 2026, fake \"improved\" copies of popular coding-agent skills and plugins associated with **[h"
+        author = "PromptIntel Molt"
+        category = "threat/skill"
+        severity = "critical"
+        confidence = "0.9"
+        action = "block"
+        uuid = "b81b3a34-5ef5-4529-8a84-b66fa1849a41"
+        fingerprint = "6fa444fc-d711-4762-bada-335cf8014890"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/b81b3a34-5ef5-4529-8a84-b66fa1849a41"
+
+    keywords:
+        $ioc1 = "improved"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

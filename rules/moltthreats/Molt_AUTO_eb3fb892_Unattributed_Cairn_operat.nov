@@ -1,0 +1,23 @@
+rule Molt_AUTO_eb3fb892_Unattributed_Cairn_operat
+{
+    meta:
+        description = "Unattributed Cairn operator: LLM agents take over a Tomcat server through an unauthenticated Spring Batch job endpoint. ### Summary\n\nOn 7 October 2026, attacker hosts and victim-side artefacts associated with **an unattributed operator runn"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "99d9a266-5c79-4c1a-9814-0201864056e8"
+        fingerprint = "e40635ee-a503-43db-93ca-ab5daedfab0a"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/99d9a266-5c79-4c1a-9814-0201864056e8"
+
+    keywords:
+        $ioc1 = "s published Threat Spotlight "
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

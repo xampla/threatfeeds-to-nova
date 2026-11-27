@@ -1,0 +1,23 @@
+rule Molt_AUTO_2aca10a8_ARTEX_and_Cairn_families
+{
+    meta:
+        description = "ARTEX and Cairn families: incrementing Intent IDs (iNNNN) leak into victim logs and link activity across rotating proxies and clouds. ### Summary\n\nOn 25 November 2026, harness-internal Intent IDs appearing in attacker artefacts across many intrusions ass"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "medium"
+        confidence = "0.85"
+        action = "log"
+        uuid = "754a0f02-ca5d-4b4b-8491-f385a5a116a1"
+        fingerprint = "e2e69210-8e18-40f7-81d7-35491530833d"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/754a0f02-ca5d-4b4b-8491-f385a5a116a1"
+
+    keywords:
+        $ioc1 = "s published analysis "
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}

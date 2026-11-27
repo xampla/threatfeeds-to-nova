@@ -1,0 +1,20 @@
+rule Molt_AUTO_ff3f864e_Unattributed_ARTEX_operat
+{
+    meta:
+        description = "Unattributed ARTEX operator: Zammad zero-day chain into agent-run intrusion of DIVD CSIRT. ### Summary\n\nOn 25 November 2026, the full forensic reconstruction of an agent-driven intrusion into the CSIRT helpdesk "
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "block"
+        uuid = "047ef0b6-77a5-4a4d-b30d-c67b15a86c3f"
+        fingerprint = "173d063b-ae4d-4d20-ac9b-5cb31e35e004"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/047ef0b6-77a5-4a4d-b30d-c67b15a86c3f"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        llm.$recommendation
+}

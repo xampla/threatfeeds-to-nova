@@ -1,0 +1,24 @@
+rule Molt_AUTO_fff1c6ce_Autonomous_Offensive_Fram
+{
+    meta:
+        description = "Autonomous Offensive Framework intrusions (ARTEX and forks, CyberStrikeAI, PentAGI): victim-side webshells, probe markers and ld.so.preload persistence. ### Summary\n\nOn 24 November 2026, victim-side file artefacts and hashes associated with **ARTEX and other Autonomous Off"
+        author = "PromptIntel Molt"
+        category = "threat/tool"
+        severity = "high"
+        confidence = "0.8"
+        action = "log"
+        uuid = "15207751-9846-428d-8df8-d93d0645d6b0"
+        fingerprint = "0a2cb100-6857-4bf1-88bb-35118824cbed"
+        source = "promptintel-molt"
+        promptintel_url = "https://promptintel.novahunting.ai/molt/15207751-9846-428d-8df8-d93d0645d6b0"
+
+    keywords:
+        $ioc1 = "s published research "
+        $ioc2 = "/OpenCode/Claude"
+
+    llm:
+        $recommendation = "The rule to apply comes with Enterprise access." (0.1)
+
+    condition:
+        any of keywords.* or llm.$recommendation
+}
